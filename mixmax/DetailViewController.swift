@@ -34,14 +34,12 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
 //        loginWebView.loadRequest(URLRequest(url: url))
         
         let url = URL(string: "https://api.dropboxapi.com/2/files/list_folder")
-        
-
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.addValue("Bearer mMH65aBfKgUAAAAAAAAP_8-AaIY53nvfnvwvs_cuniv9yKJjJ-IUokS0QQXnA_1c", forHTTPHeaderField: "Authorization")
         let jsonDictionary = ["path": ""]
-         do {
-        let jsonData = try JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
@@ -49,16 +47,21 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
             if let error = error  {
                 print(error.localizedDescription)
             } else {
-                let datastring = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print("datastring: \(datastring)")
-                self.loginWebView.loadHTMLString(datastring as! String, baseURL: nil)
-
+                let json = try?  JSON(data: data!)
+                guard let jsonArray = json?["entries"].array else {
+                    return
+                }
+                var items = [Item]()
+                for jsonItem in jsonArray {
+                    let item = Item()
+                    item.name = jsonItem["name"].string ?? ""
+                    items.append(item)
+                }
+                print("number of items: \(items.count)")
             }
         }
         task.resume()
-         } catch {
-            print(error)
-        }
+        
     }
 
     func webViewDidFinishLoad(_ webView: UIWebView) {

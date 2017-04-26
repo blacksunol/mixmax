@@ -19,6 +19,8 @@
 		1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */; };
 		1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */; };
 		1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */; };
+		1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */; };
+		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemListCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1F6595C71EB0D142002B5DD5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				1F6595961EACB46F002B5DD5 /* LaunchScreen.storyboard */,
 				1F6595BB1EAF7305002B5DD5 /* ItemListViewController.storyboard */,
 				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
+				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
+				1F6595C71EB0D142002B5DD5 /* Item.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
@@ -279,6 +285,8 @@
 				1F6595901EACB46F002B5DD5 /* DetailViewController.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
+				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
+				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958E1EACB46F002B5DD5 /* MasterViewController.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 			);

@@ -25,7 +25,7 @@ class ItemListViewController: UIViewController {
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 10
     }
     
     
@@ -35,6 +35,4 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         cell.backgroundColor = UIColor.green
         return cell
     }
-    
-    
 }
