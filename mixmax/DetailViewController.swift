@@ -63,11 +63,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         task.resume()
         
     }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        let string = webView.request?.url?.absoluteString
-        print("url: \(string)")
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -68,6 +68,16 @@
             </objects>
             <point key="canvasLocation" x="432" y="605"/>
         </scene>
+        <!--DropBoxLoginViewController-->
+        <scene sceneID="rmW-WJ-DoG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DropBoxLoginViewController" storyboardName="DropBoxLoginViewController" referencedIdentifier="DropBoxLoginViewController" id="7OB-gH-0yI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2St-Mg-sq7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKX-kx-iMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="163" y="712"/>
+        </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
@@ -134,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="AuT-Dl-Uvh" kind="relationship" relationship="rootViewController" id="oUI-lM-8g8"/>
+                        <segue destination="AuT-Dl-Uvh" kind="relationship" relationship="rootViewController" id="bYd-NG-rnV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
