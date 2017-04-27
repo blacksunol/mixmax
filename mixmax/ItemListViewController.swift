@@ -25,22 +25,25 @@ class ItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareNibs()
-//        if !isDropBoxLogin {
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "DropBoxLoginViewController") as! DropBoxLoginViewController
-//            present(vc, animated: true, completion: nil)
-//        }
+
         loadItems()
     }
     
+    @IBAction func closeIButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     private func prepareNibs() {
         itemListCollectionView.register(ItemListCollectionViewCell.self, forCellWithReuseIdentifier: "ItemListCollectionViewCell")
     }
     
+    
     private func loadItems() {
         let kDropBoxToken = "http://localhost/#access_token="
         let dropBoxTokenString = UserDefaults.standard.value(forKey: kDropBoxToken) ?? ""
         
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         
         let url = URL(string: "https://api.dropboxapi.com/2/files/list_folder")
         var request = URLRequest(url: url!)
@@ -52,16 +55,12 @@ class ItemListViewController: UIViewController {
         request.httpBody = jsonData
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error  {
                 print(error.localizedDescription)
             } else {
                 let json = try?  JSON(data: data!)
                 guard let jsonArray = json?["entries"].array else {
-                    
                     return
                 }
                 
@@ -70,7 +69,7 @@ class ItemListViewController: UIViewController {
                     item.name = jsonItem["name"].string ?? ""
                     self.items.append(item)
                 }
-                print("selfItem = \(self.items.count)")
+                print("number of items: \(self.items.count)")
                 self.itemListCollectionView.reloadData()
             }
         }

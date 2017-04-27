@@ -28,6 +28,14 @@
                                     <outlet property="delegate" destination="ItC-2e-zrQ" id="C1x-ND-58J"/>
                                 </connections>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-hU-fAM">
+                                <rect key="frame" x="107" y="66" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="close"/>
+                                <connections>
+                                    <action selector="closeLoginButtonTapped:" destination="ItC-2e-zrQ" eventType="touchUpInside" id="Jbx-Zn-NSr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

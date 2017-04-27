@@ -21,6 +21,11 @@ class DropBoxLoginViewController: UIViewController {
             loginWebView.loadRequest(URLRequest(url: url))
         }
     }
+    
+    
+    @IBAction func closeLoginButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension DropBoxLoginViewController: UIWebViewDelegate {
@@ -29,8 +34,9 @@ extension DropBoxLoginViewController: UIWebViewDelegate {
         let urlString = webView.request?.url?.absoluteString
         if let urlString = urlString, urlString.contains(kDropBoxToken) {
             let tokenString = urlString.replacingOccurrences(of: kDropBoxToken, with: "")
-            print("token: \(tokenString)")
-            UserDefaults.standard.set(tokenString, forKey: kDropBoxToken)
+            let token = tokenString.components(separatedBy: "&").first
+            UserDefaults.standard.set(token, forKey: kDropBoxToken)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

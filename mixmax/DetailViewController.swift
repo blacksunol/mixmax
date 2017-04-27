@@ -30,8 +30,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-//        let url = URL(string: "https://www.dropbox.com/oauth2/authorize?client_id=8g16zfowqmgqtmd&response_type=token&redirect_uri=http://localhost")!
-//        loginWebView.loadRequest(URLRequest(url: url))
         
         let url = URL(string: "https://api.dropboxapi.com/2/files/list_folder")
         var request = URLRequest(url: url!)
