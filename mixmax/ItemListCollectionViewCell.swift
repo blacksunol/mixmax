@@ -9,5 +9,10 @@
 import UIKit
 
 class ItemListCollectionViewCell: UICollectionViewCell {
-
+    
+    @IBOutlet weak private var nameLabel: UILabel!
+    
+    func configure(item: Item) {
+        nameLabel.text = item.name
+    }
 }

@@ -13,19 +13,10 @@ class ItemListViewController: UIViewController {
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     fileprivate var items = [Item]()
     
-    private var isDropBoxLogin: Bool {
-        let kDropBoxToken = "http://localhost/#access_token="
-        if let _ = UserDefaults.standard.value(forKey: kDropBoxToken) {
-            return true
-        } else {
-            return false
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareNibs()
-
         loadItems()
     }
     
@@ -34,7 +25,7 @@ class ItemListViewController: UIViewController {
     }
     
     private func prepareNibs() {
-        itemListCollectionView.register(ItemListCollectionViewCell.self, forCellWithReuseIdentifier: "ItemListCollectionViewCell")
+        itemListCollectionView.register(UINib(nibName: "ItemListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCollectionViewCell")
     }
     
     
@@ -59,18 +50,19 @@ class ItemListViewController: UIViewController {
             if let error = error  {
                 print(error.localizedDescription)
             } else {
-                let json = try?  JSON(data: data!)
-                guard let jsonArray = json?["entries"].array else {
-                    return
+                DispatchQueue.main.async {
+                    let json = try?  JSON(data: data!)
+                    guard let jsonArray = json?["entries"].array else {
+                        return
+                    }
+                    
+                    for jsonItem in jsonArray {
+                        let item = Item()
+                        item.name = jsonItem["name"].string ?? ""
+                        self.items.append(item)
+                    }
+                    self.itemListCollectionView.reloadData()
                 }
-                
-                for jsonItem in jsonArray {
-                    let item = Item()
-                    item.name = jsonItem["name"].string ?? ""
-                    self.items.append(item)
-                }
-                print("number of items: \(self.items.count)")
-                self.itemListCollectionView.reloadData()
             }
         }
         task.resume()
@@ -78,16 +70,21 @@ class ItemListViewController: UIViewController {
     
 }
 
-extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
+        
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListCollectionViewCell",
                                                       for: indexPath) as! ItemListCollectionViewCell
-        cell.backgroundColor = UIColor.green
+        let item = items[indexPath.row]
+        cell.configure(item: item)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
     }
 }
