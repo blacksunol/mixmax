@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
-		1F65958E1EACB46F002B5DD5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958D1EACB46F002B5DD5 /* MasterViewController.swift */; };
-		1F6595901EACB46F002B5DD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958F1EACB46F002B5DD5 /* DetailViewController.swift */; };
 		1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595911EACB46F002B5DD5 /* Main.storyboard */; };
 		1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595941EACB46F002B5DD5 /* Assets.xcassets */; };
 		1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595961EACB46F002B5DD5 /* LaunchScreen.storyboard */; };
@@ -45,8 +43,6 @@
 /* Begin PBXFileReference section */
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F65958D1EACB46F002B5DD5 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		1F65958F1EACB46F002B5DD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1F6595921EACB46F002B5DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F6595941EACB46F002B5DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F6595971EACB46F002B5DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,6 +88,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F3F84041EBAF3E900138213 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				1F6595BB1EAF7305002B5DD5 /* ItemListViewController.storyboard */,
+				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
+				1F6595C71EB0D142002B5DD5 /* Item.swift */,
+				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
+				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		1F3F84051EBAF40400138213 /* DropBox */ = {
+			isa = PBXGroup;
+			children = (
+				1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */,
+				1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */,
+			);
+			name = DropBox;
+			sourceTree = "<group>";
+		};
+		1F3F84061EBAF44600138213 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		1F65957F1EACB46F002B5DD5 = {
 			isa = PBXGroup;
 			children = (
@@ -116,19 +141,12 @@
 			isa = PBXGroup;
 			children = (
 				1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */,
-				1F65958D1EACB46F002B5DD5 /* MasterViewController.swift */,
-				1F65958F1EACB46F002B5DD5 /* DetailViewController.swift */,
 				1F6595911EACB46F002B5DD5 /* Main.storyboard */,
 				1F6595941EACB46F002B5DD5 /* Assets.xcassets */,
 				1F6595961EACB46F002B5DD5 /* LaunchScreen.storyboard */,
-				1F6595BB1EAF7305002B5DD5 /* ItemListViewController.storyboard */,
-				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
-				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
-				1F6595C71EB0D142002B5DD5 /* Item.swift */,
-				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
-				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
-				1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */,
-				1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */,
+				1F3F84061EBAF44600138213 /* Libraries */,
+				1F3F84041EBAF3E900138213 /* Items */,
+				1F3F84051EBAF40400138213 /* DropBox */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 			);
 			path = mixmax;
@@ -289,13 +307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6595901EACB46F002B5DD5 /* DetailViewController.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
-				1F65958E1EACB46F002B5DD5 /* MasterViewController.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +559,7 @@
 				1F6595B41EACB46F002B5DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F6595B51EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmaxTests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +568,7 @@
 				1F6595B71EACB46F002B5DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F6595B81EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmaxUITests" */ = {
 			isa = XCConfigurationList;
@@ -559,6 +577,7 @@
 				1F6595BA1EACB46F002B5DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
