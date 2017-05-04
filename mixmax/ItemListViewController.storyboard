@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7af-56-3g1">
-                                <rect key="frame" x="19" y="164" width="340" height="233"/>
+                                <rect key="frame" x="19" y="80" width="340" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BUg-Fl-6it">
                                     <size key="itemSize" width="50" height="50"/>
@@ -46,12 +46,20 @@
                                     <outlet property="delegate" destination="WVo-d7-cOL" id="jaN-3r-Rbi"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1K-Kp-ZiH">
+                                <rect key="frame" x="280" y="53" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeIButtonTapped:" destination="WVo-d7-cOL" eventType="touchUpInside" id="vj5-SZ-JeC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.3757364788" blue="0.98475166739999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="7af-56-3g1" secondAttribute="trailing" id="9wS-Vn-caT"/>
-                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="144" id="gNI-DL-cQT"/>
-                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" constant="270" id="q82-PW-OCV"/>
+                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="60" id="gNI-DL-cQT"/>
+                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" constant="20" id="q82-PW-OCV"/>
                             <constraint firstItem="7af-56-3g1" firstAttribute="leading" secondItem="Zz9-DS-rMh" secondAttribute="leadingMargin" constant="3" id="zhS-as-jMh"/>
                         </constraints>
                     </view>

@@ -58,6 +58,42 @@
             </objects>
             <point key="canvasLocation" x="708" y="128.18590704647679"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="JVL-vt-Dpb">
+            <objects>
+                <viewController id="NVc-hH-c9z" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="myE-ZC-yI2"/>
+                        <viewControllerLayoutGuide type="bottom" id="C17-nU-mIe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x7T-Mn-sXm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyk-YV-MDJ">
+                                <rect key="frame" x="108" y="200" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DropBox Login"/>
+                                <connections>
+                                    <segue destination="7OB-gH-0yI" kind="presentation" id="nLc-7P-7d1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwN-hF-CS5">
+                                <rect key="frame" x="108" y="280" width="138" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="List of files"/>
+                                <connections>
+                                    <segue destination="AuT-Dl-Uvh" kind="show" id="KI9-Hg-FiI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JtJ-Rn-cEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1044" y="447.52623688155927"/>
+        </scene>
         <!--ItemListViewController-->
         <scene sceneID="1le-pS-jry">
             <objects>
@@ -66,7 +102,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enc-qm-bxm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="432" y="605"/>
+            <point key="canvasLocation" x="-467" y="793"/>
+        </scene>
+        <!--DropBoxLoginViewController-->
+        <scene sceneID="rmW-WJ-DoG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DropBoxLoginViewController" storyboardName="DropBoxLoginViewController" referencedIdentifier="DropBoxLoginViewController" id="7OB-gH-0yI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2St-Mg-sq7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKX-kx-iMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257" y="626"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -74,8 +120,8 @@
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <connections>
-                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
                         <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="Tll-UG-LXB"/>
+                        <segue destination="NVc-hH-c9z" kind="relationship" relationship="masterViewController" id="gYM-Qd-Nb0"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
@@ -134,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="AuT-Dl-Uvh" kind="relationship" relationship="rootViewController" id="oUI-lM-8g8"/>
+                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="M37-5Y-Mq8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>

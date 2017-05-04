@@ -21,6 +21,8 @@
 		1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */; };
 		1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */; };
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
+		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
+		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1F6595C71EB0D142002B5DD5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxLoginViewController.swift; sourceTree = "<group>"; };
+		1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DropBoxLoginViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				1F6595C71EB0D142002B5DD5 /* Item.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
+				1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */,
+				1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 			);
 			path = mixmax;
@@ -253,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
 				1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */,
 				1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */,
@@ -284,6 +291,7 @@
 			files = (
 				1F6595901EACB46F002B5DD5 /* DetailViewController.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
+				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
