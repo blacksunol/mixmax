@@ -21,6 +21,9 @@
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
+		1FA993481F2CF3F100C5BF50 /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
+		1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA993491F2CF44600C5BF50 /* JukeViewController.swift */; };
+		1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		1F6595C71EB0D142002B5DD5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxLoginViewController.swift; sourceTree = "<group>"; };
 		1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DropBoxLoginViewController.storyboard; sourceTree = "<group>"; };
+		1FA993471F2CF3F100C5BF50 /* Jukebox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Jukebox.framework; path = Carthage/Build/iOS/Jukebox.framework; sourceTree = "<group>"; };
+		1FA993491F2CF44600C5BF50 /* JukeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JukeViewController.swift; sourceTree = "<group>"; };
+		1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JukeViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA993481F2CF3F100C5BF50 /* Jukebox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +103,7 @@
 				1F6595C71EB0D142002B5DD5 /* Item.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
+				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -124,6 +132,7 @@
 				1F6595A11EACB46F002B5DD5 /* mixmaxTests */,
 				1F6595AC1EACB46F002B5DD5 /* mixmaxUITests */,
 				1F6595891EACB46F002B5DD5 /* Products */,
+				1FA993471F2CF3F100C5BF50 /* Jukebox.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +177,15 @@
 				1F6595AF1EACB46F002B5DD5 /* Info.plist */,
 			);
 			path = mixmaxUITests;
+			sourceTree = "<group>";
+		};
+		1FA9934B1F2CF86F00C5BF50 /* JukePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1FA993491F2CF44600C5BF50 /* JukeViewController.swift */,
+				1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */,
+			);
+			name = JukePlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +297,7 @@
 			files = (
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
+				1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */,
 				1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */,
 				1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */,
 				1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */,
@@ -310,6 +329,7 @@
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
+				1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
@@ -466,6 +486,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Jukebox/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = mixmax/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
@@ -478,6 +503,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/Jukebox/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = mixmax/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
