@@ -25,6 +25,7 @@ class JukeViewController: UIViewController, JukeboxDelegate {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var jukebox : Jukebox!
+    var link: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,17 +35,20 @@ class JukeViewController: UIViewController, JukeboxDelegate {
         UIApplication.shared.beginReceivingRemoteControlEvents()
         
         // configure jukebox
+//        jukebox = Jukebox(delegate: self, items: [
+//            JukeboxItem(URL: URL(string: link)!),
+//            JukeboxItem(URL: URL(string: "http://www.kissfm.ro/listen.pls")!),
+//            JukeboxItem(URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2514.mp3")!),
+//            JukeboxItem(URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2958.mp3")!)
+//            ])!
         jukebox = Jukebox(delegate: self, items: [
-            JukeboxItem(URL: URL(string: "http://www.kissfm.ro/listen.pls")!),
-            JukeboxItem(URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2514.mp3")!),
-            JukeboxItem(URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2958.mp3")!)
-            ])!
+            JukeboxItem(URL: URL(string: link)!)])!
         
         /// Later add another item
-        let delay = DispatchTime.now() + Double(Int64(3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: delay) {
-            self.jukebox.append(item: JukeboxItem (URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2228.mp3")!), loadingAssets: true)
-        }
+//        let delay = DispatchTime.now() + Double(Int64(3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//        DispatchQueue.main.asyncAfter(deadline: delay) {
+//            self.jukebox.append(item: JukeboxItem (URL: URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2228.mp3")!), loadingAssets: true)
+//        }
     }
     
     override var prefersStatusBarHidden : Bool {
@@ -214,6 +218,7 @@ class JukeViewController: UIViewController, JukeboxDelegate {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
+        jukebox.stop()
         dismiss(animated: true, completion: nil)
     }
 }
