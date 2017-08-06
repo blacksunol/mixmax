@@ -12,6 +12,7 @@ class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     fileprivate var items = [Item]()
+    var path = ""
     
     
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ class ItemListViewController: UIViewController {
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.addValue("Bearer \(dropBoxTokenString)", forHTTPHeaderField: "Authorization")
-        let jsonDictionary = ["path": ""]
+        let jsonDictionary = ["path": path]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
         request.httpBody = jsonData
@@ -50,7 +51,7 @@ class ItemListViewController: UIViewController {
             if let error = error  {
                 print(error.localizedDescription)
             } else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     let json = try?  JSON(data: data!)
                     guard let jsonArray = json?["entries"].array else {
                         return
@@ -59,13 +60,17 @@ class ItemListViewController: UIViewController {
                     for jsonItem in jsonArray {
                         let item = Item()
                         item.name = jsonItem["name"].string ?? ""
-                        self.items.append(item)
+                        self?.items.append(item)
                     }
-                    self.itemListCollectionView.reloadData()
+                    self?.itemListCollectionView.reloadData()
                 }
             }
         }
         task.resume()
+    }
+    
+    private func loadGoogle() {
+        self.itemListCollectionView.reloadData()
     }
     
 }
@@ -86,5 +91,16 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ItemListViewController", bundle: nil)
+        if let itemListViewController = storyboard.instantiateViewController(withIdentifier :"ItemListViewController") as? ItemListViewController {
+            let item = items[indexPath.row]
+
+            itemListViewController.path = path + "/" + item.name
+            present(itemListViewController, animated: true)
+
+        }
     }
 }
