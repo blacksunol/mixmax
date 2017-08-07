@@ -95,7 +95,6 @@ class ItemListViewController: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     let json = try?  JSON(data: data!)
                     if let link = json?["link"].string {
-                        print("*##"+link)
                         let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
                         if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
                             jukeViewController.link = link
@@ -146,7 +145,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         if let itemListViewController = storyboard.instantiateViewController(withIdentifier :"ItemListViewController") as? ItemListViewController {
             let item = items[indexPath.row]
             itemListViewController.item = item
-            present(itemListViewController, animated: true)
+            navigationController?.pushViewController(itemListViewController, animated: true)
         }
     }
 }
