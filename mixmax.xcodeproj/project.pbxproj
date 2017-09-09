@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
+		1F4D87651F63967900DB7DEE /* Jukebox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
 		1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595911EACB46F002B5DD5 /* Main.storyboard */; };
 		1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595941EACB46F002B5DD5 /* Assets.xcassets */; };
@@ -21,7 +23,6 @@
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
-		1FA993481F2CF3F100C5BF50 /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
 		1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA993491F2CF44600C5BF50 /* JukeViewController.swift */; };
 		1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,20 @@
 			remoteInfo = mixmax;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1F4D87661F63967900DB7DEE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1F4D87651F63967900DB7DEE /* Jukebox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FA993481F2CF3F100C5BF50 /* Jukebox.framework in Frameworks */,
+				1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +213,7 @@
 				1F6595841EACB46F002B5DD5 /* Sources */,
 				1F6595851EACB46F002B5DD5 /* Frameworks */,
 				1F6595861EACB46F002B5DD5 /* Resources */,
+				1F4D87661F63967900DB7DEE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,7 +272,13 @@
 				TargetAttributes = {
 					1F6595871EACB46F002B5DD5 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = LH5CCFR5XZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					1F65959D1EACB46F002B5DD5 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -486,12 +508,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LH5CCFR5XZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Jukebox/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = mixmax/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -503,12 +527,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LH5CCFR5XZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Carthage/Checkouts/Jukebox/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = mixmax/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
 				PRODUCT_NAME = "$(TARGET_NAME)";
