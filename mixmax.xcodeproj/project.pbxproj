@@ -25,6 +25,11 @@
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
 		1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA993491F2CF44600C5BF50 /* JukeViewController.swift */; };
 		1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */; };
+		1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */; };
+		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
+		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
+		64FB1A00194AB7B216EC6542 /* Pods_mixmaxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */; };
+		661D196EF31A347979A5F314 /* Pods_mixmax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +87,17 @@
 		1FA993471F2CF3F100C5BF50 /* Jukebox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Jukebox.framework; path = Carthage/Build/iOS/Jukebox.framework; sourceTree = "<group>"; };
 		1FA993491F2CF44600C5BF50 /* JukeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JukeViewController.swift; sourceTree = "<group>"; };
 		1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JukeViewController.storyboard; sourceTree = "<group>"; };
+		1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginViewController.swift; sourceTree = "<group>"; };
+		1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleLoginViewController.storyboard; sourceTree = "<group>"; };
+		2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests.release.xcconfig"; sourceTree = "<group>"; };
+		40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests.debug.xcconfig"; sourceTree = "<group>"; };
+		50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests.release.xcconfig"; sourceTree = "<group>"; };
+		58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmax.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmax/Pods-mixmax.release.xcconfig"; sourceTree = "<group>"; };
+		68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6965351A9BA01639213ADD8A /* Pods-mixmax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmax.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmax/Pods-mixmax.debug.xcconfig"; sourceTree = "<group>"; };
+		94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D2303494D82045BAE6ADD0A /* Pods-mixmaxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */,
+				661D196EF31A347979A5F314 /* Pods_mixmax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64FB1A00194AB7B216EC6542 /* Pods_mixmaxTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +122,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D7CE40231CC46B59C14C0F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */,
+				40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */,
+				94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1F3F84041EBAF3E900138213 /* Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +177,8 @@
 				1F6595AC1EACB46F002B5DD5 /* mixmaxUITests */,
 				1F6595891EACB46F002B5DD5 /* Products */,
 				1FA993471F2CF3F100C5BF50 /* Jukebox.framework */,
+				29D5495394F72986BF29A3A0 /* Pods */,
+				0D7CE40231CC46B59C14C0F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +202,7 @@
 				1F3F84061EBAF44600138213 /* Libraries */,
 				1F3F84041EBAF3E900138213 /* Items */,
 				1F3F84051EBAF40400138213 /* DropBox */,
+				1FCE85A6205BA6CB0017DF16 /* Google */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 			);
 			path = mixmax;
@@ -203,6 +235,28 @@
 			name = JukePlayer;
 			sourceTree = "<group>";
 		};
+		1FCE85A6205BA6CB0017DF16 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */,
+				1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		29D5495394F72986BF29A3A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6965351A9BA01639213ADD8A /* Pods-mixmax.debug.xcconfig */,
+				58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */,
+				4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */,
+				2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */,
+				9D2303494D82045BAE6ADD0A /* Pods-mixmaxUITests.debug.xcconfig */,
+				50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,10 +264,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F6595B21EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmax" */;
 			buildPhases = (
+				90C6EE535EAE60C81E38F8C4 /* [CP] Check Pods Manifest.lock */,
 				1F6595841EACB46F002B5DD5 /* Sources */,
 				1F6595851EACB46F002B5DD5 /* Frameworks */,
 				1F6595861EACB46F002B5DD5 /* Resources */,
 				1F4D87661F63967900DB7DEE /* Embed Frameworks */,
+				5B2375E310DE02E90E24DBDD /* [CP] Embed Pods Frameworks */,
+				2EC234647E8B16F53A815A54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F6595B51EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmaxTests" */;
 			buildPhases = (
+				65D7BDA35865AA34E8D86639 /* [CP] Check Pods Manifest.lock */,
 				1F65959A1EACB46F002B5DD5 /* Sources */,
 				1F65959B1EACB46F002B5DD5 /* Frameworks */,
 				1F65959C1EACB46F002B5DD5 /* Resources */,
+				25A1D5F5B106DA7FD17A53D5 /* [CP] Embed Pods Frameworks */,
+				C2BA758EA6994EE1B72521DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,9 +306,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F6595B81EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmaxUITests" */;
 			buildPhases = (
+				DA5580328441CAC9F9B78539 /* [CP] Check Pods Manifest.lock */,
 				1F6595A51EACB46F002B5DD5 /* Sources */,
 				1F6595A61EACB46F002B5DD5 /* Frameworks */,
 				1F6595A71EACB46F002B5DD5 /* Resources */,
+				0F6E22601B74D8CB47B48057 /* [CP] Embed Pods Frameworks */,
+				725307FA20ECFFA5D45ACC6F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */,
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
 				1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */,
@@ -343,6 +407,163 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F6E22601B74D8CB47B48057 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25A1D5F5B106DA7FD17A53D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC234647E8B16F53A815A54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B2375E310DE02E90E24DBDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65D7BDA35865AA34E8D86639 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mixmaxTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		725307FA20ECFFA5D45ACC6F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90C6EE535EAE60C81E38F8C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mixmax-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2BA758EA6994EE1B72521DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA5580328441CAC9F9B78539 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mixmaxUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F6595841EACB46F002B5DD5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -355,6 +576,7 @@
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
+				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +728,7 @@
 		};
 		1F6595B31EACB46F002B5DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6965351A9BA01639213ADD8A /* Pods-mixmax.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LH5CCFR5XZ;
@@ -525,6 +748,7 @@
 		};
 		1F6595B41EACB46F002B5DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LH5CCFR5XZ;
@@ -544,6 +768,7 @@
 		};
 		1F6595B61EACB46F002B5DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -558,6 +783,7 @@
 		};
 		1F6595B71EACB46F002B5DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -572,6 +798,7 @@
 		};
 		1F6595B91EACB46F002B5DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D2303494D82045BAE6ADD0A /* Pods-mixmaxUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = mixmaxUITests/Info.plist;
@@ -585,6 +812,7 @@
 		};
 		1F6595BA1EACB46F002B5DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = mixmaxUITests/Info.plist;
