@@ -32,6 +32,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Git-dq-0gs"/>
                     </view>
+                    <connections>
+                        <outlet property="signInButton" destination="Ola-sr-OJB" id="d6A-fK-lqk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7G-o5-J07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

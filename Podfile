@@ -7,6 +7,7 @@ target 'mixmax' do
 
   # Pods for mixmax
   pod 'GoogleSignIn'
+  pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
   target 'mixmaxTests' do
     inherit! :search_paths
     # Pods for testing
