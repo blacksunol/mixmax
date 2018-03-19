@@ -11,8 +11,12 @@ import UIKit
 class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
+    
     fileprivate var items = [Item]()
+    
     var item = Item()
+    
+    let cloudService = CloudService()
     
     
     override func viewDidLoad() {
@@ -29,90 +33,13 @@ class ItemListViewController: UIViewController {
         itemListCollectionView.register(UINib(nibName: "ItemListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCollectionViewCell")
     }
     
-    
     private func loadItems() {
-        let kDropBoxToken = "http://localhost/#access_token="
-        let dropBoxTokenString = UserDefaults.standard.value(forKey: kDropBoxToken) ?? ""
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let url = URL(string: "https://api.dropboxapi.com/2/files/list_folder")
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(dropBoxTokenString)", forHTTPHeaderField: "Authorization")
-        let jsonDictionary = ["path": item.path]
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
-        request.httpBody = jsonData
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error  {
-                print(error.localizedDescription)
-            } else {
-                DispatchQueue.main.async { [weak self] in
-                    let json = try?  JSON(data: data!)
-                    guard let jsonArray = json?["entries"].array else {
-                        return
-                    }
-                    
-                    for jsonItem in jsonArray {
-                        let item = Item()
-                        item.name = jsonItem["name"].string ?? ""
-                        item.tag = jsonItem[".tag"].string ?? ""
-                        item.path = jsonItem["path_lower"].string ?? ""
-                        self?.items.append(item)
-                    }
-                    self?.itemListCollectionView.reloadData()
-                }
-            }
-        }
-        task.resume()
-    }
-    
-    fileprivate func loadItemLink() {
-        let kDropBoxToken = "http://localhost/#access_token="
-        let dropBoxTokenString = UserDefaults.standard.value(forKey: kDropBoxToken) ?? ""
-        
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let url = URL(string: "https://api.dropboxapi.com/2/files/get_temporary_link")
-        var request = URLRequest(url: url!)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(dropBoxTokenString)", forHTTPHeaderField: "Authorization")
-        let jsonDictionary = ["path": item.path]
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
-        request.httpBody = jsonData
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error  {
-                print(error.localizedDescription)
-            } else {
-                DispatchQueue.main.async { [weak self] in
-                    let json = try?  JSON(data: data!)
-                    if let link = json?["link"].string {
-                        let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
-                        if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
-                            jukeViewController.link = link
-                            self?.present(jukeViewController, animated: true)
-                        }
-                    }
-                }
-            }
-        }
-        task.resume()
 
+        cloudService.callDropbox(from: item) { [weak self] (items) in
+            self?.items = items
+            self?.itemListCollectionView.reloadData()
+        }
     }
-    
-    private func loadGoogle() {
-        self.itemListCollectionView.reloadData()
-    }
-    
-    
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -138,9 +65,17 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         print(item.path)
         if item.tag == "file" {
             self.item = item
-            loadItemLink()
+            cloudService.callDropboxLink(from: item, callFinished: { [weak self] (linkString) in
+                let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
+                if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
+                    jukeViewController.link = linkString
+                    self?.present(jukeViewController, animated: true)
+                }
+            })
+            
             return
         }
+        
         let storyboard = UIStoryboard(name: "ItemListViewController", bundle: nil)
         if let itemListViewController = storyboard.instantiateViewController(withIdentifier :"ItemListViewController") as? ItemListViewController {
             let item = items[indexPath.row]

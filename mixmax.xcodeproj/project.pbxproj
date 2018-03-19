@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F182D48205F68770077FCA3 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F182D47205F68770077FCA3 /* CloudService.swift */; };
 		1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
 		1F4D87651F63967900DB7DEE /* Jukebox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F182D47205F68770077FCA3 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mixmax-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
 				1F6595C71EB0D142002B5DD5 /* Item.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
+				1F182D47205F68770077FCA3 /* CloudService.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
 				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
 			);
@@ -582,6 +585,7 @@
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
+				1F182D48205F68770077FCA3 /* CloudService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
