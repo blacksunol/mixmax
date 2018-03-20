@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -19,6 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = "1081018989060-95jkittnpf1oi28hkonjsoiipol1iajj.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        
+        let menuStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        let menuViewController  = menuStoryboard.instantiateInitialViewController()
+        
+
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = mainStoryboard.instantiateInitialViewController()
+    
+        
+        let slideMenuController = SlideMenuController(mainViewController: mainViewController!, rightMenuViewController: menuViewController!)
+        
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
+
+        
         return true
     }
 

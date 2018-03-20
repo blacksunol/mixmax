@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */; };
+		1F0D9F8D2060C2100047D076 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */; };
 		1F182D48205F68770077FCA3 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F182D47205F68770077FCA3 /* CloudService.swift */; };
 		1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45912060B39800DA1C51 /* SettingViewController.swift */; };
 		1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
 		1F182D47205F68770077FCA3 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
 		1F1F45912060B39800DA1C51 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
@@ -150,6 +154,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1F0D9F8E2060C2260047D076 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */,
+				1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		1F1F45952060B3BA00DA1C51 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +240,7 @@
 				1F3F84051EBAF40400138213 /* DropBox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
 				1F1F45952060B3BA00DA1C51 /* Settings */,
+				1F0D9F8E2060C2260047D076 /* Menu */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 				1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */,
 			);
@@ -408,6 +422,7 @@
 			files = (
 				1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */,
 				1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */,
+				1F0D9F8D2060C2100047D076 /* MenuViewController.storyboard in Resources */,
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
 				1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */,
@@ -495,6 +510,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -502,6 +518,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -606,6 +623,7 @@
 				1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
+				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
