@@ -20,7 +20,7 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
     
     private let service = GTLRDriveService()
     
-    var player:AVPlayer?
+    var player: AVPlayer?
     
     let output = UITextView()
 

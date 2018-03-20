@@ -18,6 +18,12 @@ class ItemListViewController: UIViewController {
     
     let cloudService = CloudService()
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dropboxSegue" {
+            print("dropboxSegue")
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +41,12 @@ class ItemListViewController: UIViewController {
     
     private func loadItems() {
 
-        cloudService.callDropbox(from: item) { [weak self] (items) in
+//        cloudService.callDropbox(from: item) { [weak self] (items) in
+//            self?.items = items
+//            self?.itemListCollectionView.reloadData()
+//        }
+        
+        cloudService.callGoogle { [weak self] (items) in
             self?.items = items
             self?.itemListCollectionView.reloadData()
         }
