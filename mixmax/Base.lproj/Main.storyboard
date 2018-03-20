@@ -45,6 +45,14 @@
                                     <segue destination="lVR-Qi-id5" kind="show" id="OdC-KD-8rT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xec-PJ-P56">
+                                <rect key="frame" x="128" y="435" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="ki5-1z-f69" kind="show" id="wBy-x4-MUe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -71,6 +79,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dE-kY-67k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="676" y="649"/>
+        </scene>
+        <!--SettingViewController-->
+        <scene sceneID="KSQ-HU-3DH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingViewController" referencedIdentifier="SettingViewController" id="ki5-1z-f69" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2j-wE-D3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="852"/>
         </scene>
         <!--DropBoxLoginViewController-->
         <scene sceneID="rmW-WJ-DoG">

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1F182D48205F68770077FCA3 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F182D47205F68770077FCA3 /* CloudService.swift */; };
+		1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45912060B39800DA1C51 /* SettingViewController.swift */; };
+		1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */; };
+		1F1F45972060B48F00DA1C51 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45962060B48F00DA1C51 /* SettingTableViewCell.xib */; };
+		1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */; };
 		1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
 		1F4D87651F63967900DB7DEE /* Jukebox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
@@ -66,6 +70,10 @@
 
 /* Begin PBXFileReference section */
 		1F182D47205F68770077FCA3 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
+		1F1F45912060B39800DA1C51 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
+		1F1F45962060B48F00DA1C51 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mixmax-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +150,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1F1F45952060B3BA00DA1C51 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1F1F45912060B39800DA1C51 /* SettingViewController.swift */,
+				1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */,
+				1F1F45962060B48F00DA1C51 /* SettingTableViewCell.xib */,
+				1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		1F3F84041EBAF3E900138213 /* Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +226,7 @@
 				1F3F84041EBAF3E900138213 /* Items */,
 				1F3F84051EBAF40400138213 /* DropBox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
+				1F1F45952060B3BA00DA1C51 /* Settings */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 				1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */,
 			);
@@ -386,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */,
 				1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */,
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
@@ -393,6 +414,7 @@
 				1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */,
 				1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */,
 				1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */,
+				1F1F45972060B48F00DA1C51 /* SettingTableViewCell.xib in Resources */,
 				1F6595BC1EAF7305002B5DD5 /* ItemListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,11 +599,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
 				1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
+				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
