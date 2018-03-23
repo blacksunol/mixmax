@@ -9,6 +9,7 @@ target 'mixmax' do
   pod 'GoogleSignIn'
   pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
   pod 'SlideMenuControllerSwift'
+  pod "PromiseKit"
   target 'mixmaxTests' do
     inherit! :search_paths
     # Pods for testing

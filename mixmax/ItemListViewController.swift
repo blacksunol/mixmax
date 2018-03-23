@@ -16,14 +16,8 @@ class ItemListViewController: UIViewController {
     
     var item = Item()
     
-    let cloudService = CloudService()
+    private let cloudService = CloudService()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "dropboxSegue" {
-            print("dropboxSegue")
-            
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +34,8 @@ class ItemListViewController: UIViewController {
     }
     
     private func loadItems() {
-
-//        cloudService.callDropbox(from: item) { [weak self] (items) in
-//            self?.items = items
-//            self?.itemListCollectionView.reloadData()
-//        }
         
-        cloudService.callGoogle { [weak self] (items) in
+        cloudService.callItems(from: item, cloudType: .google) { [weak self] (items) in
             self?.items = items
             self?.itemListCollectionView.reloadData()
         }
@@ -73,16 +62,13 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        print(item.path)
         if item.tag == "file" {
             self.item = item
-            cloudService.callDropboxLink(from: item, callFinished: { [weak self] (linkString) in
-                let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
-                if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
-                    jukeViewController.link = linkString
-                    self?.present(jukeViewController, animated: true)
-                }
-            })
+            let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
+            if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
+                jukeViewController.link = item.playType.url
+                present(jukeViewController, animated: true)
+            }
             
             return
         }

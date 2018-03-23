@@ -32,7 +32,7 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().scopes = scopes
         GIDSignIn.sharedInstance().signInSilently()
         
@@ -57,8 +57,8 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         } else {
             self.signInButton.isHidden = true
             self.output.isHidden = false
-            self.service.authorizer = user.authentication.fetcherAuthorizer()
-            listFiles()
+//            self.service.authorizer = user.authentication.fetcherAuthorizer()
+//            listFiles()
             print("Access token: \(user.authentication.accessToken)")
             guard let accessToken = user.authentication.accessToken else {
                 return

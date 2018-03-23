@@ -21,12 +21,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  UITableViewCell()
-        cell.textLabel?.text = indexPath.row == 0 ? "Menu1" : "Menu2"
+        cell.textLabel?.text = indexPath.row == 0 ? "Dropbox" : "Google"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let slideMenuController = self.slideMenuController() {
+            slideMenuController.closeRight()
+        }
     }
 }
 
