@@ -18,7 +18,6 @@ class DropboxClient: Client {
     
     let kDropBoxToken = "http://localhost/#access_token="
 
-    
     func callItems(from item: Item, callFished: @escaping ([Item]) -> ()) {
         callItems(from: item).then { items in
             callFished(items)
@@ -99,7 +98,7 @@ class DropboxClient: Client {
                 } else {
                     let json = try? JSON(data: data!)
                     if let linkUrl = json?["link"].string {
-                        item.playType.url = linkUrl
+                        item.track.url = linkUrl
                     }
                 }
                 

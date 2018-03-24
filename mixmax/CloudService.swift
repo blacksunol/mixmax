@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum CloudType {
-    case google
-    case dropbox
-    case onedrive
+enum CloudType: String {
+    case google = "google"
+    case dropbox = "dropbox"
+    case onedrive = "onedrive"
 }
 
 class CloudService {
     
-    func callItems(from item: Item, cloudType: CloudType, callFished: @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item, cloudType: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
         
         var client: Client?
 

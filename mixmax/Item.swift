@@ -10,5 +10,5 @@ class Item {
     var name = ""
     var tag = ""
     var path = ""
-    var playType = PlayType()
+    var track = Track()
 }
