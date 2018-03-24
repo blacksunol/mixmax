@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */; };
 		1F0D9F8D2060C2100047D076 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */; };
+		1F15A5032064AC0A00FC802A /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F15A5022064AC0A00FC802A /* Client.swift */; };
 		1F182D48205F68770077FCA3 /* CloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F182D47205F68770077FCA3 /* CloudService.swift */; };
+		1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D5DA52061698A00F8C3DB /* GoogleClient.swift */; };
+		1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D5DA72061699C00F8C3DB /* DropboxClient.swift */; };
 		1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45912060B39800DA1C51 /* SettingViewController.swift */; };
 		1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */; };
 		1F1F45972060B48F00DA1C51 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45962060B48F00DA1C51 /* SettingTableViewCell.xib */; };
 		1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */; };
+		1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F213EE120624D57007D47BF /* PlayerViewController.swift */; };
+		1F213EE420624D71007D47BF /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F213EE320624D71007D47BF /* PlayerViewController.storyboard */; };
+		1F29036C2065F22A00CCD05A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29036B2065F22A00CCD05A /* Track.swift */; };
 		1F4D87641F63967900DB7DEE /* Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; };
 		1F4D87651F63967900DB7DEE /* Jukebox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA993471F2CF3F100C5BF50 /* Jukebox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
@@ -35,7 +41,6 @@
 		1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */; };
 		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
 		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
-		64FB1A00194AB7B216EC6542 /* Pods_mixmaxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */; };
 		661D196EF31A347979A5F314 /* Pods_mixmax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,11 +78,17 @@
 /* Begin PBXFileReference section */
 		1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
+		1F15A5022064AC0A00FC802A /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		1F182D47205F68770077FCA3 /* CloudService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudService.swift; sourceTree = "<group>"; };
+		1F1D5DA52061698A00F8C3DB /* GoogleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleClient.swift; sourceTree = "<group>"; };
+		1F1D5DA72061699C00F8C3DB /* DropboxClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxClient.swift; sourceTree = "<group>"; };
 		1F1F45912060B39800DA1C51 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		1F1F45962060B48F00DA1C51 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		1F213EE120624D57007D47BF /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1F213EE320624D71007D47BF /* PlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerViewController.storyboard; sourceTree = "<group>"; };
+		1F29036B2065F22A00CCD05A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mixmax-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,9 +115,7 @@
 		1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JukeViewController.storyboard; sourceTree = "<group>"; };
 		1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginViewController.swift; sourceTree = "<group>"; };
 		1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleLoginViewController.storyboard; sourceTree = "<group>"; };
-		2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests.release.xcconfig"; sourceTree = "<group>"; };
 		40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmax.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmax/Pods-mixmax.release.xcconfig"; sourceTree = "<group>"; };
 		68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64FB1A00194AB7B216EC6542 /* Pods_mixmaxTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +171,15 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		1F1218982063A0EC00AB336F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F6595C71EB0D142002B5DD5 /* Item.swift */,
+				1F29036B2065F22A00CCD05A /* Track.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		1F1F45952060B3BA00DA1C51 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,14 +191,25 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		1F213EE020624B14007D47BF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F182D47205F68770077FCA3 /* CloudService.swift */,
+				1F15A5022064AC0A00FC802A /* Client.swift */,
+				1F1D5DA52061698A00F8C3DB /* GoogleClient.swift */,
+				1F1D5DA72061699C00F8C3DB /* DropboxClient.swift */,
+				1F213EE120624D57007D47BF /* PlayerViewController.swift */,
+				1F213EE320624D71007D47BF /* PlayerViewController.storyboard */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		1F3F84041EBAF3E900138213 /* Items */ = {
 			isa = PBXGroup;
 			children = (
 				1F6595BB1EAF7305002B5DD5 /* ItemListViewController.storyboard */,
 				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
-				1F6595C71EB0D142002B5DD5 /* Item.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
-				1F182D47205F68770077FCA3 /* CloudService.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
 				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
 			);
@@ -236,7 +264,9 @@
 				1F6595941EACB46F002B5DD5 /* Assets.xcassets */,
 				1F6595961EACB46F002B5DD5 /* LaunchScreen.storyboard */,
 				1F3F84061EBAF44600138213 /* Libraries */,
+				1F1218982063A0EC00AB336F /* Model */,
 				1F3F84041EBAF3E900138213 /* Items */,
+				1F213EE020624B14007D47BF /* Services */,
 				1F3F84051EBAF40400138213 /* DropBox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
 				1F1F45952060B3BA00DA1C51 /* Settings */,
@@ -288,8 +318,6 @@
 			children = (
 				6965351A9BA01639213ADD8A /* Pods-mixmax.debug.xcconfig */,
 				58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */,
-				4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */,
-				2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */,
 				9D2303494D82045BAE6ADD0A /* Pods-mixmaxUITests.debug.xcconfig */,
 				50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */,
 			);
@@ -324,12 +352,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F6595B51EACB46F002B5DD5 /* Build configuration list for PBXNativeTarget "mixmaxTests" */;
 			buildPhases = (
-				65D7BDA35865AA34E8D86639 /* [CP] Check Pods Manifest.lock */,
 				1F65959A1EACB46F002B5DD5 /* Sources */,
 				1F65959B1EACB46F002B5DD5 /* Frameworks */,
 				1F65959C1EACB46F002B5DD5 /* Resources */,
-				25A1D5F5B106DA7FD17A53D5 /* [CP] Embed Pods Frameworks */,
-				C2BA758EA6994EE1B72521DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,6 +451,7 @@
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
 				1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */,
+				1F213EE420624D71007D47BF /* PlayerViewController.storyboard in Resources */,
 				1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */,
 				1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */,
 				1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */,
@@ -457,28 +483,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		25A1D5F5B106DA7FD17A53D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2EC234647E8B16F53A815A54 /* [CP] Copy Pods Resources */ = {
@@ -508,39 +526,25 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		65D7BDA35865AA34E8D86639 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mixmaxTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		725307FA20ECFFA5D45ACC6F /* [CP] Copy Pods Resources */ = {
@@ -576,21 +580,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2BA758EA6994EE1B72521DF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxTests/Pods-mixmaxTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DA5580328441CAC9F9B78539 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -620,14 +609,19 @@
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
+				1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */,
+				1F29036C2065F22A00CCD05A /* Track.swift in Sources */,
+				1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */,
 				1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
+				1F15A5032064AC0A00FC802A /* Client.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
 				1F182D48205F68770077FCA3 /* CloudService.swift in Sources */,
+				1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,7 +818,6 @@
 		};
 		1F6595B61EACB46F002B5DD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B70264E9B55A5B7FE8B843A /* Pods-mixmaxTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -839,7 +832,6 @@
 		};
 		1F6595B71EACB46F002B5DD5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2666D4871505BCA2F081EDC1 /* Pods-mixmaxTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ItemListViewController: UIViewController {
     
@@ -16,19 +17,20 @@ class ItemListViewController: UIViewController {
     
     var item = Item()
     
-    let cloudService = CloudService()
+    private let cloudService = CloudService()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "dropboxSegue" {
-            print("dropboxSegue")
-            
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareNibs()
-        loadItems()
+        let vc = self.slideMenuController()?.rightViewController as! MenuViewController
+        vc.currentIndex.asObservable().subscribe(onNext: { cloudType in
+            print("@@Get cloudn")
+            self.cloudService.callItems(from: self.item, cloudType: cloudType) { [weak self] (items) in
+                self?.items = items
+                self?.itemListCollectionView.reloadData()
+            }
+        })
     }
     
     @IBAction func closeIButtonTapped(_ sender: Any) {
@@ -39,18 +41,6 @@ class ItemListViewController: UIViewController {
         itemListCollectionView.register(UINib(nibName: "ItemListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ItemListCollectionViewCell")
     }
     
-    private func loadItems() {
-
-//        cloudService.callDropbox(from: item) { [weak self] (items) in
-//            self?.items = items
-//            self?.itemListCollectionView.reloadData()
-//        }
-        
-        cloudService.callGoogle { [weak self] (items) in
-            self?.items = items
-            self?.itemListCollectionView.reloadData()
-        }
-    }
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -73,16 +63,13 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        print(item.path)
-        if item.tag == "file" {
+        if let url = item.track.url {
             self.item = item
-            cloudService.callDropboxLink(from: item, callFinished: { [weak self] (linkString) in
-                let storyboard = UIStoryboard(name: "JukeViewController", bundle: nil)
-                if let jukeViewController = storyboard.instantiateViewController(withIdentifier :"JukeViewController") as? JukeViewController {
-                    jukeViewController.link = linkString
-                    self?.present(jukeViewController, animated: true)
-                }
-            })
+            let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
+            if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
+                playerViewController.item = item
+                present(playerViewController, animated: true)
+            }
             
             return
         }

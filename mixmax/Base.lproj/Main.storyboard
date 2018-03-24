@@ -53,6 +53,14 @@
                                     <segue destination="ki5-1z-f69" kind="show" id="wBy-x4-MUe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ9-hJ-OCQ">
+                                <rect key="frame" x="136" y="497" width="128" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <segue destination="dEK-Ex-Jcp" kind="show" id="F5Z-mL-soF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -87,6 +95,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2j-wE-D3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="852"/>
+        </scene>
+        <!--PlayerViewController-->
+        <scene sceneID="WOu-MI-g3J">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="PlayerViewController" storyboardName="PlayerViewController" referencedIdentifier="PlayerViewController" id="dEK-Ex-Jcp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ct8-hB-wSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="1138"/>
         </scene>
         <!--DropBoxLoginViewController-->
         <scene sceneID="rmW-WJ-DoG">

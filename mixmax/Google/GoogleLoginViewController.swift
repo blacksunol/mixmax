@@ -8,23 +8,15 @@
 
 import UIKit
 import GoogleSignIn
-import GoogleAPIClientForREST
 import AVFoundation
-
 
 class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate  {
     
-    private let scopes = [kGTLRAuthScopeDriveReadonly]
-    
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
-    private let service = GTLRDriveService()
     
     var player: AVPlayer?
     
     let output = UITextView()
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +24,8 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         
         // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().scopes = scopes
+//        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/drive.readonly"]
         GIDSignIn.sharedInstance().signInSilently()
         
         // Add the sign-in button.
@@ -53,17 +45,15 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
               withError error: Error!) {
         if let error = error {
             showAlert(title: "Authentication Error", message: error.localizedDescription)
-            self.service.authorizer = nil
+            
         } else {
             self.signInButton.isHidden = true
             self.output.isHidden = false
-            self.service.authorizer = user.authentication.fetcherAuthorizer()
-            listFiles()
+
             print("Access token: \(user.authentication.accessToken)")
             guard let accessToken = user.authentication.accessToken else {
                 return
             }
-//            getFile()
       
             let headers = ["Authorization": "Bearer \(accessToken)"]
             let url = URL(string: "https://www.googleapis.com/drive/v3/files/1siQAS6GbPTvN0xNKejBlyE6VREYa8hKC?alt=media")!
@@ -93,63 +83,6 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
               dismiss viewController: UIViewController!) {
         self.dismiss(animated: true, completion: nil)
     }
-
-    // List up to 10 files in Drive
-    func listFiles() {
-        let query = GTLRDriveQuery_FilesList.query()
-        query.pageSize = 10
-        service.executeQuery(query,
-                             delegate: self,
-                             didFinish: #selector(displayResultWithTicket(ticket:finishedWithObject:error:))
-        )
-        
-        
-    }
-
-    // Process the response and display output
-    func displayResultWithTicket(ticket: GTLRServiceTicket,
-                                 finishedWithObject result : GTLRDrive_FileList,
-                                 error : NSError?) {
-        
-        if let error = error {
-            showAlert( title: "Error", message: error.localizedDescription)
-            return
-        }
-        
-        var text = "";
-        if let files = result.files, !files.isEmpty {
-            text += "Files:\n"
-            for file in files {
-                text += "\(file.name!) (\(file.identifier!))\n"
-                print("filename: \(file.name!), fileid : \(file.identifier!)")
-            }
-        } else {
-            text += "No files found."
-        }
-        output.text = text
-    }
-    
-    // Process the response and display output
-    func getFileResultWithTicket(ticket: GTLRServiceTicket,
-                                 finishedWithObject file : GTLRDataObject,
-                                 error : NSError?) {
-        if let error = error {
-            showAlert( title: "Error", message: error.localizedDescription)
-            return
-        }
-        
-    }
-    
-    func getFile() {
-        let query = GTLRDriveQuery_FilesGet.query(withFileId: "1HCzFMnt9zBZEjGvFtTjeNPYz9fU6Ijmav6SrPT-rB7k")
-        
-        service.executeQuery(query,
-                             delegate: self,
-                             didFinish: #selector(getFileResultWithTicket(ticket:finishedWithObject:error:))
-        )
-    }
-    
-    
     
     // Helper for showing an alert
     func showAlert(title : String, message: String) {
