@@ -21,11 +21,22 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  UITableViewCell()
-        cell.textLabel?.text = indexPath.row == 0 ? "Dropbox" : "Google"
+        cell.textLabel?.text = indexPath.row == 0 ? "Google" : "Dropbox"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let storyboard = UIStoryboard(name: "GoogleLoginViewController", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier :"GoogleLoginViewController") as? GoogleLoginViewController {
+                present(vc, animated: true)
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "DropBoxLoginViewController", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier :"DropBoxLoginViewController") as? DropBoxLoginViewController {
+                present(vc, animated: true)
+            }
+        }
         
     }
 }

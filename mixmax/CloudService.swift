@@ -12,6 +12,8 @@ enum CloudType: String {
     case google = "google"
     case dropbox = "dropbox"
     case onedrive = "onedrive"
+    case setting = "setting"
+    case none
 }
 
 class CloudService {
@@ -26,7 +28,7 @@ class CloudService {
         case .google:
             client = GoogleClient()
         default:
-            break
+            callFished([])
         }
         
         client?.callItems(from: item) { (items) in

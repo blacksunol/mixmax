@@ -8,37 +8,19 @@
 
 import UIKit
 import GoogleSignIn
-import AVFoundation
+import RxCocoa
 
-class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate  {
+class GoogleLoginViewController : UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
-    var player: AVPlayer?
-    
-    let output = UITextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // Configure Google Sign-in.
         GIDSignIn.sharedInstance().delegate = self
-//        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/drive.readonly"]
+        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
-        
-        // Add the sign-in button.
         view.addSubview(signInButton)
-        
-        // Add a UITextView to display output.
-        output.frame = view.bounds
-        output.isEditable = false
-        output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        output.isHidden = true
-        view.addSubview(output);
-
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -48,23 +30,9 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
             
         } else {
             self.signInButton.isHidden = true
-            self.output.isHidden = false
-
-            print("Access token: \(user.authentication.accessToken)")
-            guard let accessToken = user.authentication.accessToken else {
-                return
-            }
-      
-            let headers = ["Authorization": "Bearer \(accessToken)"]
-            let url = URL(string: "https://www.googleapis.com/drive/v3/files/1siQAS6GbPTvN0xNKejBlyE6VREYa8hKC?alt=media")!
-            
-//            let url = URL(string: "https://www.googleapis.com/drive/v2/files/1siQAS6GbPTvN0xNKejBlyE6VREYa8hKC?alt=media")!
-            
-//            let url =  URL(string: "https://doc-0s-34-docs.googleusercontent.com/docs/securesc/669fcdtp0silioo506rd5psg3ut8s79n/v8am2bna2m1nbbg9v4o8qbr7fdsftpp7/1521381600000/02980703435378377253/02980703435378377253/1siQAS6GbPTvN0xNKejBlyE6VREYa8hKC?e=download&gd=true")!
-            let avAsset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
-            let playerItem = AVPlayerItem(asset: avAsset)
-            player = AVPlayer(playerItem: playerItem)
-            player?.play()
+//            if let vc = self.slideMenuController()?.rightViewController as? MenuViewController {
+//                vc.currentCloud = BehaviorRelay(value: .google)
+//            }
         }
     }
     
@@ -72,16 +40,13 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
 //        UIActivityIndicatorView.stopAnimating()
     }
     
-    // Present a view that prompts the user to sign in with Google
-    func sign(_ signIn: GIDSignIn!,
-              present viewController: UIViewController!) {
-        self.present(viewController, animated: true, completion: nil)
+    func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
+        present(viewController, animated: true, completion: nil)
     }
     
     // Dismiss the "Sign in with Google" view
-    func sign(_ signIn: GIDSignIn!,
-              dismiss viewController: UIViewController!) {
-        self.dismiss(animated: true, completion: nil)
+    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+        dismiss(animated: true, completion: nil)
     }
     
     // Helper for showing an alert
@@ -98,5 +63,9 @@ class GoogleLoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         )
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func closeLoginButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

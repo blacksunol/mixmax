@@ -61,7 +61,7 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
-        
+        player?.pause()
         dismiss(animated: true, completion: nil)
     }
 }

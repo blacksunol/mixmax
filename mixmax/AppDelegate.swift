@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let menuViewController  = menuStoryboard.instantiateInitialViewController()
         
 
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard = UIStoryboard(name: "ItemListViewController", bundle: nil)
         let mainViewController = mainStoryboard.instantiateInitialViewController()
     
         

@@ -19,22 +19,28 @@ class ItemListViewController: UIViewController {
     
     private let cloudService = CloudService()
     
+    private let disposeBag = DisposeBag()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareNibs()
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
-        vc.currentIndex.asObservable().subscribe(onNext: { cloudType in
-            print("@@Get cloudn")
+        vc.currentCloud.asObservable().subscribe(onNext: { cloudType in
+           
             self.cloudService.callItems(from: self.item, cloudType: cloudType) { [weak self] (items) in
                 self?.items = items
                 self?.itemListCollectionView.reloadData()
             }
-        })
-    }
-    
-    @IBAction func closeIButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+        
+        vc.currentFeature.asObservable().skip(1).subscribe(onNext: { feature in
+            let storyboard = UIStoryboard(name: "SettingViewController", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func prepareNibs() {
@@ -63,7 +69,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        if let url = item.track.url {
+        if item.tag == "file" {
             self.item = item
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
