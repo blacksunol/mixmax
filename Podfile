@@ -10,6 +10,7 @@ target 'mixmax' do
   pod 'SlideMenuControllerSwift'
   pod "PromiseKit"
   pod 'RxCocoa',    '~> 4.0'
+  pod 'SwiftyDropbox'
 
   target 'mixmaxUITests' do
     inherit! :search_paths

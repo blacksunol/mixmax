@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyDropbox
 
 class SettingViewController: UIViewController {
     
@@ -26,18 +27,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 0 {
             let storyboard = UIStoryboard(name: "GoogleLoginViewController", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier :"GoogleLoginViewController") as? GoogleLoginViewController {
                 present(vc, animated: true)
             }
         } else {
-            let storyboard = UIStoryboard(name: "DropBoxLoginViewController", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier :"DropBoxLoginViewController") as? DropBoxLoginViewController {
-                present(vc, animated: true)
-            }
+            DropboxClientsManager.authorizeFromController(UIApplication.shared, controller: self, openURL: { (url: URL) -> Void in
+                UIApplication.shared.openURL(url)
+            })
         }
-        
     }
 }
 
