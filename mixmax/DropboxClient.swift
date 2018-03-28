@@ -7,6 +7,7 @@
 //
 import Foundation
 import PromiseKit
+import SwiftyDropbox
 
 class DropboxClient: Client {
    
@@ -17,6 +18,8 @@ class DropboxClient: Client {
     var path: String = ""
     
     let kDropBoxToken = "http://localhost/#access_token="
+    
+    let accessToken = DropboxClientsManager.authorizedClient?.auth.client.accessToken ?? ""
 
     func callItems(from item: Item, callFished: @escaping ([Item]) -> ()) {
         callItems(from: item).then { items in
@@ -27,16 +30,13 @@ class DropboxClient: Client {
     private func callItems(from item: Item) -> Promise<[Item]> {
         return Promise { fulfill, _ in
             var items = [Item]()
-            
-            let dropBoxTokenString = UserDefaults.standard.value(forKey: kDropBoxToken) ?? ""
-            
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             
             let url = URL(string: self.url)
             var request = URLRequest(url: url!)
             request.httpMethod = method
-            request.addValue("Bearer \(dropBoxTokenString)", forHTTPHeaderField: "Authorization")
+            request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             let jsonDictionary = ["path": item.path]
             
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
@@ -76,16 +76,14 @@ class DropboxClient: Client {
     private func callPath(item: Item) -> Promise<Item> {
         return Promise { fulfill, _ in
             
-            let kDropBoxToken = "http://localhost/#access_token="
-            let dropBoxTokenString = UserDefaults.standard.value(forKey: kDropBoxToken) ?? ""
-            
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             
             let url = URL(string: "https://api.dropboxapi.com/2/files/get_temporary_link")
             var request = URLRequest(url: url!)
             request.httpMethod = "POST"
-            request.addValue("Bearer \(dropBoxTokenString)", forHTTPHeaderField: "Authorization")
+
+            request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             let jsonDictionary = ["path": item.path]
             
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
