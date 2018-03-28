@@ -49,6 +49,7 @@ class DropboxClient: Client {
                 } else {
                     let json = try? JSON(data: data!)
                     guard let jsonArray = json?["entries"].array else {
+                        fulfill(items)
                         return
                     }
                     

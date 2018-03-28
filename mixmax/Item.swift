@@ -11,4 +11,6 @@ class Item {
     var tag = ""
     var path = ""
     var track = Track()
+    var isPlayable = true
+    var parent: Item?
 }

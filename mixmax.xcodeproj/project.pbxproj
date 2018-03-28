@@ -36,8 +36,6 @@
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
-		1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA993491F2CF44600C5BF50 /* JukeViewController.swift */; };
-		1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */; };
 		1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */; };
 		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
 		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
@@ -111,8 +109,6 @@
 		1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxLoginViewController.swift; sourceTree = "<group>"; };
 		1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DropBoxLoginViewController.storyboard; sourceTree = "<group>"; };
 		1FA993471F2CF3F100C5BF50 /* Jukebox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Jukebox.framework; path = Carthage/Build/iOS/Jukebox.framework; sourceTree = "<group>"; };
-		1FA993491F2CF44600C5BF50 /* JukeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JukeViewController.swift; sourceTree = "<group>"; };
-		1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JukeViewController.storyboard; sourceTree = "<group>"; };
 		1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginViewController.swift; sourceTree = "<group>"; };
 		1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleLoginViewController.storyboard; sourceTree = "<group>"; };
 		40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,8 +194,6 @@
 				1F15A5022064AC0A00FC802A /* Client.swift */,
 				1F1D5DA52061698A00F8C3DB /* GoogleClient.swift */,
 				1F1D5DA72061699C00F8C3DB /* DropboxClient.swift */,
-				1F213EE120624D57007D47BF /* PlayerViewController.swift */,
-				1F213EE320624D71007D47BF /* PlayerViewController.storyboard */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -211,7 +205,6 @@
 				1F6595C31EAFA490002B5DD5 /* ItemListViewController.swift */,
 				1F6595BF1EAF7565002B5DD5 /* ItemListCollectionViewCell.swift */,
 				1F6595C11EAF759C002B5DD5 /* ItemListCollectionViewCell.xib */,
-				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
 			);
 			name = Items;
 			sourceTree = "<group>";
@@ -231,6 +224,16 @@
 				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		1F5F28AC20694299002A28FE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
+				1F213EE120624D57007D47BF /* PlayerViewController.swift */,
+				1F213EE320624D71007D47BF /* PlayerViewController.storyboard */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		1F65957F1EACB46F002B5DD5 = {
@@ -266,6 +269,7 @@
 				1F3F84061EBAF44600138213 /* Libraries */,
 				1F1218982063A0EC00AB336F /* Model */,
 				1F3F84041EBAF3E900138213 /* Items */,
+				1F5F28AC20694299002A28FE /* Player */,
 				1F213EE020624B14007D47BF /* Services */,
 				1F3F84051EBAF40400138213 /* DropBox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
@@ -298,8 +302,6 @@
 		1FA9934B1F2CF86F00C5BF50 /* JukePlayer */ = {
 			isa = PBXGroup;
 			children = (
-				1FA993491F2CF44600C5BF50 /* JukeViewController.swift */,
-				1FA9934C1F2CF8A300C5BF50 /* JukeViewController.storyboard */,
 			);
 			name = JukePlayer;
 			sourceTree = "<group>";
@@ -450,7 +452,6 @@
 				1F0D9F8D2060C2100047D076 /* MenuViewController.storyboard in Resources */,
 				1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */,
 				1F6595C21EAF759C002B5DD5 /* ItemListCollectionViewCell.xib in Resources */,
-				1FA9934D1F2CF8A300C5BF50 /* JukeViewController.storyboard in Resources */,
 				1F213EE420624D71007D47BF /* PlayerViewController.storyboard in Resources */,
 				1F6595981EACB46F002B5DD5 /* LaunchScreen.storyboard in Resources */,
 				1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */,
@@ -612,7 +613,6 @@
 				1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */,
 				1F29036C2065F22A00CCD05A /* Track.swift in Sources */,
 				1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */,
-				1FA9934A1F2CF44600C5BF50 /* JukeViewController.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,

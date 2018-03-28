@@ -21,11 +21,10 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken ?? ""
-        let header = ["Authorization": "Bearer \(accessToken)"]
+        let token = item.track.token ?? ""
+        let header = ["Authorization": "Bearer \(token)"]
         let url = URL(string: item.track.url!)
         
-      
         let avAsset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])
         let playerItem = AVPlayerItem(asset: avAsset)
         player = AVPlayer(playerItem: playerItem)
@@ -61,7 +60,7 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
-        
+        player?.pause()
         dismiss(animated: true, completion: nil)
     }
 }

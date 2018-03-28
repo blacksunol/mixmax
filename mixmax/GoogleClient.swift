@@ -43,14 +43,18 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                     DispatchQueue.main.async {
                         let json = try?  JSON(data: data!)
                         guard let jsonArray = json?["files"].array else {
+                            callFished(items)
                             return
                         }
                         
                         for jsonItem in jsonArray {
                             let item = Item()
                             item.name = jsonItem["name"].string ?? ""
-                            item.tag = jsonItem[".tag"].string ?? ""
+                            item.tag = jsonItem["mimeType"].string == "audio/mpeg" ? "file" : ""
                             item.path = jsonItem["path_lower"].string ?? ""
+                            item.track.token = accessToken
+                            let id = jsonItem["id"].string ?? ""
+                            item.track.url = "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media"
                             items.append(item)
                         }
                         
