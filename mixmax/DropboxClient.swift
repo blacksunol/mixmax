@@ -54,11 +54,12 @@ class DropboxClient: Client {
                     }
                     
                     for jsonItem in jsonArray {
-                        let item = Item()
-                        item.name = jsonItem["name"].string ?? ""
-                        item.tag = jsonItem[".tag"].string ?? ""
-                        item.path = jsonItem["path_lower"].string ?? ""
-                        items.append(item)
+                        let newItem = Item()
+                        newItem.parent = item
+                        newItem.name = jsonItem["name"].string ?? ""
+                        newItem.kind = jsonItem[".tag"].string ?? ""
+                        newItem.path = jsonItem["path_lower"].string ?? ""
+                        items.append(newItem)
                     }
                     
                     let promises = items.map {  self.callPath(item: $0) }

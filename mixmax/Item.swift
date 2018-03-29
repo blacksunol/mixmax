@@ -6,9 +6,15 @@
 //  Copyright © 2017 Vinh Nguyen. All rights reserved.
 //
 
+enum Kind {
+    case folder
+    case audio
+    case unknow
+}
+
 class Item {
     var name = ""
-    var tag = ""
+    var kind = ""
     var path = ""
     var track = Track()
     var isPlayable = true

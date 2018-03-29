@@ -25,20 +25,29 @@ class ItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareNibs()
+        loadItems()
+        observeSettings()
+    }
+    
+    private func loadItems() {
+        
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentCloud.asObservable().subscribe(onNext: { cloudType in
-           
             self.cloudService.callItems(from: self.item, cloudType: cloudType) { [weak self] (items) in
-                self?.items = items
-                self?.itemListCollectionView.reloadData()
+                guard let weakSelf = self else { return }
+                weakSelf.items = items
+                weakSelf.itemListCollectionView.reloadSections(IndexSet(integer: 0))
             }
         }).disposed(by: disposeBag)
+    }
+    
+    private func observeSettings() {
         
+        let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentFeature.asObservable().skip(1).subscribe(onNext: { feature in
             let storyboard = UIStoryboard(name: "SettingViewController", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
-
             }
         }).disposed(by: disposeBag)
     }
@@ -69,7 +78,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = items[indexPath.row]
-        if item.tag == "file" {
+        if item.kind == "file" {
             self.item = item
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
@@ -80,11 +89,19 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
             return
         }
         
-        let storyboard = UIStoryboard(name: "ItemListViewController", bundle: nil)
-        if let itemListViewController = storyboard.instantiateViewController(withIdentifier :"ItemListViewController") as? ItemListViewController {
+        if let itemListViewController = UIStoryboard.instantiateViewController(storyboard: "ItemListViewController") as? ItemListViewController {
             let item = items[indexPath.row]
             itemListViewController.item = item
             navigationController?.pushViewController(itemListViewController, animated: true)
         }
     }
 }
+
+extension UIStoryboard {
+    class func instantiateViewController(storyboard name: String) -> UIViewController? {
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier :name)
+    }
+}
+
+
