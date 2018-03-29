@@ -29,7 +29,9 @@ class DropboxClient: Client {
     
     private func callItems(from item: Item) -> Promise<[Item]> {
         return Promise { fulfill, _ in
-            var items = [Item]()
+            
+            
+            var items = [DropboxItem]()
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             
@@ -37,8 +39,10 @@ class DropboxClient: Client {
             var request = URLRequest(url: url!)
             request.httpMethod = method
             request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            let jsonDictionary = ["path": item.path]
-            
+            var jsonDictionary = ["path": ""]
+            if let dropboxItem = item as? DropboxItem {
+                jsonDictionary = ["path": dropboxItem.path]
+            }
             let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
             request.httpBody = jsonData
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -54,7 +58,7 @@ class DropboxClient: Client {
                     }
                     
                     for jsonItem in jsonArray {
-                        let newItem = Item()
+                        let newItem = DropboxItem()
                         newItem.parent = item
                         newItem.name = jsonItem["name"].string ?? ""
                         newItem.kind = jsonItem[".tag"].string ?? ""
@@ -74,7 +78,7 @@ class DropboxClient: Client {
         }
     }
     
-    private func callPath(item: Item) -> Promise<Item> {
+    private func callPath(item: DropboxItem) -> Promise<DropboxItem> {
         return Promise { fulfill, _ in
             
             let config = URLSessionConfiguration.default
