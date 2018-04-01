@@ -15,7 +15,6 @@ enum Kind {
 class Item {
     var name = ""
     var kind = ""
-    var path = ""
     var track = Track()
     var isPlayable = true
     var parent: Item?

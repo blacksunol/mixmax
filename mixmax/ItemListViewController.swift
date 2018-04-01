@@ -21,9 +21,20 @@ class ItemListViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        
+        // Position it at the center of the ViewController.
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
         prepareNibs()
         loadItems()
         observeSettings()
@@ -33,8 +44,12 @@ class ItemListViewController: UIViewController {
         
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentCloud.asObservable().subscribe(onNext: { cloudType in
+            
+            self.activityIndicator.startAnimating()
+
             self.cloudService.callItems(from: self.item, cloudType: cloudType) { [weak self] (items) in
                 guard let weakSelf = self else { return }
+                weakSelf.activityIndicator.stopAnimating()
                 weakSelf.items = items
                 weakSelf.itemListCollectionView.reloadSections(IndexSet(integer: 0))
             }

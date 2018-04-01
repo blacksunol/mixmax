@@ -21,7 +21,12 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     var path: String = ""
     
     func callItems(from item: Item, callFished:  @escaping (_ items: [Item]) -> ()) {
-
+        
+        var folderId = "root"
+        if let googleItem = item as? GoogleItem {
+            folderId = googleItem.id
+        }
+        
         configure()
         
         let subscription = self.accessToken.asObservable().subscribe(onNext: { accessToken in
@@ -30,8 +35,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
             
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
-            
-            let url = URL(string: self.url)
+            let url = URL(string: self.url + "?q='" + folderId + "'%20in%20parents")
             var request = URLRequest(url: url!)
             request.httpMethod = self.method
             request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -48,14 +52,15 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                         }
                         
                         for jsonItem in jsonArray {
-                            let item = Item()
-                            item.name = jsonItem["name"].string ?? ""
-                            item.tag = jsonItem["mimeType"].string == "audio/mpeg" ? "file" : ""
-                            item.path = jsonItem["path_lower"].string ?? ""
-                            item.track.token = accessToken
+                            let newItem = GoogleItem()
+                            newItem.name = jsonItem["name"].string ?? ""
+                            let isAudio = jsonItem["mimeType"].string?.contains("audio") ?? false
+                            newItem.kind = isAudio ? "file" : ""
+                            newItem.track.token = accessToken
                             let id = jsonItem["id"].string ?? ""
-                            item.track.url = "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media"
-                            items.append(item)
+                            newItem.id = id
+                            newItem.track.url = "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media"
+                            items.append(newItem)
                         }
                         
                         callFished(items)
@@ -74,7 +79,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
             print("dispose")
         })
         subscription.dispose()
-    
+        
     }
     
     private func configure() {
@@ -86,7 +91,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
               withError error: Error!) {
         if let error = error {
             print(error.localizedDescription)
-
+            
         } else {
             accessToken.accept(GIDSignIn.sharedInstance().currentUser.authentication.accessToken)
         }   
