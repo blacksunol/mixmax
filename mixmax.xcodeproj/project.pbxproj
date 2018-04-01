@@ -235,7 +235,6 @@
 		1F5F28AC20694299002A28FE /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				1FA9934B1F2CF86F00C5BF50 /* JukePlayer */,
 				1F213EE120624D57007D47BF /* PlayerViewController.swift */,
 				1F213EE320624D71007D47BF /* PlayerViewController.storyboard */,
 			);
@@ -303,13 +302,6 @@
 				1F6595AF1EACB46F002B5DD5 /* Info.plist */,
 			);
 			path = mixmaxUITests;
-			sourceTree = "<group>";
-		};
-		1FA9934B1F2CF86F00C5BF50 /* JukePlayer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = JukePlayer;
 			sourceTree = "<group>";
 		};
 		1FCE85A6205BA6CB0017DF16 /* Google */ = {

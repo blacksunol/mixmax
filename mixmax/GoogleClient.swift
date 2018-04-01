@@ -20,7 +20,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     var method: String = "GET"
     var path: String = ""
     
-    func callItems(from item: Item, callFished:  @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item?, callFished:  @escaping (_ items: [Item]) -> ()) {
         
         var folderId = "root"
         if let googleItem = item as? GoogleItem {
@@ -54,8 +54,13 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                         for jsonItem in jsonArray {
                             let newItem = GoogleItem()
                             newItem.name = jsonItem["name"].string ?? ""
-                            let isAudio = jsonItem["mimeType"].string?.contains("audio") ?? false
-                            newItem.kind = isAudio ? "file" : ""
+                            newItem.parent = item
+                            let mimeType = jsonItem["mimeType"].string
+                            if let mimeType = mimeType, mimeType.contains("audio") {
+                                newItem.kind =  .audio
+                            } else if mimeType == "application/vnd.google-apps.folder" {
+                                newItem.kind = .folder
+                            }
                             newItem.track.token = accessToken
                             let id = jsonItem["id"].string ?? ""
                             newItem.id = id
