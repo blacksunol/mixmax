@@ -14,7 +14,7 @@ enum Kind {
 
 class Item {
     var name = ""
-    var kind = ""
+    var kind: Kind = .unknow
     var track = Track()
     var isPlayable = true
     var parent: Item?

@@ -18,7 +18,7 @@ enum CloudType: String {
 
 class CloudService {
     
-    func callItems(from item: Item, cloudType: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item?, cloudType: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
         
         var client: Client?
 

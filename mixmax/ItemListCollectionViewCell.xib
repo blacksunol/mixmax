@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemListCollectionViewCell" customModule="mixmax" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemListCollectionViewCell" id="UMC-qH-OV6" customClass="ItemListCollectionViewCell" customModule="mixmax" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+            <rect key="frame" x="0.0" y="0.0" width="401" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+                <rect key="frame" x="0.0" y="0.0" width="401" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuG-Am-ahI">
-                        <rect key="frame" x="5" y="108" width="310" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio" translatesAutoresizingMaskIntoConstraints="NO" id="AAY-Zd-RjN">
+                        <rect key="frame" x="12" y="27" width="103" height="103"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="AAY-Zd-RjN" secondAttribute="height" multiplier="1:1" id="Aom-0a-XOd"/>
+                            <constraint firstAttribute="width" constant="103" id="xWa-r1-Kpw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEt-5G-QIS">
+                        <rect key="frame" x="129" y="65" width="262" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -28,15 +36,22 @@
             </view>
             <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="xuG-Am-ahI" firstAttribute="centerY" secondItem="UMC-qH-OV6" secondAttribute="centerY" id="Bzd-yC-8LM"/>
-                <constraint firstAttribute="trailing" secondItem="xuG-Am-ahI" secondAttribute="trailing" constant="5" id="ESt-Nm-NCr"/>
-                <constraint firstItem="xuG-Am-ahI" firstAttribute="leading" secondItem="UMC-qH-OV6" secondAttribute="leading" constant="5" id="Ghh-jq-BKQ"/>
+                <constraint firstItem="AAY-Zd-RjN" firstAttribute="leading" secondItem="UMC-qH-OV6" secondAttribute="leading" constant="12" id="I00-Mz-73e"/>
+                <constraint firstItem="ZEt-5G-QIS" firstAttribute="centerY" secondItem="UMC-qH-OV6" secondAttribute="centerY" id="KvC-Ul-Qx8"/>
+                <constraint firstAttribute="trailing" secondItem="ZEt-5G-QIS" secondAttribute="trailing" constant="10" id="Q1G-Bp-gxP"/>
+                <constraint firstItem="ZEt-5G-QIS" firstAttribute="leading" secondItem="AAY-Zd-RjN" secondAttribute="trailing" constant="14" id="Qwz-Ef-ZrX"/>
+                <constraint firstAttribute="bottom" secondItem="AAY-Zd-RjN" secondAttribute="bottom" constant="20" id="URD-gh-tu0"/>
+                <constraint firstItem="AAY-Zd-RjN" firstAttribute="top" secondItem="UMC-qH-OV6" secondAttribute="top" constant="27" id="j26-S9-oR9"/>
             </constraints>
-            <size key="customSize" width="320" height="237"/>
+            <size key="customSize" width="401" height="150"/>
             <connections>
-                <outlet property="nameLabel" destination="xuG-Am-ahI" id="B9L-zm-tTf"/>
+                <outlet property="kindImageView" destination="AAY-Zd-RjN" id="9fe-dk-L9K"/>
+                <outlet property="nameLabel" destination="ZEt-5G-QIS" id="gW8-sA-m3A"/>
             </connections>
-            <point key="canvasLocation" x="-113" y="-4.5"/>
+            <point key="canvasLocation" x="-153.5" y="-48"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="audio" width="64" height="64"/>
+    </resources>
 </document>

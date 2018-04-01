@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHH-kh-WGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHH-kh-WGg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7af-56-3g1">
-                                <rect key="frame" x="19" y="60" width="340" height="523"/>
+                                <rect key="frame" x="8" y="10" width="351" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BUg-Fl-6it">
                                     <size key="itemSize" width="50" height="50"/>
@@ -50,22 +50,29 @@
                         <color key="backgroundColor" red="1" green="0.3757364788" blue="0.98475166739999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="7af-56-3g1" secondAttribute="trailing" id="9wS-Vn-caT"/>
-                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="60" id="gNI-DL-cQT"/>
-                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" constant="20" id="q82-PW-OCV"/>
-                            <constraint firstItem="7af-56-3g1" firstAttribute="leading" secondItem="Zz9-DS-rMh" secondAttribute="leadingMargin" constant="3" id="zhS-as-jMh"/>
+                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="10" id="gNI-DL-cQT"/>
+                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" constant="10" id="q82-PW-OCV"/>
+                            <constraint firstItem="7af-56-3g1" firstAttribute="leadingMargin" secondItem="Zz9-DS-rMh" secondAttribute="leadingMargin" id="zhS-as-jMh"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="MBo-am-tMJ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Wb1-nF-jWM">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O7R-ga-dfL">
-                                <rect key="frame" x="305" y="5" width="54" height="34"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="afQ-gh-A8X">
+                            <view key="customView" contentMode="scaleToFill" id="FRp-IL-zkV">
+                                <rect key="frame" x="276" y="5.5" width="83" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26900735590000002" green="1" blue="0.1904894221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tan-gp-ZKq">
+                                        <rect key="frame" x="13" y="-17" width="64" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="WVo-d7-cOL" eventType="touchUpInside" id="1D8-zS-0si"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -95,4 +102,7 @@
             <point key="canvasLocation" x="-1110" y="45"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="256" height="256"/>
+    </resources>
 </document>

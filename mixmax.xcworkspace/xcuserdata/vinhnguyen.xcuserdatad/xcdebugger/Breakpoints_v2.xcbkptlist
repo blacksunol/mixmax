@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mixmax/PlayerViewController.swift"
-            timestampString = "543828569.511771"
+            timestampString = "544251288.248083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/ItemListViewController.swift"
-            timestampString = "543927275.3297499"
+            filePath = "mixmax/MenuViewController.swift"
+            timestampString = "544207249.3127249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,14 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/GoogleClient.swift"
-            timestampString = "543927275.414472"
+            filePath = "mixmax/DropboxClient.swift"
+            timestampString = "544293658.705687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "callPath(item:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,46 +57,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/ItemListViewController.swift"
-            timestampString = "543927275.415118"
+            filePath = "mixmax/SettingViewController.swift"
+            timestampString = "543947809.4808151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (mixmax.CloudType) -&gt; () in mixmax.ItemListViewController.viewDidLoad() -&gt; ()"
+                  symbolName = "mixmax.SettingViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/ItemListViewController.swift"
-                  timestampString = "543927277.10461"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
+                  timestampString = "544207149.385311"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1262">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;mixmax.Item&gt;) -&gt; () in closure #1 (mixmax.CloudType) -&gt; () in mixmax.ItemListViewController.viewDidLoad() -&gt; ()"
+                  symbolName = "closure #1 (Foundation.URL) -&gt; () in mixmax.SettingViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/ItemListViewController.swift"
-                  timestampString = "543927277.109511"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
+                  timestampString = "544207149.391438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "30">
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "136">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mixmax/ItemListViewController.swift"
+            timestampString = "544294650.065485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "ItemListViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

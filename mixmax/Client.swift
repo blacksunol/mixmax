@@ -14,5 +14,5 @@ protocol Client {
     var method: String { get set }
     var path: String { get set}
     
-    func callItems(from item: Item, callFished: @escaping (_ items: [Item]) -> ())
+    func callItems(from item: Item?, callFished: @escaping (_ items: [Item]) -> ())
 }

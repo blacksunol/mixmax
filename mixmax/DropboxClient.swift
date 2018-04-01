@@ -21,15 +21,14 @@ class DropboxClient: Client {
     
     let accessToken = DropboxClientsManager.authorizedClient?.auth.client.accessToken ?? ""
 
-    func callItems(from item: Item, callFished: @escaping ([Item]) -> ()) {
+    func callItems(from item: Item?, callFished: @escaping ([Item]) -> ()) {
         callItems(from: item).then { items in
             callFished(items)
         }
     }
     
-    private func callItems(from item: Item) -> Promise<[Item]> {
+    private func callItems(from item: Item?) -> Promise<[Item]> {
         return Promise { fulfill, _ in
-            
             
             var items = [DropboxItem]()
             let config = URLSessionConfiguration.default
@@ -61,7 +60,13 @@ class DropboxClient: Client {
                         let newItem = DropboxItem()
                         newItem.parent = item
                         newItem.name = jsonItem["name"].string ?? ""
-                        newItem.kind = jsonItem[".tag"].string ?? ""
+                        let tag = jsonItem[".tag"].string
+                        if tag == "file" {
+                            newItem.kind = .audio
+                        } else if tag == "folder" {
+                            newItem.kind = .folder
+                        }
+                        
                         newItem.path = jsonItem["path_lower"].string ?? ""
                         items.append(newItem)
                     }
