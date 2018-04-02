@@ -6,9 +6,10 @@
 //  Copyright © 2018 Vinh Nguyen. All rights reserved.
 //
 
-import Foundation
 
 struct Track {
+    
     var token: String?
+    
     var url: String?
 }

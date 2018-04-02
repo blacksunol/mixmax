@@ -6,6 +6,15 @@
 //  Copyright © 2018 Vinh Nguyen. All rights reserved.
 //
 
-class DropboxItem: Item {
+struct DropboxItem: Item {
+    
+    var name: String?
+    
+    var kind: Kind = .unknow
+    
+    var parent: Item?
+    
+    var track: Track = Track()
+    
     var path = ""
 }

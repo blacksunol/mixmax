@@ -6,6 +6,15 @@
 //  Copyright © 2018 Vinh Nguyen. All rights reserved.
 //
 
-class GoogleItem: Item {
+struct GoogleItem : Item {
+    
+    var name: String?
+    
+    var kind: Kind = .unknow
+    
+    var parent: Item?
+    
+    var track: Track = Track()
+    
     var id = ""
 }

@@ -57,7 +57,7 @@ class DropboxClient: Client {
                     }
                     
                     for jsonItem in jsonArray {
-                        let newItem = DropboxItem()
+                        var newItem = DropboxItem()
                         newItem.parent = item
                         newItem.name = jsonItem["name"].string ?? ""
                         let tag = jsonItem[".tag"].string
@@ -101,6 +101,8 @@ class DropboxClient: Client {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
             let task = session.dataTask(with: request) { (data, response, error) in
+                
+                var item = item
                 if let error = error {
                     print(error.localizedDescription)
                     
