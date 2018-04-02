@@ -14,23 +14,24 @@ import GoogleSignIn
 class PlayerViewController: UIViewController {
     
     private var player: AVPlayer?
-    var item = Item()
-    var myTimer:Timer!
+    var item: Item?
+    var timer: Timer?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let token = item.track.token ?? ""
+        let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
-        let url = URL(string: item.track.url!)
+        let urlStr = item?.track.url ?? ""
+        let url = URL(string: urlStr)
         
         let avAsset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])
         let playerItem = AVPlayerItem(asset: avAsset)
         player = AVPlayer(playerItem: playerItem)
         player?.play()
         
-        myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateProgressBar), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateProgressBar), userInfo: nil, repeats: true)
     }
     
     @objc func updateProgressBar(){
@@ -52,8 +53,8 @@ class PlayerViewController: UIViewController {
         }else{
             player?.pause()
             player = nil
-            myTimer.invalidate()
-            myTimer = nil
+            timer?.invalidate()
+            timer = nil
         }
         
         
@@ -61,6 +62,9 @@ class PlayerViewController: UIViewController {
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         player?.pause()
+        player = nil
+        timer?.invalidate()
+        timer = nil
         dismiss(animated: true, completion: nil)
     }
 }

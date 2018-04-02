@@ -52,7 +52,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                         }
                         
                         for jsonItem in jsonArray {
-                            let newItem = GoogleItem()
+                            var newItem = GoogleItem()
                             newItem.name = jsonItem["name"].string ?? ""
                             newItem.parent = item
                             let mimeType = jsonItem["mimeType"].string

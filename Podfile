@@ -8,7 +8,7 @@ target 'mixmax' do
   # Pods for mixmax
   pod 'GoogleSignIn'
   pod 'SlideMenuControllerSwift'
-  pod "PromiseKit"
+  pod "PromiseKit", '~> 4.5.2'
   pod 'RxCocoa',    '~> 4.0'
   pod 'SwiftyDropbox'
 
