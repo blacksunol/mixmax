@@ -53,7 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let authResult = DropboxClientsManager.handleRedirectURL(url) {
             switch authResult {
             case .success:
-                print("Success! User is logged into Dropbox.")
+                //FIXED ME: need to listen accessToken then call loadItems() at ItemListViewController
+                if let topVC = UIApplication.topViewController() as? ItemListViewController{
+                    topVC.loadItems()
+                }
+//                print("Success! User is logged into Dropbox.")
             case .cancel:
                 print("Authorization flow was manually canceled by user!")
             case .error(_, let description):

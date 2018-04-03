@@ -20,10 +20,20 @@ class DropboxClient: Client {
     let kDropBoxToken = "http://localhost/#access_token="
     
     let accessToken = DropboxClientsManager.authorizedClient?.auth.client.accessToken ?? ""
+    
+    static func authorizedClient() {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared, controller: UIApplication.topViewController(), openURL: { (url: URL) -> Void in
+            UIApplication.shared.openURL(url)
+        })
+    }
 
     func callItems(from item: Item?, callFished: @escaping ([Item]) -> ()) {
-        callItems(from: item).then { items in
-            callFished(items)
+        if(accessToken != ""){
+            callItems(from: item).then { items in
+                callFished(items)
+            }
+        } else {
+            DropboxClient.authorizedClient()
         }
     }
     
@@ -48,7 +58,7 @@ class DropboxClient: Client {
             
             let task = session.dataTask(with: request) { (data, response, error) in
                 if let error = error  {
-                    print(error.localizedDescription)
+                    print("callItems-Error:\(error.localizedDescription)")
                 } else {
                     let json = try? JSON(data: data!)
                     guard let jsonArray = json?["entries"].array else {
@@ -104,7 +114,7 @@ class DropboxClient: Client {
                 
                 var item = item
                 if let error = error {
-                    print(error.localizedDescription)
+                    print("callPath-Error:\(error.localizedDescription)")
                     
                 } else {
                     let json = try? JSON(data: data!)

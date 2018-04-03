@@ -39,7 +39,7 @@ class ItemListViewController: UIViewController {
         observeSettings()
     }
     
-    @objc private func loadItems() {
+    @objc func loadItems() {
         
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentCloud.asObservable().subscribe(onNext: { cloudType in
