@@ -27,6 +27,7 @@ class ItemListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadItems), name: NotificationKey.kLoginDropboxSuccess, object: nil)
         configureCollectionView()
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
@@ -37,6 +38,7 @@ class ItemListViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
         loadItems()
         observeSettings()
+
     }
     
     @objc func loadItems() {
