@@ -14,7 +14,6 @@ import SwiftyDropbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -35,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
 
         DropboxClientsManager.setupWithAppKey("8g16zfowqmgqtmd")
-
+//        DropboxClientsManager.unlinkClients()//clear all token for testing
         return true
     }
 
@@ -53,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let authResult = DropboxClientsManager.handleRedirectURL(url) {
             switch authResult {
             case .success:
-                print("Success! User is logged into Dropbox.")
+                NotificationCenter.default.post(name: NotificationKey.kLoginDropboxSuccess, object: nil, userInfo: nil)
             case .cancel:
                 print("Authorization flow was manually canceled by user!")
             case .error(_, let description):

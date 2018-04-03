@@ -40,6 +40,8 @@
 		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
 		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
 		661D196EF31A347979A5F314 /* Pods_mixmax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */; };
+		DD5C6E5D2073ADF100E64626 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6E5C2073ADF100E64626 /* Constant.swift */; };
+		DD8257E12073824700194F91 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8257E02073824700194F91 /* UIWindow+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		6965351A9BA01639213ADD8A /* Pods-mixmax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmax.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmax/Pods-mixmax.debug.xcconfig"; sourceTree = "<group>"; };
 		94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2303494D82045BAE6ADD0A /* Pods-mixmaxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD5C6E5C2073ADF100E64626 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DD8257E02073824700194F91 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +277,8 @@
 				1F3F84051EBAF40400138213 /* DropBox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
 				1F1F45952060B3BA00DA1C51 /* Settings */,
+				DD8257DF2073822B00194F91 /* Extensions */,
+				DD5C6E5B2073ADDF00E64626 /* Constant */,
 				1F0D9F8E2060C2260047D076 /* Menu */,
 				1F6595991EACB46F002B5DD5 /* Info.plist */,
 				1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */,
@@ -316,6 +322,22 @@
 				50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DD5C6E5B2073ADDF00E64626 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				DD5C6E5C2073ADF100E64626 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		DD8257DF2073822B00194F91 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD8257E02073824700194F91 /* UIWindow+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,7 +415,7 @@
 				TargetAttributes = {
 					1F6595871EACB46F002B5DD5 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = LH5CCFR5XZ;
+						DevelopmentTeam = Z5TBLESEBG;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -607,7 +629,9 @@
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F1A96D8206D3E76006447A7 /* DropboxItem.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
+				DD8257E12073824700194F91 /* UIWindow+Extension.swift in Sources */,
 				1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */,
+				DD5C6E5D2073ADF100E64626 /* Constant.swift in Sources */,
 				1F29036C2065F22A00CCD05A /* Track.swift in Sources */,
 				1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
@@ -775,7 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LH5CCFR5XZ;
+				DEVELOPMENT_TEAM = Z5TBLESEBG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -798,7 +822,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LH5CCFR5XZ;
+				DEVELOPMENT_TEAM = Z5TBLESEBG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

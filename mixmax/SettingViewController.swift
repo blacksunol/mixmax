@@ -34,9 +34,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 present(vc, animated: true)
             }
         } else {
-            DropboxClientsManager.authorizeFromController(UIApplication.shared, controller: self, openURL: { (url: URL) -> Void in
-                UIApplication.shared.openURL(url)
-            })
+            DropboxClient.authorizedClient()
         }
     }
 }
