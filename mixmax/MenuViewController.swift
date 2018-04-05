@@ -29,14 +29,16 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = MenuTableViewCell.dequeueReusableCell(tableView: tableView) else { return UITableViewCell() }
+        
         if sections[indexPath.section] == "cloud" {
             let cloudType = clouds[indexPath.row]
-            let cell =  UITableViewCell()
             cell.textLabel?.text = cloudType.rawValue
+            cell.imageView?.image = UIImage(named: "google")
             return cell
         } else {
             let feature = features[indexPath.row]
-            let cell =  UITableViewCell()
             cell.textLabel?.text = feature
             return cell
         }
@@ -61,7 +63,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 currentFeature.accept(feature)
             }
         }
-        
     }
 }
 

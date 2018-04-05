@@ -117,6 +117,8 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
                 playerViewController.item = item
+                playerViewController.items = items
+                
                 present(playerViewController, animated: true)
             }
         case .folder:

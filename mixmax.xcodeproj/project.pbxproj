@@ -36,6 +36,9 @@
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
+		1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */; };
+		1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85D20732494002E428B /* MenuCellViewModel.swift */; };
+		1FB1E860207330A1002E428B /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85F207330A0002E428B /* MenuListViewModel.swift */; };
 		1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */; };
 		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
 		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
@@ -109,6 +112,9 @@
 		1F6595C71EB0D142002B5DD5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxLoginViewController.swift; sourceTree = "<group>"; };
 		1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DropBoxLoginViewController.storyboard; sourceTree = "<group>"; };
+		1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		1FB1E85D20732494002E428B /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
+		1FB1E85F207330A0002E428B /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		1FCE85A2205BA6AB0017DF16 /* GoogleLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginViewController.swift; sourceTree = "<group>"; };
 		1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleLoginViewController.storyboard; sourceTree = "<group>"; };
 		40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,7 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */,
+				1FB1E85F207330A0002E428B /* MenuListViewModel.swift */,
 				1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */,
+				1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */,
+				1FB1E85D20732494002E428B /* MenuCellViewModel.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -604,6 +613,7 @@
 			files = (
 				1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
+				1FB1E860207330A1002E428B /* MenuListViewModel.swift in Sources */,
 				1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */,
 				1F1A96D8206D3E76006447A7 /* DropboxItem.swift in Sources */,
 				1F6595C01EAF7565002B5DD5 /* ItemListCollectionViewCell.swift in Sources */,
@@ -613,7 +623,9 @@
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
+				1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */,
 				1F15A5032064AC0A00FC802A /* Client.swift in Sources */,
+				1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
