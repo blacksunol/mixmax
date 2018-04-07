@@ -21,9 +21,9 @@ class DropboxClient: Client {
     
     let accessToken = DropboxClientsManager.authorizedClient?.auth.client.accessToken ?? ""
 
-    func callItems(from item: Item?, callFished: @escaping ([Item]) -> ()) {
+    func callItems(from item: Item?, callFinished: @escaping ([Item]) -> ()) {
         callItems(from: item).then { items in
-            callFished(items)
+            callFinished(items)
         }
     }
     
@@ -119,5 +119,42 @@ class DropboxClient: Client {
             task.resume()
         }
 
+    }
+    
+    class func setup() {
+        DropboxClientsManager.setupWithAppKey("8g16zfowqmgqtmd")
+    }
+    
+    class func handleRedirectURL(url: URL) {
+        if let authResult = DropboxClientsManager.handleRedirectURL(url) {
+            switch authResult {
+            case .success:
+                print("Success! User is logged into Dropbox.")
+            case .cancel:
+                print("Authorization flow was manually canceled by user!")
+            case .error(_, let description):
+                print("Error: \(description)")
+            }
+        }
+    }
+    
+    static var isAuthorize: Bool {
+        get {
+            if let _ = DropboxClientsManager.authorizedClient {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
+    class func authorize(controller: UIViewController) {
+        DropboxClientsManager.authorizeFromController(UIApplication.shared, controller: controller, openURL: { (url: URL) -> Void in
+            UIApplication.shared.openURL(url)
+        })
+    }
+    
+    class func signOut() {
+        DropboxClientsManager.unlinkClients()
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +22,50 @@
                                 <rect key="frame" x="22" y="167" width="316" height="423"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingTableViewCell" rowHeight="111" id="QMt-19-LfH" customClass="SettingTableViewCell" customModule="mixmax" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="316" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QMt-19-LfH" id="P1v-aD-5Rt">
+                                            <rect key="frame" x="0.0" y="0.0" width="316" height="110.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="vSD-bj-cy1">
+                                                    <rect key="frame" x="8" y="16" width="83" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="83" id="0Mz-G7-Scm"/>
+                                                        <constraint firstAttribute="height" constant="78" id="4wB-ar-2Yg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BY-oG-OoV">
+                                                    <rect key="frame" x="101" y="45" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVm-U8-aXK">
+                                                    <rect key="frame" x="237" y="45" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vSD-bj-cy1" firstAttribute="leading" secondItem="P1v-aD-5Rt" secondAttribute="leading" constant="8" id="9jx-Q3-7rR"/>
+                                                <constraint firstItem="vSD-bj-cy1" firstAttribute="centerY" secondItem="P1v-aD-5Rt" secondAttribute="centerY" id="Cuc-Kq-mo2"/>
+                                                <constraint firstItem="6BY-oG-OoV" firstAttribute="leading" secondItem="vSD-bj-cy1" secondAttribute="trailing" constant="10" id="LTf-Db-ERq"/>
+                                                <constraint firstItem="6BY-oG-OoV" firstAttribute="centerY" secondItem="P1v-aD-5Rt" secondAttribute="centerY" id="keY-aU-4Dh"/>
+                                                <constraint firstItem="vVm-U8-aXK" firstAttribute="centerY" secondItem="P1v-aD-5Rt" secondAttribute="centerY" id="tVZ-wt-Y8F"/>
+                                                <constraint firstAttribute="trailing" secondItem="vVm-U8-aXK" secondAttribute="trailing" constant="15" id="wus-bf-4Hv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="vSD-bj-cy1" id="yVz-H1-KJT"/>
+                                            <outlet property="loginStateLabel" destination="vVm-U8-aXK" id="AKE-it-xx7"/>
+                                            <outlet property="titleLabel" destination="6BY-oG-OoV" id="9lm-Rr-4NL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="xrP-aW-PXS" id="eGK-RQ-eFx"/>
                                     <outlet property="delegate" destination="xrP-aW-PXS" id="reO-W8-HuW"/>
@@ -37,4 +81,7 @@
             <point key="canvasLocation" x="29.600000000000001" y="53.523238380809602"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="google" width="300" height="244"/>
+    </resources>
 </document>

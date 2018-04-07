@@ -20,7 +20,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     var method: String = "GET"
     var path: String = ""
     
-    func callItems(from item: Item?, callFished:  @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item?, callFinished:  @escaping (_ items: [Item]) -> ()) {
         
         var folderId = "root"
         if let googleItem = item as? GoogleItem {
@@ -47,7 +47,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                     DispatchQueue.main.async {
                         let json = try?  JSON(data: data!)
                         guard let jsonArray = json?["files"].array else {
-                            callFished(items)
+                            callFinished(items)
                             return
                         }
                         
@@ -68,7 +68,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
                             items.append(newItem)
                         }
                         
-                        callFished(items)
+                        callFinished(items)
                         
                     }
                 }
@@ -102,9 +102,30 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
         }   
     }
     
+    static var isAuthorize: Bool {
+        get {
+            if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
     class func setup() {
         GIDSignIn.sharedInstance().clientID = "1081018989060-95jkittnpf1oi28hkonjsoiipol1iajj.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/drive.readonly"]
         GIDSignIn.sharedInstance().signInSilently()
+    }
+    
+    class func authorize(controller: UIViewController) {
+
+        GIDSignIn.sharedInstance().delegate = controller as! GIDSignInDelegate
+        GIDSignIn.sharedInstance().uiDelegate = controller as! GIDSignInUIDelegate
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    class func signOut() {
+        GIDSignIn.sharedInstance().signOut()
     }
 }

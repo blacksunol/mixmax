@@ -8,36 +8,45 @@
 
 import UIKit
 import SwiftyDropbox
+import GoogleSignIn
 
 class SettingViewController: UIViewController {
     
-    
+    fileprivate let settingViewModel = SettingViewModel(clouds:  [.google, .dropbox])
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return settingViewModel.cellViewModels?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  UITableViewCell()
-        cell.textLabel?.text = indexPath.row == 0 ? "Google" : "Dropbox"
+        
+        guard let cell = SettingTableViewCell.dequeueReusableCell(tableView: tableView),
+            let cellViewModel = settingViewModel.cellViewModels?[indexPath.row]
+            else { return UITableViewCell() }
+        
+        cell.display(settingCellViewModel: cellViewModel)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "GoogleLoginViewController", bundle: nil)
-            if let vc = storyboard.instantiateViewController(withIdentifier :"GoogleLoginViewController") as? GoogleLoginViewController {
-                present(vc, animated: true)
-            }
+            GoogleClient.authorize(controller: self)
         } else {
-            DropboxClientsManager.authorizeFromController(UIApplication.shared, controller: self, openURL: { (url: URL) -> Void in
-                UIApplication.shared.openURL(url)
-            })
+            DropboxClient.authorize(controller: self)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100  
     }
 }
 
+extension SettingViewController: GIDSignInUIDelegate, GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    }
+}

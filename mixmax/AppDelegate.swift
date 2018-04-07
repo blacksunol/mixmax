@@ -9,7 +9,6 @@
 import UIKit
 import GoogleSignIn
 import SlideMenuControllerSwift
-import SwiftyDropbox
 
 
 @UIApplicationMain
@@ -20,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         GoogleClient.setup()
+        DropboxClient.setup()
         
         let menuStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let menuViewController  = menuStoryboard.instantiateInitialViewController()
@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
 
-        DropboxClientsManager.setupWithAppKey("8g16zfowqmgqtmd")
 
         return true
     }
@@ -50,16 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
-        if let authResult = DropboxClientsManager.handleRedirectURL(url) {
-            switch authResult {
-            case .success:
-                print("Success! User is logged into Dropbox.")
-            case .cancel:
-                print("Authorization flow was manually canceled by user!")
-            case .error(_, let description):
-                print("Error: \(description)")
-            }
-        }
+        DropboxClient.handleRedirectURL(url: url)
         
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
