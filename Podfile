@@ -11,6 +11,8 @@ target 'mixmax' do
   pod "PromiseKit", '~> 4.5.2'
   pod 'RxCocoa',    '~> 4.0'
   pod 'SwiftyDropbox'
+#  pod 'ReSwift'
+  pod 'ReactiveReSwift'
 
   target 'mixmaxUITests' do
     inherit! :search_paths

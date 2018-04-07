@@ -9,28 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/PlayerViewController.swift"
-            timestampString = "544347145.486324"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "mixmax/MenuViewController.swift"
-            timestampString = "544207249.3127249"
+            timestampString = "544419285.792989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mixmax/SettingViewController.swift"
-            timestampString = "543947809.4808151"
+            timestampString = "544553707.8945431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -74,7 +58,7 @@
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
-                  timestampString = "544207149.385311"
+                  timestampString = "544520490.421724"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -89,7 +73,7 @@
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
-                  timestampString = "544207149.391438"
+                  timestampString = "544520490.426393"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -106,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mixmax/ItemListViewController.swift"
-            timestampString = "544342317.466719"
+            timestampString = "544601861.154712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "ItemListViewController"
-            landmarkType = "3">
+            landmarkName = "configureRefreshControl()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
