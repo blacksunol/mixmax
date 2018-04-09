@@ -18,6 +18,7 @@
 		1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45912060B39800DA1C51 /* SettingViewController.swift */; };
 		1F1F45942060B3AE00DA1C51 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */; };
 		1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */; };
+		1F20B9F2207A7274008EAE33 /* ReactiveReSwiftBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F20B9F1207A7274008EAE33 /* ReactiveReSwiftBridge.swift */; };
 		1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F213EE120624D57007D47BF /* PlayerViewController.swift */; };
 		1F213EE420624D71007D47BF /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F213EE320624D71007D47BF /* PlayerViewController.storyboard */; };
 		1F29036C2065F22A00CCD05A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29036B2065F22A00CCD05A /* Track.swift */; };
@@ -35,6 +36,15 @@
 		1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C71EB0D142002B5DD5 /* Item.swift */; };
 		1F6595CA1EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */; };
 		1F6595CC1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */; };
+		1F659D4220791E0300C57DBD /* SettingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4120791E0300C57DBD /* SettingState.swift */; };
+		1F659D4420791E1A00C57DBD /* SettingReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4320791E1A00C57DBD /* SettingReducer.swift */; };
+		1F659D4620791E4600C57DBD /* SettingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4520791E4600C57DBD /* SettingAction.swift */; };
+		1F659D4820791E5800C57DBD /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4720791E5800C57DBD /* SettingStore.swift */; };
+		1F659D4A2079295200C57DBD /* ClientState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D492079295200C57DBD /* ClientState.swift */; };
+		1F659D4C20792BC700C57DBD /* EnumCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4B20792BC700C57DBD /* EnumCollection.swift */; };
+		1F659D4E2079C41A00C57DBD /* ClientAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4D2079C41A00C57DBD /* ClientAction.swift */; };
+		1F659D502079C52F00C57DBD /* ClientReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D4F2079C52F00C57DBD /* ClientReducer.swift */; };
+		1F659D522079C5C300C57DBD /* ClientStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F659D512079C5C300C57DBD /* ClientStore.swift */; };
 		1F76FC3720762DDD009F823E /* MenuListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F76FC3620762DDD009F823E /* MenuListReducer.swift */; };
 		1F76FC3920762ED7009F823E /* MenuListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F76FC3820762ED7009F823E /* MenuListState.swift */; };
 		1F7BFA6B20786E8000AF53BB /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BFA6A20786E8000AF53BB /* SettingCellViewModel.swift */; };
@@ -92,6 +102,7 @@
 		1F1F45912060B39800DA1C51 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1F1F45932060B3AE00DA1C51 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		1F1F45982060B4FF00DA1C51 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		1F20B9F1207A7274008EAE33 /* ReactiveReSwiftBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveReSwiftBridge.swift; sourceTree = "<group>"; };
 		1F213EE120624D57007D47BF /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1F213EE320624D71007D47BF /* PlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerViewController.storyboard; sourceTree = "<group>"; };
 		1F29036B2065F22A00CCD05A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -116,6 +127,15 @@
 		1F6595C71EB0D142002B5DD5 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxLoginViewController.swift; sourceTree = "<group>"; };
 		1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DropBoxLoginViewController.storyboard; sourceTree = "<group>"; };
+		1F659D4120791E0300C57DBD /* SettingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingState.swift; sourceTree = "<group>"; };
+		1F659D4320791E1A00C57DBD /* SettingReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReducer.swift; sourceTree = "<group>"; };
+		1F659D4520791E4600C57DBD /* SettingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAction.swift; sourceTree = "<group>"; };
+		1F659D4720791E5800C57DBD /* SettingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
+		1F659D492079295200C57DBD /* ClientState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientState.swift; sourceTree = "<group>"; };
+		1F659D4B20792BC700C57DBD /* EnumCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCollection.swift; sourceTree = "<group>"; };
+		1F659D4D2079C41A00C57DBD /* ClientAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAction.swift; sourceTree = "<group>"; };
+		1F659D4F2079C52F00C57DBD /* ClientReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientReducer.swift; sourceTree = "<group>"; };
+		1F659D512079C5C300C57DBD /* ClientStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStore.swift; sourceTree = "<group>"; };
 		1F76FC3620762DDD009F823E /* MenuListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListReducer.swift; sourceTree = "<group>"; };
 		1F76FC3820762ED7009F823E /* MenuListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListState.swift; sourceTree = "<group>"; };
 		1F7BFA6A20786E8000AF53BB /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
@@ -243,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
+				1F659D4B20792BC700C57DBD /* EnumCollection.swift */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -319,13 +340,38 @@
 			path = mixmaxUITests;
 			sourceTree = "<group>";
 		};
-		1F7BFA6920786B6700AF53BB /* Redux */ = {
+		1F659D3F20791DA600C57DBD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				1FE052102076866A00CFC0C5 /* StoreCreator.swift */,
 				1F76FC3620762DDD009F823E /* MenuListReducer.swift */,
 				1F76FC3820762ED7009F823E /* MenuListState.swift */,
 				1FE0520E207671A900CFC0C5 /* MenuListActions.swift */,
-				1FE052102076866A00CFC0C5 /* StoreCreator.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		1F659D4020791DD200C57DBD /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1F659D4120791E0300C57DBD /* SettingState.swift */,
+				1F659D4320791E1A00C57DBD /* SettingReducer.swift */,
+				1F659D4520791E4600C57DBD /* SettingAction.swift */,
+				1F659D4720791E5800C57DBD /* SettingStore.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		1F7BFA6920786B6700AF53BB /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				1F20B9F1207A7274008EAE33 /* ReactiveReSwiftBridge.swift */,
+				1F659D4020791DD200C57DBD /* Setting */,
+				1F659D3F20791DA600C57DBD /* Menu */,
+				1F659D492079295200C57DBD /* ClientState.swift */,
+				1F659D4D2079C41A00C57DBD /* ClientAction.swift */,
+				1F659D4F2079C52F00C57DBD /* ClientReducer.swift */,
+				1F659D512079C5C300C57DBD /* ClientStore.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -635,6 +681,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F659D522079C5C300C57DBD /* ClientStore.swift in Sources */,
+				1F659D4220791E0300C57DBD /* SettingState.swift in Sources */,
 				1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */,
 				1FE0520F207671A900CFC0C5 /* MenuListActions.swift in Sources */,
 				1F6595C41EAFA490002B5DD5 /* ItemListViewController.swift in Sources */,
@@ -646,21 +694,29 @@
 				1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */,
 				1F29036C2065F22A00CCD05A /* Track.swift in Sources */,
 				1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */,
+				1F20B9F2207A7274008EAE33 /* ReactiveReSwiftBridge.swift in Sources */,
+				1F659D4A2079295200C57DBD /* ClientState.swift in Sources */,
+				1F659D4420791E1A00C57DBD /* SettingReducer.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F76FC3920762ED7009F823E /* MenuListState.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
+				1F659D4620791E4600C57DBD /* SettingAction.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
 				1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */,
 				1FD59DD52078A938005F18DC /* SettingViewModel.swift in Sources */,
 				1F76FC3720762DDD009F823E /* MenuListReducer.swift in Sources */,
+				1F659D4E2079C41A00C57DBD /* ClientAction.swift in Sources */,
 				1F15A5032064AC0A00FC802A /* Client.swift in Sources */,
 				1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
+				1F659D4C20792BC700C57DBD /* EnumCollection.swift in Sources */,
 				1FE052112076866A00CFC0C5 /* StoreCreator.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
 				1F182D48205F68770077FCA3 /* CloudService.swift in Sources */,
+				1F659D4820791E5800C57DBD /* SettingStore.swift in Sources */,
 				1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */,
+				1F659D502079C52F00C57DBD /* ClientReducer.swift in Sources */,
 				1F1A96D6206D3633006447A7 /* GoogleItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

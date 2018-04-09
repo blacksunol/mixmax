@@ -6,15 +6,24 @@
 //  Copyright © 2018 Vinh Nguyen. All rights reserved.
 //
 
-import Foundation
 import ReactiveReSwift
 
 struct MenuAddCloudAction: Action {
-    
-    var cloud: CloudType = .google
-    
-    init(cloud: CloudType) {
 
-        self.cloud = cloud
-    }
+    let cloud: CloudType
+}
+
+struct MenuRemoveCloudAction: Action {
+    
+    let cloud: CloudType
+}
+
+struct InitCloudsAction: Action {
+    
+    let clouds: [CloudType]
+}
+
+struct SelectedCloudAction: Action {
+    
+    let cloud: CloudType 
 }

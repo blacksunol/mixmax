@@ -6,9 +6,7 @@
 //  Copyright © 2018 Vinh Nguyen. All rights reserved.
 //
 
-import Foundation
-import ReactiveReSwift
-
 struct MenuListState {
-    var clouds: [CloudType]? = nil
+    var clouds: [CloudType]
+    var selectedCloud: CloudType
 }

@@ -19,7 +19,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     var url: String = "https://www.googleapis.com/drive/v3/files"
     var method: String = "GET"
     var path: String = ""
-    
+
     func callItems(from item: Item?, callFinished:  @escaping (_ items: [Item]) -> ()) {
         
         var folderId = "root"
@@ -88,31 +88,36 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     }
     
     private func configure() {
+        
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
+
         if let error = error {
             print(error.localizedDescription)
             
         } else {
+
             accessToken.accept(GIDSignIn.sharedInstance().currentUser.authentication.accessToken)
+            clientStore.dispatch(LoginAction())
+            
+
         }   
     }
     
     static var isAuthorize: Bool {
+        
         get {
-            if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
-                return true
-            } else {
-                return false
-            }
+            
+            return GIDSignIn.sharedInstance().hasAuthInKeychain() ? true : false
         }
     }
 
     class func setup() {
+        
         GIDSignIn.sharedInstance().clientID = "1081018989060-95jkittnpf1oi28hkonjsoiipol1iajj.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/drive.readonly"]
         GIDSignIn.sharedInstance().signInSilently()
@@ -126,6 +131,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
     }
     
     class func signOut() {
+        
         GIDSignIn.sharedInstance().signOut()
     }
 }

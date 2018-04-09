@@ -75,6 +75,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Zpm-zE-kyY"/>
                     </view>
+                    <connections>
+                        <outlet property="settingTableView" destination="4G9-3S-WME" id="4TT-oK-sHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMc-U7-vLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

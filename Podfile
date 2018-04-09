@@ -10,6 +10,7 @@ target 'mixmax' do
   pod 'SlideMenuControllerSwift'
   pod "PromiseKit", '~> 4.5.2'
   pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift',    '~> 4.0'
   pod 'SwiftyDropbox'
 #  pod 'ReSwift'
   pod 'ReactiveReSwift'

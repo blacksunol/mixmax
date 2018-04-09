@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,14 +23,40 @@
                                 <rect key="frame" x="0.0" y="49" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="89" id="C5j-ZM-KED" customClass="MenuTableViewCell" customModule="mixmax" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="89"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="122" id="C5j-ZM-KED" customClass="MenuTableViewCell" customModule="mixmax" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C5j-ZM-KED" id="Kcf-iX-2uv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JyQ-4C-kJx">
+                                                    <rect key="frame" x="28" y="21" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="JyQ-4C-kJx" secondAttribute="height" multiplier="1:1" id="uFF-lS-dp6"/>
+                                                        <constraint firstAttribute="height" constant="80" id="uIe-4v-CKQ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxy-dB-8mM">
+                                                    <rect key="frame" x="138" y="50.5" width="227" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Bxy-dB-8mM" firstAttribute="leading" secondItem="JyQ-4C-kJx" secondAttribute="trailing" constant="30" id="Rps-BD-7ud"/>
+                                                <constraint firstItem="JyQ-4C-kJx" firstAttribute="centerY" secondItem="Kcf-iX-2uv" secondAttribute="centerY" id="SWw-sP-Qvc"/>
+                                                <constraint firstAttribute="trailing" secondItem="Bxy-dB-8mM" secondAttribute="trailing" constant="10" id="huG-Im-A8m"/>
+                                                <constraint firstItem="Bxy-dB-8mM" firstAttribute="centerY" secondItem="Kcf-iX-2uv" secondAttribute="centerY" id="iEs-OD-DMZ"/>
+                                                <constraint firstItem="JyQ-4C-kJx" firstAttribute="leading" secondItem="Kcf-iX-2uv" secondAttribute="leading" constant="28" id="mW2-tG-9ti"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.26900735590000002" green="1" blue="0.1904894221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="menuImageView" destination="JyQ-4C-kJx" id="2Yb-M6-iGE"/>
+                                            <outlet property="titleLabel" destination="Bxy-dB-8mM" id="ahr-28-caY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -47,6 +74,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oyp-qZ-ztr"/>
                     </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="5tN-7I-ewn" id="TGI-aA-zaT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgi-z6-9uU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

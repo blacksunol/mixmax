@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mixmax/MenuViewController.swift"
-            timestampString = "544419285.792989"
+            timestampString = "544983090.705147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mixmax/DropboxClient.swift"
-            timestampString = "544347145.490863"
+            timestampString = "544983090.70865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -41,44 +41,90 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/SettingViewController.swift"
-            timestampString = "544553707.8945431"
+            filePath = "mixmax/ItemListViewController.swift"
+            timestampString = "544948726.7681561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "configureRefreshControl()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mixmax/MenuViewController.swift"
+            timestampString = "544983090.708876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "MenuViewController"
+            landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "mixmax.SettingViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  symbolName = "variable initialization expression of mixmax.MenuViewController.disposeBag : ReactiveReSwift.SubscriptionReferenceBag"
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
-                  timestampString = "544520490.421724"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/MenuViewController.swift"
+                  timestampString = "544937150.914534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "1262">
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.URL) -&gt; () in mixmax.SettingViewController.tableView(__ObjC.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  symbolName = "mixmax.MenuViewController.disposeBag.getter : ReactiveReSwift.SubscriptionReferenceBag"
                   moduleName = "mixmax"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/SettingViewController.swift"
-                  timestampString = "544520490.426393"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/MenuViewController.swift"
+                  timestampString = "544937150.918991"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "39"
-                  endingLineNumber = "39"
-                  offsetFromSymbolStart = "136">
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "102">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mixmax.MenuViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; mixmax.MenuViewController"
+                  moduleName = "mixmax"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/MenuViewController.swift"
+                  timestampString = "544937150.92327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1200">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mixmax.MenuViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;mixmax.MenuViewController&gt;"
+                  moduleName = "mixmax"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vinhnguyen/Desktop/mixmax/mixmax/MenuViewController.swift"
+                  timestampString = "544937150.9274859"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1117">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -89,13 +135,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mixmax/ItemListViewController.swift"
-            timestampString = "544601861.154712"
+            filePath = "mixmax/SettingViewModel.swift"
+            timestampString = "544957279.755663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "configureRefreshControl()"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "map(cloud:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mixmax/SettingViewModel.swift"
+            timestampString = "544957279.755743"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "map(cloud:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mixmax/SettingViewController.swift"
+            timestampString = "544983090.709036"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mixmax/GoogleClient.swift"
+            timestampString = "544957279.75657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "sign(_:didSignInFor:withError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

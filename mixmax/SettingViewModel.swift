@@ -8,14 +8,10 @@
 
 struct SettingViewModel {
     
-    var clouds: [CloudType]
+    let clouds: [CloudType]
     
     var cellViewModels: [SettingCellViewModel]? {
         return clouds.map { map(cloud: $0) }
-    }
-    
-    init(clouds: [CloudType]) {
-        self.clouds = clouds
     }
     
     private func map(cloud: CloudType) -> SettingCellViewModel {
@@ -28,8 +24,5 @@ struct SettingViewModel {
             return SettingCellViewModel(title: "", imageName: "", isActive: false)
         }
     }
-    
-    private func authorize(cloud: CloudType) {
-        
-    }
+
 }
