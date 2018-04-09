@@ -13,10 +13,11 @@ import RxSwift
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var menuTableView: UITableView!
     fileprivate let sections = ["cloud", "feature"]
     let features = ["Setting", "Help"]
     let currentFeature: BehaviorRelay<String> = BehaviorRelay(value: "")
-    let clouds: [CloudType] = [.dropbox, .google, .onedrive]
+    fileprivate var settingViewModel = SettingViewModel(clouds:  [])
     var currentCloud: BehaviorRelay<CloudType> = BehaviorRelay(value: .none)
     
     let disposeBag = SubscriptionReferenceBag()
@@ -25,13 +26,24 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let clouds = mainStore.observable.map { $0.clouds}
-//
-//
-//        disposeBag += mainStore.observable.subscribe { [weak self] menuListState in
-//            print("#menuListState: \(menuListState)")
-//
-//        }
+        let clouds = CloudType.allValues.filter {
+            switch  $0 {
+            case .dropbox:
+                return DropboxClient.isAuthorize
+            case .google:
+                return GoogleClient.isAuthorize
+            default:
+                return false
+            }
+        }
+        
+        menuStore.dispatch(InitCloudsAction(clouds: clouds))
+        
+        disposeBag += menuStore.observable.subscribe { [weak self] in
+            self?.settingViewModel =  SettingViewModel(clouds: $0.clouds)
+            self?.currentCloud.accept($0.selectedCloud)
+            self?.menuTableView.reloadData()
+        }
         
     }
 }
@@ -43,19 +55,22 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section] == "cloud" ? clouds.count : features.count
+        let viewModelCount = settingViewModel.cellViewModels?.count ?? 0
+        return sections[section] == "cloud" ? viewModelCount : features.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = MenuTableViewCell.dequeueReusableCell(tableView: tableView) else { return UITableViewCell() }
+        
         
         if sections[indexPath.section] == "cloud" {
-            let cloudType = clouds[indexPath.row]
-            cell.textLabel?.text = cloudType.rawValue
-            cell.imageView?.image = UIImage(named: "google")
+            guard let cell = MenuTableViewCell.dequeueReusableCell(tableView: tableView) else { return UITableViewCell() }
+            guard let cellViewModel = settingViewModel.cellViewModels?[indexPath.row]
+            else { return UITableViewCell() }
+            cell.display(settingCellViewModel: cellViewModel)
             return cell
         } else {
+            let cell = UITableViewCell()
             let feature = features[indexPath.row]
             cell.textLabel?.text = feature
             return cell
@@ -64,10 +79,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let action = MenuAddCloudAction(cloud: .dropbox)
-
-//        mainStore.dispatch(action)
-
         if let vc = self.slideMenuController()?.mainViewController as? UINavigationController {
              vc.popToRootViewController(animated: true)
         }
@@ -75,8 +86,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         if sections[indexPath.section] == "cloud" {
             if let slideMenuController = self.slideMenuController() {
                 slideMenuController.closeRight()
-                let cloudType = clouds[indexPath.row]
-                currentCloud.accept(cloudType)
+                let cloudType = settingViewModel.clouds[indexPath.row]
+                menuStore.dispatch(SelectedCloudAction(cloud: cloudType))
             }
         } else {
             if let slideMenuController = self.slideMenuController() {
@@ -86,6 +97,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
-
 

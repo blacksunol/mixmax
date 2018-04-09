@@ -8,11 +8,10 @@
 
 import Foundation
 
-enum CloudType: String {
+enum CloudType: String, EnumCollection {
     case google = "google"
     case dropbox = "dropbox"
     case onedrive = "onedrive"
-    case setting = "setting"
     case none
 }
 

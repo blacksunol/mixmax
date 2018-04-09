@@ -10,7 +10,7 @@ import PromiseKit
 import SwiftyDropbox
 
 class DropboxClient: Client {
-   
+       
     var url: String = "https://api.dropboxapi.com/2/files/list_folder"
     
     var method: String = "POST"
@@ -130,6 +130,9 @@ class DropboxClient: Client {
             switch authResult {
             case .success:
                 print("Success! User is logged into Dropbox.")
+                clientStore.dispatch(LoginAction())
+                menuStore.dispatch(MenuAddCloudAction(cloud: .dropbox))
+                menuStore.dispatch(SelectedCloudAction(cloud: .dropbox))
             case .cancel:
                 print("Authorization flow was manually canceled by user!")
             case .error(_, let description):

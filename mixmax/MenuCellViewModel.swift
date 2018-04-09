@@ -8,7 +8,7 @@
 
 protocol DisplaysMenu {
     
-    func display(menuCellViewModel viewModel: MenuCellViewModel)
+    func display(settingCellViewModel viewModel: SettingCellViewModel)
 }
 
 struct MenuCellViewModel {

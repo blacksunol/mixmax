@@ -15,7 +15,7 @@ class MenuTableViewCell: UITableViewCell {
 
     static var reuseIdentifier: String { return "MenuTableViewCell" }
     
-    fileprivate(set) var viewModel: MenuCellViewModel! {
+    fileprivate(set) var viewModel: SettingCellViewModel! {
         didSet {
             titleLabel.text = viewModel.title
             menuImageView.image = UIImage(named: viewModel.imageName)
@@ -29,7 +29,7 @@ class MenuTableViewCell: UITableViewCell {
 }
 
 extension MenuTableViewCell: DisplaysMenu {
-    func display(menuCellViewModel viewModel: MenuCellViewModel) {
+    func display(settingCellViewModel viewModel: SettingCellViewModel) {
         self.viewModel = viewModel
     }
 }

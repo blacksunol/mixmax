@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let menuStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let menuViewController  = menuStoryboard.instantiateInitialViewController()
-        
 
         let mainStoryboard = UIStoryboard(name: "ItemListViewController", bundle: nil)
         let mainViewController = mainStoryboard.instantiateInitialViewController()
@@ -33,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
+        
 
 
         return true
@@ -55,6 +55,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
-    
 }
 
