@@ -17,27 +17,36 @@ class SettingViewController: UIViewController {
     fileprivate let settingViewModel = SettingViewModel(clouds:  [.google, .dropbox])
     let disposeBag = SubscriptionReferenceBag()
     
-    func showAlert(title : String, message: String) {
+    func showAlert(cloud: CloudType) {
+        
         let alert = UIAlertController(
-            title: title,
-            message: message,
+            title: "Sign out",
+            message: "Sign out \(cloud.rawValue)",
             preferredStyle: UIAlertControllerStyle.alert
         )
+        
         let ok = UIAlertAction(
             title: "OK",
-            style: UIAlertActionStyle.default,
-            handler: nil
-        )
+            style: .default
+            ) { (action:UIAlertAction!) in
+                if cloud == .dropbox { DropboxClient.signOut() }
+                if cloud == .google { GoogleClient.signOut() }
+                menuStore.dispatch(MenuRemoveCloudAction(cloud: cloud))
+                clientStore.dispatch(LoginAction())
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)        
         alert.addAction(ok)
+        alert.addAction(cancel)
+        
         present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Settings"
         disposeBag += clientStore.observable.asObservable().skip(1).subscribe { [weak self] clientState in
             
-            print("Client state")
             guard let weakSelf = self else { return }
             weakSelf.settingTableView.reloadData()
             weakSelf.navigationController?.popToRootViewController(animated: true)
@@ -72,11 +81,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let isActive = cellViewModel?.isActive ?? false
             if isActive {
                 
-                let title = cellViewModel?.title ?? ""
-                showAlert(title: title, message: "Sign out")
-                GoogleClient.signOut()
-                menuStore.dispatch(MenuRemoveCloudAction(cloud: .google))
-                clientStore.dispatch(LoginAction())
+                showAlert(cloud: .google)
                 return
             }
             
@@ -86,11 +91,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             let isActive = cellViewModel?.isActive ?? false
             if isActive {
                 
-                let title = cellViewModel?.title ?? ""
-                showAlert(title: title, message: "Sign out")
-                DropboxClient.signOut()
-                menuStore.dispatch(MenuRemoveCloudAction(cloud: .dropbox))
-                clientStore.dispatch(LoginAction())
+                showAlert(cloud: .dropbox)
                 return
             }
             

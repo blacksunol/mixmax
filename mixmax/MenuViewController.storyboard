@@ -52,7 +52,7 @@
                                                 <constraint firstItem="JyQ-4C-kJx" firstAttribute="leading" secondItem="Kcf-iX-2uv" secondAttribute="leading" constant="28" id="mW2-tG-9ti"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.26900735590000002" green="1" blue="0.1904894221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="menuImageView" destination="JyQ-4C-kJx" id="2Yb-M6-iGE"/>
                                             <outlet property="titleLabel" destination="Bxy-dB-8mM" id="ahr-28-caY"/>

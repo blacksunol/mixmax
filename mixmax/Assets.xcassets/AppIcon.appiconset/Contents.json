@@ -99,13 +99,13 @@
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "PA2.png",
+      "filename" : "2x-8.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "icon.png",
+      "filename" : "1x-4.png",
       "scale" : "1x"
     }
   ],

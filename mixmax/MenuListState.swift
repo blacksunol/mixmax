@@ -7,6 +7,7 @@
 //
 
 struct MenuListState {
+    
     var clouds: [CloudType]
     var selectedCloud: CloudType
 }

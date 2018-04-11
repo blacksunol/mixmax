@@ -9,6 +9,7 @@
 
 import ReactiveReSwift
 import RxSwift
+import Foundation
 
 let menuListReducer: Reducer<MenuListState> = { action, state in
     var state = state
@@ -22,10 +23,13 @@ let menuListReducer: Reducer<MenuListState> = { action, state in
     
     if let action = action as? InitCloudsAction {
         state.clouds = action.clouds
+        let defaultCloud = UserDefaults.standard.string(forKey: "selectedCloud") ?? ""
+        state.selectedCloud = CloudType(rawValue: defaultCloud) ?? CloudType.none
     }
     
     if let action = action as? SelectedCloudAction {
         state.selectedCloud = action.cloud
+        UserDefaults.standard.set(action.cloud.rawValue, forKey: "selectedCloud")
     }
     
     return state
