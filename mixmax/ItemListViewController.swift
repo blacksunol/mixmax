@@ -50,7 +50,7 @@ class ItemListViewController: UIViewController {
                 guard let weakSelf = self else { return }
                 weakSelf.title = cloudType.rawValue
                 weakSelf.activityIndicator.stopAnimating()
-                weakSelf.items = items
+                weakSelf.items = items.filter { $0.kind == .audio || $0.kind == .folder }
                 weakSelf.itemListCollectionView.reloadSections(IndexSet(integer: 0))
                 weakSelf.refreshControl.endRefreshing()
             }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7af-56-3g1">
-                                <rect key="frame" x="8" y="10" width="351" height="583"/>
+                                <rect key="frame" x="10" y="10" width="355" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BUg-Fl-6it">
                                     <size key="itemSize" width="50" height="50"/>
@@ -47,23 +46,23 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.3757364788" blue="0.98475166739999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="7af-56-3g1" secondAttribute="trailing" id="9wS-Vn-caT"/>
-                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="10" id="gNI-DL-cQT"/>
-                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" constant="10" id="q82-PW-OCV"/>
-                            <constraint firstItem="7af-56-3g1" firstAttribute="leadingMargin" secondItem="Zz9-DS-rMh" secondAttribute="leadingMargin" id="zhS-as-jMh"/>
+                            <constraint firstAttribute="trailing" secondItem="7af-56-3g1" secondAttribute="trailing" constant="10" id="OMc-To-XaI"/>
+                            <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" id="Rsc-8q-mtA"/>
+                            <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="10" id="fvx-DE-PAg"/>
+                            <constraint firstItem="7af-56-3g1" firstAttribute="leading" secondItem="Zz9-DS-rMh" secondAttribute="leading" constant="10" id="o8G-iP-FDd"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="MBo-am-tMJ">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="afQ-gh-A8X">
                             <view key="customView" contentMode="scaleToFill" id="FRp-IL-zkV">
-                                <rect key="frame" x="276" y="5.5" width="83" height="33"/>
+                                <rect key="frame" x="274" y="5.5" width="85" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tan-gp-ZKq">
-                                        <rect key="frame" x="13" y="-17" width="64" height="54"/>
+                                        <rect key="frame" x="42" y="0.0" width="37" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="menu"/>
                                         <connections>
@@ -91,6 +90,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D4b-hX-2a1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -103,6 +103,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu" width="256" height="256"/>
+        <image name="menu" width="64" height="64"/>
     </resources>
 </document>

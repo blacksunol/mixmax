@@ -61,7 +61,7 @@ class DropboxClient: Client {
                         newItem.parent = item
                         newItem.name = jsonItem["name"].string ?? ""
                         let tag = jsonItem[".tag"].string
-                        if tag == "file" {
+                        if tag == "file" && newItem.name?.components(separatedBy: ".").last == "mp3" {
                             newItem.kind = .audio
                         } else if tag == "folder" {
                             newItem.kind = .folder

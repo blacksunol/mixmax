@@ -22,6 +22,7 @@
 		1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F213EE120624D57007D47BF /* PlayerViewController.swift */; };
 		1F213EE420624D71007D47BF /* PlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F213EE320624D71007D47BF /* PlayerViewController.storyboard */; };
 		1F29036C2065F22A00CCD05A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F29036B2065F22A00CCD05A /* Track.swift */; };
+		1F489805207C87850052179C /* MenuFeatureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F489804207C87850052179C /* MenuFeatureTableViewCell.swift */; };
 		1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */; };
 		1F6595931EACB46F002B5DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595911EACB46F002B5DD5 /* Main.storyboard */; };
 		1F6595951EACB46F002B5DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6595941EACB46F002B5DD5 /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		1F213EE320624D71007D47BF /* PlayerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerViewController.storyboard; sourceTree = "<group>"; };
 		1F29036B2065F22A00CCD05A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		1F45D691205CBA6D0093DC0C /* mixmax-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mixmax-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F489804207C87850052179C /* MenuFeatureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFeatureTableViewCell.swift; sourceTree = "<group>"; };
 		1F6595881EACB46F002B5DD5 /* mixmax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mixmax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F65958B1EACB46F002B5DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6595921EACB46F002B5DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */,
 				1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */,
 				1FB1E85D20732494002E428B /* MenuCellViewModel.swift */,
+				1F489804207C87850052179C /* MenuFeatureTableViewCell.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				1F1D5DA62061698A00F8C3DB /* GoogleClient.swift in Sources */,
 				1F29036C2065F22A00CCD05A /* Track.swift in Sources */,
 				1F1D5DA82061699C00F8C3DB /* DropboxClient.swift in Sources */,
+				1F489805207C87850052179C /* MenuFeatureTableViewCell.swift in Sources */,
 				1F20B9F2207A7274008EAE33 /* ReactiveReSwiftBridge.swift in Sources */,
 				1F659D4A2079295200C57DBD /* ClientState.swift in Sources */,
 				1F659D4420791E1A00C57DBD /* SettingReducer.swift in Sources */,

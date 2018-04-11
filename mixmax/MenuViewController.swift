@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var menuTableView: UITableView!
     fileprivate let sections = ["cloud", "feature"]
-    let features = ["Setting", "Help"]
+    let features = ["Setting"]
     let currentFeature: BehaviorRelay<String> = BehaviorRelay(value: "")
     fileprivate var settingViewModel = SettingViewModel(clouds:  [])
     var currentCloud: BehaviorRelay<CloudType> = BehaviorRelay(value: .none)
@@ -70,9 +70,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             cell.display(settingCellViewModel: cellViewModel)
             return cell
         } else {
-            let cell = UITableViewCell()
-            let feature = features[indexPath.row]
-            cell.textLabel?.text = feature
+            guard let cell = MenuTableViewCell.dequeueReusableCell(tableView: tableView) else { return UITableViewCell() }
+            let cellViewModel = SettingCellViewModel(title: "Setting", imageName: "setting", isActive: true)
+            cell.display(settingCellViewModel: cellViewModel)
             return cell
         }
     }

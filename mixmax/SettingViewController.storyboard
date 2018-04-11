@@ -18,16 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4G9-3S-WME">
-                                <rect key="frame" x="22" y="167" width="316" height="423"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4G9-3S-WME">
+                                <rect key="frame" x="10" y="30" width="355" height="637"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingTableViewCell" rowHeight="111" id="QMt-19-LfH" customClass="SettingTableViewCell" customModule="mixmax" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="316" height="111"/>
+                                        <rect key="frame" x="0.0" y="28" width="355" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QMt-19-LfH" id="P1v-aD-5Rt">
-                                            <rect key="frame" x="0.0" y="0.0" width="316" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google" translatesAutoresizingMaskIntoConstraints="NO" id="vSD-bj-cy1">
@@ -73,6 +72,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4G9-3S-WME" firstAttribute="leading" secondItem="Zpm-zE-kyY" secondAttribute="leading" constant="10" id="Nfd-zE-1bB"/>
+                            <constraint firstItem="Zpm-zE-kyY" firstAttribute="bottom" secondItem="4G9-3S-WME" secondAttribute="bottom" id="iEm-aj-CUZ"/>
+                            <constraint firstItem="4G9-3S-WME" firstAttribute="top" secondItem="Zpm-zE-kyY" secondAttribute="top" constant="10" id="xmt-wd-kxF"/>
+                            <constraint firstItem="Zpm-zE-kyY" firstAttribute="trailing" secondItem="4G9-3S-WME" secondAttribute="trailing" constant="10" id="yAT-fB-9kW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zpm-zE-kyY"/>
                     </view>
                     <connections>

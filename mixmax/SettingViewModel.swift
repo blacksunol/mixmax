@@ -24,5 +24,4 @@ struct SettingViewModel {
             return SettingCellViewModel(title: "", imageName: "", isActive: false)
         }
     }
-
 }
