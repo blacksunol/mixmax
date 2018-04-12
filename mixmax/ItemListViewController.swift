@@ -66,6 +66,7 @@ class ItemListViewController: UIViewController {
         
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentFeature.asObservable().skip(1).subscribe(onNext: { feature in
+            self.navigationController?.popToRootViewController(animated: false)
             let storyboard = UIStoryboard(name: "SettingViewController", bundle: nil)
             if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
