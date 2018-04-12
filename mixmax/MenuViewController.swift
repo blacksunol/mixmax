@@ -61,8 +61,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         if sections[indexPath.section] == "cloud" {
             guard let cell = MenuTableViewCell.dequeueReusableCell(tableView: tableView) else { return UITableViewCell() }
             guard let cellViewModel = settingViewModel.cellViewModels?[indexPath.row]
@@ -80,16 +78,18 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = self.slideMenuController()?.mainViewController as? UINavigationController {
-             vc.popToRootViewController(animated: true)
+             vc.popToRootViewController(animated: false)
         }
         
         if sections[indexPath.section] == "cloud" {
+            
             if let slideMenuController = self.slideMenuController() {
                 slideMenuController.closeRight()
                 let cloudType = settingViewModel.clouds[indexPath.row]
                 menuStore.dispatch(SelectedCloudAction(cloud: cloudType))
             }
         } else {
+            
             if let slideMenuController = self.slideMenuController() {
                 slideMenuController.closeRight()
                 let feature = features[indexPath.row]

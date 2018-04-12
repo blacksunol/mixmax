@@ -43,9 +43,12 @@
                                     <action selector="playNext:" destination="clF-In-9SX" eventType="touchUpInside" id="Mpd-6h-dQw"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-Vw-bDH">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-Vw-bDH">
                                 <rect key="frame" x="35" y="464" width="301" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="slideUpdated:" destination="clF-In-9SX" eventType="valueChanged" id="j9f-VZ-0j0"/>
+                                </connections>
                             </slider>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-ej-KYf">
                                 <rect key="frame" x="40" y="89" width="302" height="320"/>
@@ -68,6 +71,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="FeJ-wa-Aif"/>
                     </view>
+                    <connections>
+                        <outlet property="progressSlider" destination="3ai-Vw-bDH" id="aBK-7K-rqP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zp-H6-vvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
