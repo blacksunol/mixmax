@@ -118,7 +118,6 @@ class DropboxClient: Client {
             
             task.resume()
         }
-
     }
     
     class func setup() {

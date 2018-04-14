@@ -32,5 +32,9 @@ let menuListReducer: Reducer<MenuListState> = { action, state in
         UserDefaults.standard.set(action.cloud.rawValue, forKey: "selectedCloud")
     }
     
+    if let action = action as? SelectedFeatureAction {
+        state.feature = action.feature
+    }
+    
     return state
 }

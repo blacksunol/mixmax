@@ -27,3 +27,8 @@ struct SelectedCloudAction: Action {
     
     let cloud: CloudType 
 }
+
+struct SelectedFeatureAction: Action {
+    
+    let feature: String
+}

@@ -17,4 +17,7 @@ struct DropboxItem: Item {
     var track: Track = Track()
     
     var path = ""
+    
+    var cloud: CloudType = .dropbox
+
 }

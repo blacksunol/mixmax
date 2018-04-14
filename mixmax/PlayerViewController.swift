@@ -16,9 +16,12 @@ import RxCocoa
 class PlayerViewController: UIViewController {
     
     @IBOutlet weak var progressSlider: UISlider!
-
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    
     var disposeBag = DisposeBag()
-    var player: AVPlayer?
+    fileprivate var player: AVPlayer?
     var item: Item?
     var items: [Item]? {
         didSet {
@@ -27,12 +30,26 @@ class PlayerViewController: UIViewController {
     }
     
     var playableItems: [Item]?
+    let slider = UISlider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+    NotificationCenter.default.rx.notification(Notification.Name.AVPlayerItemDidPlayToEndTime)
+            .asObservable().subscribe(onNext: { [weak self] notification in
+                guard let weakSelf = self else { return }
+                weakSelf.playNext()
+                
+            }).disposed(by: disposeBag)
+        
+        var outValue: Float = 0
+        slider.rx.value.subscribe(onNext: { value in
+            outValue = value
+            print("outValue = \(outValue)")
+        }).disposed(by: disposeBag)
+        slider.value = 0.3
+        
         playItem(item: item)
-
+        
         //        progressSlider.rx.value.map{ value -> String in
         //            "\(Int(value * 2000)) $"
         //            }.asObservable().bindTo { _ in
@@ -45,13 +62,21 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func slideUpdated(_ sender: UISlider) {
-        let seconds : Int64 = Int64(sender.value)
-        let targetTime:CMTime = CMTimeMake(seconds, 1)
-        player?.seek(to: targetTime)
+        
+        if let duration = player?.currentItem?.asset.duration.seconds {
+            
+            let seconds: Int = Int(Double(sender.value) * duration)
+            player?.seek(to: CMTimeMake(Int64(seconds), 1))
+            player?.play()
+            slider.value = 0.4
+            slider.sendActions(for: UIControlEvents.valueChanged)
+            
+        }
         
     }
     
     func playItem(item: Item?) {
+        
         let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
         let urlStr = item?.track.url ?? ""
@@ -66,13 +91,15 @@ class PlayerViewController: UIViewController {
             case .loaded:
                 let playerItem = AVPlayerItem(asset: asset)
                 self.player = AVPlayer(playerItem: playerItem)
-                let maxValue: Float = Float(CMTimeGetSeconds(playerItem.duration))
-                print("maxValue = \(maxValue)")
-                self.player?.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { time in
-                    if let duration = self.player?.currentItem?.duration {
+                
+                self.player?.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { [weak self] time in
+                    guard let weakSelf = self else { return }
+                    if let duration = weakSelf.player?.currentItem?.duration {
                         let duration = CMTimeGetSeconds(duration), time = CMTimeGetSeconds(time)
                         let progress = (time/duration)
-                        self.progressSlider.setValue(Float(progress), animated: true)
+                        weakSelf.progressSlider.setValue(Float(progress), animated: true)
+                        weakSelf.populateLabelWithTime(weakSelf.durationLabel, time: duration)
+                        weakSelf.populateLabelWithTime(weakSelf.timerLabel, time: time)
                     }})
                 self.player?.play()
             case .failed: break
@@ -81,7 +108,26 @@ class PlayerViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func populateLabelWithTime(_ label : UILabel, time: Double) {
+        let minutes = Int(time / 60)
+        let seconds = Int(time) - minutes * 60
         
+        label.text = String(format: "%02d", minutes) + ":" + String(format: "%02d", seconds)
+    }
+    
+    func playNext() {
+        let index = playableItems?.index {
+            $0.track.url == self.item?.track.url
+            } ?? 0
+        let nextIndex = index + 1
+        if nextIndex < (playableItems?.count)! {
+            player?.pause()
+            player = nil
+            item = playableItems?[nextIndex]
+            playItem(item: item)
+        }
     }
     
     @IBAction func pauseTapped(_ sender: UIButton) {
@@ -96,16 +142,7 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func playNext(_ sender: Any) {
-        let index = playableItems?.index {
-            $0.track.url == self.item?.track.url
-            } ?? 0
-        let nextIndex = index + 1
-        if nextIndex < (playableItems?.count)! {
-            player?.pause()
-            player = nil
-            item = playableItems?[nextIndex]
-            playItem(item: item)
-        }
+        playNext()
     }
     
     
@@ -142,6 +179,7 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         player?.pause()
         player = nil
         item = playableItems?[indexPath.row]

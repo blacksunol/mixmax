@@ -17,11 +17,11 @@ enum CloudType: String, EnumCollection {
 
 class CloudService {
     
-    func callItems(from item: Item?, cloudType: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item?, cloud: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
         
         var client: Client?
 
-        switch cloudType {
+        switch cloud {
         case .dropbox:
             client = DropboxClient()
         case .google:
