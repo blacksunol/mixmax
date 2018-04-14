@@ -17,6 +17,7 @@ protocol Item {
     var kind: Kind { get set }
     var parent: Item? { get set }
     var track: Track { get set }
+    var cloud: CloudType { get }
 }
 
 extension Item {

@@ -49,6 +49,11 @@
 		1F76FC3720762DDD009F823E /* MenuListReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F76FC3620762DDD009F823E /* MenuListReducer.swift */; };
 		1F76FC3920762ED7009F823E /* MenuListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F76FC3820762ED7009F823E /* MenuListState.swift */; };
 		1F7BFA6B20786E8000AF53BB /* SettingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BFA6A20786E8000AF53BB /* SettingCellViewModel.swift */; };
+		1F9046CE208080A300B7CCE7 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9046CD208080A300B7CCE7 /* ItemStore.swift */; };
+		1F9046D0208080BA00B7CCE7 /* ItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9046CF208080BA00B7CCE7 /* ItemAction.swift */; };
+		1F9046D2208080CF00B7CCE7 /* ItemReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9046D1208080CF00B7CCE7 /* ItemReducer.swift */; };
+		1F9046D42080810600B7CCE7 /* ItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9046D32080810600B7CCE7 /* ItemState.swift */; };
+		1F9046D82080A8CA00B7CCE7 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9046D72080A8CA00B7CCE7 /* Parser.swift */; };
 		1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */; };
 		1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85D20732494002E428B /* MenuCellViewModel.swift */; };
 		1FB1E860207330A1002E428B /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1E85F207330A0002E428B /* MenuListViewModel.swift */; };
@@ -56,7 +61,7 @@
 		1FCE85A5205BA6AB0017DF16 /* GoogleLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */; };
 		1FD59DD52078A938005F18DC /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD59DD42078A938005F18DC /* SettingViewModel.swift */; };
 		1FE0520F207671A900CFC0C5 /* MenuListActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0520E207671A900CFC0C5 /* MenuListActions.swift */; };
-		1FE052112076866A00CFC0C5 /* StoreCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE052102076866A00CFC0C5 /* StoreCreator.swift */; };
+		1FE052112076866A00CFC0C5 /* MenuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE052102076866A00CFC0C5 /* MenuStore.swift */; };
 		439DEF28C55A120B19B12F46 /* Pods_mixmaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2727F973D76302EE99231 /* Pods_mixmaxUITests.framework */; };
 		661D196EF31A347979A5F314 /* Pods_mixmax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD6EF4718ADF6285A020BF /* Pods_mixmax.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +146,11 @@
 		1F76FC3620762DDD009F823E /* MenuListReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListReducer.swift; sourceTree = "<group>"; };
 		1F76FC3820762ED7009F823E /* MenuListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListState.swift; sourceTree = "<group>"; };
 		1F7BFA6A20786E8000AF53BB /* SettingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellViewModel.swift; sourceTree = "<group>"; };
+		1F9046CD208080A300B7CCE7 /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		1F9046CF208080BA00B7CCE7 /* ItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAction.swift; sourceTree = "<group>"; };
+		1F9046D1208080CF00B7CCE7 /* ItemReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReducer.swift; sourceTree = "<group>"; };
+		1F9046D32080810600B7CCE7 /* ItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemState.swift; sourceTree = "<group>"; };
+		1F9046D72080A8CA00B7CCE7 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		1FB1E85B207318CF002E428B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		1FB1E85D20732494002E428B /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		1FB1E85F207330A0002E428B /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
@@ -148,7 +158,7 @@
 		1FCE85A3205BA6AB0017DF16 /* GoogleLoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoogleLoginViewController.storyboard; sourceTree = "<group>"; };
 		1FD59DD42078A938005F18DC /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		1FE0520E207671A900CFC0C5 /* MenuListActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListActions.swift; sourceTree = "<group>"; };
-		1FE052102076866A00CFC0C5 /* StoreCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCreator.swift; sourceTree = "<group>"; };
+		1FE052102076866A00CFC0C5 /* MenuStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuStore.swift; sourceTree = "<group>"; };
 		40B98DEC4509BE8B71F11ACD /* Pods_mixmaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mixmaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50241569F41DCA559CB67031 /* Pods-mixmaxUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmaxUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58CDD8BEFC4253C2CA3AE444 /* Pods-mixmax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mixmax.release.xcconfig"; path = "Pods/Target Support Files/Pods-mixmax/Pods-mixmax.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,6 +248,7 @@
 				1F15A5022064AC0A00FC802A /* Client.swift */,
 				1F1D5DA52061698A00F8C3DB /* GoogleClient.swift */,
 				1F1D5DA72061699C00F8C3DB /* DropboxClient.swift */,
+				1F9046D72080A8CA00B7CCE7 /* Parser.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -253,13 +264,13 @@
 			name = Items;
 			sourceTree = "<group>";
 		};
-		1F3F84051EBAF40400138213 /* DropBox */ = {
+		1F3F84051EBAF40400138213 /* Dropbox */ = {
 			isa = PBXGroup;
 			children = (
 				1F6595C91EB0EF3A002B5DD5 /* DropBoxLoginViewController.swift */,
 				1F6595CB1EB0EF67002B5DD5 /* DropBoxLoginViewController.storyboard */,
 			);
-			name = DropBox;
+			name = Dropbox;
 			sourceTree = "<group>";
 		};
 		1F3F84061EBAF44600138213 /* Libraries */ = {
@@ -315,7 +326,7 @@
 				1F3F84041EBAF3E900138213 /* Items */,
 				1F5F28AC20694299002A28FE /* Player */,
 				1F213EE020624B14007D47BF /* Services */,
-				1F3F84051EBAF40400138213 /* DropBox */,
+				1F3F84051EBAF40400138213 /* Dropbox */,
 				1FCE85A6205BA6CB0017DF16 /* Google */,
 				1F1F45952060B3BA00DA1C51 /* Settings */,
 				1F0D9F8E2060C2260047D076 /* Menu */,
@@ -346,7 +357,7 @@
 		1F659D3F20791DA600C57DBD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				1FE052102076866A00CFC0C5 /* StoreCreator.swift */,
+				1FE052102076866A00CFC0C5 /* MenuStore.swift */,
 				1F76FC3620762DDD009F823E /* MenuListReducer.swift */,
 				1F76FC3820762ED7009F823E /* MenuListState.swift */,
 				1FE0520E207671A900CFC0C5 /* MenuListActions.swift */,
@@ -371,12 +382,32 @@
 				1F20B9F1207A7274008EAE33 /* ReactiveReSwiftBridge.swift */,
 				1F659D4020791DD200C57DBD /* Setting */,
 				1F659D3F20791DA600C57DBD /* Menu */,
+				1F9046D62080A84600B7CCE7 /* Client */,
+				1F9046D5208084B200B7CCE7 /* Item */,
+			);
+			name = Redux;
+			sourceTree = "<group>";
+		};
+		1F9046D5208084B200B7CCE7 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				1F9046CD208080A300B7CCE7 /* ItemStore.swift */,
+				1F9046CF208080BA00B7CCE7 /* ItemAction.swift */,
+				1F9046D1208080CF00B7CCE7 /* ItemReducer.swift */,
+				1F9046D32080810600B7CCE7 /* ItemState.swift */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		1F9046D62080A84600B7CCE7 /* Client */ = {
+			isa = PBXGroup;
+			children = (
 				1F659D492079295200C57DBD /* ClientState.swift */,
 				1F659D4D2079C41A00C57DBD /* ClientAction.swift */,
 				1F659D4F2079C52F00C57DBD /* ClientReducer.swift */,
 				1F659D512079C5C300C57DBD /* ClientStore.swift */,
 			);
-			name = Redux;
+			name = Client;
 			sourceTree = "<group>";
 		};
 		1FCE85A6205BA6CB0017DF16 /* Google */ = {
@@ -684,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9046D0208080BA00B7CCE7 /* ItemAction.swift in Sources */,
 				1F659D522079C5C300C57DBD /* ClientStore.swift in Sources */,
 				1F659D4220791E0300C57DBD /* SettingState.swift in Sources */,
 				1F1F45992060B4FF00DA1C51 /* SettingTableViewCell.swift in Sources */,
@@ -700,25 +732,29 @@
 				1F489805207C87850052179C /* MenuFeatureTableViewCell.swift in Sources */,
 				1F20B9F2207A7274008EAE33 /* ReactiveReSwiftBridge.swift in Sources */,
 				1F659D4A2079295200C57DBD /* ClientState.swift in Sources */,
+				1F9046D82080A8CA00B7CCE7 /* Parser.swift in Sources */,
 				1F659D4420791E1A00C57DBD /* SettingReducer.swift in Sources */,
 				1F6595C61EB0C603002B5DD5 /* SwiftyJSON.swift in Sources */,
 				1F76FC3920762ED7009F823E /* MenuListState.swift in Sources */,
 				1F1F45922060B39800DA1C51 /* SettingViewController.swift in Sources */,
+				1F9046D2208080CF00B7CCE7 /* ItemReducer.swift in Sources */,
 				1F659D4620791E4600C57DBD /* SettingAction.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
 				1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */,
 				1FD59DD52078A938005F18DC /* SettingViewModel.swift in Sources */,
 				1F76FC3720762DDD009F823E /* MenuListReducer.swift in Sources */,
 				1F659D4E2079C41A00C57DBD /* ClientAction.swift in Sources */,
+				1F9046D42080810600B7CCE7 /* ItemState.swift in Sources */,
 				1F15A5032064AC0A00FC802A /* Client.swift in Sources */,
 				1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1F659D4C20792BC700C57DBD /* EnumCollection.swift in Sources */,
-				1FE052112076866A00CFC0C5 /* StoreCreator.swift in Sources */,
+				1FE052112076866A00CFC0C5 /* MenuStore.swift in Sources */,
 				1FCE85A4205BA6AB0017DF16 /* GoogleLoginViewController.swift in Sources */,
 				1F182D48205F68770077FCA3 /* CloudService.swift in Sources */,
 				1F659D4820791E5800C57DBD /* SettingStore.swift in Sources */,
+				1F9046CE208080A300B7CCE7 /* ItemStore.swift in Sources */,
 				1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */,
 				1F659D502079C52F00C57DBD /* ClientReducer.swift in Sources */,
 				1F1A96D6206D3633006447A7 /* GoogleItem.swift in Sources */,

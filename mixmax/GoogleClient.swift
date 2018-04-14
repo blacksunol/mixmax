@@ -30,6 +30,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
         configure()
         
         let subscription = self.accessToken.asObservable().subscribe(onNext: { accessToken in
+            
             print("accessToken = \(accessToken)")
             var items = [Item]()
             
@@ -41,9 +42,12 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
             request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             let task = session.dataTask(with: request) { (data, response, error) in
+                
                 if let error = error  {
+                    
                     print(error.localizedDescription)
                 } else {
+                    
                     DispatchQueue.main.async {
                         let json = try?  JSON(data: data!)
                         guard let jsonArray = json?["files"].array else {
@@ -97,14 +101,12 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
               withError error: Error!) {
 
         if let error = error {
-            print(error.localizedDescription)
             
+            print(error.localizedDescription)
         } else {
 
             accessToken.accept(GIDSignIn.sharedInstance().currentUser.authentication.accessToken)
             clientStore.dispatch(LoginAction())
-            
-
         }   
     }
     

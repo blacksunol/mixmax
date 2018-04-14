@@ -19,7 +19,7 @@ let menuMiddleware = Middleware<MenuListState>().sideEffect { _, _, action in
 
 let menuStore = Store(
     reducer: menuListReducer,
-    observable: ObservableProperty(MenuListState(clouds:[], selectedCloud: .none)),
+    observable: Variable(MenuListState(clouds:[], selectedCloud: .none, feature: "")),
     middleware: menuMiddleware
 )
 

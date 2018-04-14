@@ -10,4 +10,5 @@ struct MenuListState {
     
     var clouds: [CloudType]
     var selectedCloud: CloudType
+    var feature: String = ""
 }

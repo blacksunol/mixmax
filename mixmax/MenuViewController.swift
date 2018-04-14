@@ -18,7 +18,7 @@ class MenuViewController: UIViewController {
     let features = ["Setting"]
     let currentFeature: BehaviorRelay<String> = BehaviorRelay(value: "")
     fileprivate var settingViewModel = SettingViewModel(clouds:  [])
-    var currentCloud: BehaviorRelay<CloudType> = BehaviorRelay(value: .none)
+    
     
     let disposeBag = SubscriptionReferenceBag()
 
@@ -40,9 +40,10 @@ class MenuViewController: UIViewController {
         menuStore.dispatch(InitCloudsAction(clouds: clouds))
         
         disposeBag += menuStore.observable.subscribe { [weak self] in
-            self?.settingViewModel =  SettingViewModel(clouds: $0.clouds)
-            self?.currentCloud.accept($0.selectedCloud)
-            self?.menuTableView.reloadData()
+            itemStore.dispatch(ItemAction(currentItem: nil, cloud: $0.selectedCloud))
+            guard let weakSelf = self else { return }
+            weakSelf.settingViewModel = SettingViewModel(clouds: $0.clouds)
+            weakSelf.menuTableView.reloadData()
         }
         
     }

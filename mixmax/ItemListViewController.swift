@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import ReactiveReSwift
 
 class ItemListViewController: UIViewController {
     
@@ -19,8 +20,9 @@ class ItemListViewController: UIViewController {
     
     private let cloudService = CloudService()
     
-    private let disposeBag = DisposeBag()
-    
+    private let disposeBag = SubscriptionReferenceBag()
+    private let disposeBag2 = DisposeBag()
+
     private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     private let refreshControl = UIRefreshControl()
@@ -40,21 +42,20 @@ class ItemListViewController: UIViewController {
     }
     
     @objc private func loadItems() {
-        
-        let vc = self.slideMenuController()?.rightViewController as! MenuViewController
-        vc.currentCloud.asObservable().subscribe(onNext: { cloudType in
-            
-            self.activityIndicator.startAnimating()
-
-            self.cloudService.callItems(from: self.item, cloudType: cloudType) { [weak self] (items) in
-                guard let weakSelf = self else { return }
-                weakSelf.title = cloudType.rawValue
+        disposeBag += itemStore.observable.asObservable().map { $0.cloud }.distinctUntilChanged { $0 == $1 }.subscribe { [weak self] cloud in
+            guard let weakSelf = self else { return }
+            guard let cloud = cloud else { return }
+            weakSelf.activityIndicator.startAnimating()
+            print("#itemStore")
+            weakSelf.cloudService.callItems(from: weakSelf.item, cloud: cloud) {  (items) in
+                weakSelf.title = cloud.rawValue
                 weakSelf.activityIndicator.stopAnimating()
                 weakSelf.items = items.filter { $0.kind == .audio || $0.kind == .folder }
                 weakSelf.itemListCollectionView.reloadSections(IndexSet(integer: 0))
                 weakSelf.refreshControl.endRefreshing()
             }
-        }).disposed(by: disposeBag)
+        }
+
     }
     
     private func configureCollectionView() {
@@ -64,6 +65,14 @@ class ItemListViewController: UIViewController {
     
     private func observeSettings() {
         
+//        disposeBag += menuStore.observable.asObservable().map { $0.feature }.distinctUntilChanged { $0 == $1 }.skip(1).subscribe { _ in
+//            self.navigationController?.popToRootViewController(animated: false)
+//            let storyboard = UIStoryboard(name: "SettingViewController", bundle: nil)
+//            if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+        
         let vc = self.slideMenuController()?.rightViewController as! MenuViewController
         vc.currentFeature.asObservable().skip(1).subscribe(onNext: { feature in
             self.navigationController?.popToRootViewController(animated: false)
@@ -71,7 +80,7 @@ class ItemListViewController: UIViewController {
             if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-        }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag2)
     }
     
     private func configureRefreshControl() {
@@ -114,12 +123,10 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         
         switch item.kind {
         case .audio:
-            self.item = item
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
                 playerViewController.item = item
                 playerViewController.items = items
-                
                 present(playerViewController, animated: true)
             }
         case .folder:

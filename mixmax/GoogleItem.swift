@@ -17,4 +17,7 @@ struct GoogleItem : Item {
     var track: Track = Track()
     
     var id = ""
+    
+    var cloud: CloudType = .google
+
 }
