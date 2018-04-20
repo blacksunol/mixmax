@@ -481,7 +481,6 @@
 				1F6595A61EACB46F002B5DD5 /* Frameworks */,
 				1F6595A71EACB46F002B5DD5 /* Resources */,
 				0F6E22601B74D8CB47B48057 /* [CP] Embed Pods Frameworks */,
-				725307FA20ECFFA5D45ACC6F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,7 +504,7 @@
 				TargetAttributes = {
 					1F6595871EACB46F002B5DD5 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = LH5CCFR5XZ;
+						DevelopmentTeam = T78D673J43;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -614,7 +613,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -655,21 +654,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmax/Pods-mixmax-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		725307FA20ECFFA5D45ACC6F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mixmaxUITests/Pods-mixmaxUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90C6EE535EAE60C81E38F8C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -913,7 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LH5CCFR5XZ;
+				DEVELOPMENT_TEAM = T78D673J43;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -936,7 +920,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LH5CCFR5XZ;
+				DEVELOPMENT_TEAM = T78D673J43;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

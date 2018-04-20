@@ -12,6 +12,8 @@ import UIKit
 import AVFoundation
 import RxSwift
 import RxCocoa
+import MediaPlayer
+
 
 class PlayerViewController: UIViewController {
     
@@ -19,6 +21,10 @@ class PlayerViewController: UIViewController {
     
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    
+    fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
     
     var disposeBag = DisposeBag()
     fileprivate var player: AVPlayer?
@@ -34,7 +40,19 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    NotificationCenter.default.rx.notification(Notification.Name.AVPlayerItemDidPlayToEndTime)
+        
+        remoteControl()
+        
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
+        
+        
+        NotificationCenter.default.rx.notification(Notification.Name.AVPlayerItemDidPlayToEndTime)
             .asObservable().subscribe(onNext: { [weak self] notification in
                 guard let weakSelf = self else { return }
                 weakSelf.playNext()
@@ -61,6 +79,22 @@ class PlayerViewController: UIViewController {
         
     }
     
+    func remoteControl() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        commandCenter.previousTrackCommand.isEnabled = true;
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(PlayerViewController.playPrevious as (PlayerViewController) -> () -> ()))
+        
+        commandCenter.nextTrackCommand.isEnabled = true
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(PlayerViewController.playNext as (PlayerViewController) -> () -> ()))
+        
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget(self, action: #selector(PlayerViewController.play as (PlayerViewController) -> () -> ()))
+        
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget(self, action: #selector(PlayerViewController.pause as (PlayerViewController) -> () -> ()))
+    }
+    
     @IBAction func slideUpdated(_ sender: UISlider) {
         
         if let duration = player?.currentItem?.asset.duration.seconds {
@@ -76,6 +110,16 @@ class PlayerViewController: UIViewController {
     }
     
     func playItem(item: Item?) {
+        
+        activityIndicator.startAnimating()
+        player?.pause()
+        player = nil
+        progressSlider.setValue(Float(0), animated: true)
+        populateLabelWithTime(durationLabel, time: Double(0))
+        populateLabelWithTime(timerLabel, time: Double(0))
+        playButton.isSelected = false
+
+
         
         let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
@@ -100,6 +144,7 @@ class PlayerViewController: UIViewController {
                         weakSelf.progressSlider.setValue(Float(progress), animated: true)
                         weakSelf.populateLabelWithTime(weakSelf.durationLabel, time: duration)
                         weakSelf.populateLabelWithTime(weakSelf.timerLabel, time: time)
+                        weakSelf.activityIndicator.stopAnimating()
                     }})
                 self.player?.play()
             case .failed: break
@@ -111,6 +156,8 @@ class PlayerViewController: UIViewController {
     }
     
     func populateLabelWithTime(_ label : UILabel, time: Double) {
+        guard !(time.isNaN || time.isInfinite) else { return }
+        
         let minutes = Int(time / 60)
         let seconds = Int(time) - minutes * 60
         
@@ -123,8 +170,7 @@ class PlayerViewController: UIViewController {
             } ?? 0
         let nextIndex = index + 1
         if nextIndex < (playableItems?.count)! {
-            player?.pause()
-            player = nil
+
             item = playableItems?[nextIndex]
             playItem(item: item)
         }
@@ -147,16 +193,26 @@ class PlayerViewController: UIViewController {
     
     
     @IBAction func playBack(_ sender: Any) {
+        playPrevious()
+    }
+    
+    func playPrevious() {
         let index = playableItems?.index {
             $0.track.url == self.item?.track.url
             } ?? 0
         let previousIndex = index - 1
         if previousIndex >= 0 {
-            player?.pause()
-            player = nil
             item = playableItems?[previousIndex]
             playItem(item: item)
         }
+    }
+    
+    func pause() {
+        player?.pause()
+    }
+    
+    func play() {
+        player?.play()
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {

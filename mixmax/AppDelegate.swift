@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import SlideMenuControllerSwift
+import AVFoundation
 
 
 @UIApplicationMain
@@ -32,6 +33,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
+        
+        do
+        {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            //!! IMPORTANT !!
+            /*
+             If you're using 3rd party libraries to play sound or generate sound you should
+             set sample rate manually here.
+             Otherwise you wont be able to hear any sound when you lock screen
+             */
+            //try AVAudioSession.sharedInstance().setPreferredSampleRate(4096)
+        }
+        catch
+        {
+            print(error)
+        }
+        // This will enable to show nowplaying controls on lock screen
+        application.beginReceivingRemoteControlEvents()
         
 
 
