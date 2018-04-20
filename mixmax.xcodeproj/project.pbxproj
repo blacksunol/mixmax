@@ -906,7 +906,7 @@
 				INFOPLIST_FILE = mixmax/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
+				PRODUCT_BUNDLE_IDENTIFIER = ving.com.muzecloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "mixmax/mixmax-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -929,7 +929,7 @@
 				INFOPLIST_FILE = mixmax/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ving.com.mixmax;
+				PRODUCT_BUNDLE_IDENTIFIER = ving.com.muzecloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "mixmax/mixmax-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

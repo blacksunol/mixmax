@@ -120,7 +120,7 @@ class GoogleClient : NSObject, Client, GIDSignInDelegate {
 
     class func setup() {
         
-        GIDSignIn.sharedInstance().clientID = "1081018989060-95jkittnpf1oi28hkonjsoiipol1iajj.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "779028964365-89k4hkidvgpsr4l3m4vkuknkmr5m6mcf.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/drive.readonly"]
         GIDSignIn.sharedInstance().signInSilently()
     }

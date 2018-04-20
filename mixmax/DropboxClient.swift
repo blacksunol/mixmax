@@ -121,7 +121,7 @@ class DropboxClient: Client {
     }
     
     class func setup() {
-        DropboxClientsManager.setupWithAppKey("8g16zfowqmgqtmd")
+        DropboxClientsManager.setupWithAppKey("yiyza1su258n3xz")
     }
     
     class func handleRedirectURL(url: URL) {
