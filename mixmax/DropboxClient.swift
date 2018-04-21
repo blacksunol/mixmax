@@ -19,6 +19,8 @@ class DropboxClient: Client {
     
     let kDropBoxToken = "http://localhost/#access_token="
     
+    let playableFiles = ["mp3", "mp4", "wav", "wma", "m4v", "avi", "mpeg", "3gp"]
+    
     let accessToken = DropboxClientsManager.authorizedClient?.auth.client.accessToken ?? ""
 
     func callItems(from item: Item?, callFinished: @escaping ([Item]) -> ()) {
@@ -61,7 +63,8 @@ class DropboxClient: Client {
                         newItem.parent = item
                         newItem.name = jsonItem["name"].string ?? ""
                         let tag = jsonItem[".tag"].string
-                        if tag == "file" && newItem.name?.components(separatedBy: ".").last == "mp3" {
+                        let fileExtension = newItem.name?.components(separatedBy: ".").last ?? ""
+                        if tag == "file" && self.playableFiles.contains(fileExtension) {
                             newItem.kind = .audio
                         } else if tag == "folder" {
                             newItem.kind = .folder
