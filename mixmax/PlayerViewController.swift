@@ -14,7 +14,6 @@ import RxSwift
 import RxCocoa
 import MediaPlayer
 
-
 class PlayerViewController: UIViewController {
     
     @IBOutlet weak var progressSlider: UISlider!
@@ -25,12 +24,15 @@ class PlayerViewController: UIViewController {
     
     fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
-    
     var disposeBag = DisposeBag()
-    fileprivate var player: AVPlayer?
+
+    fileprivate var player: Player?
+    
     var item: Item?
     var items: [Item]? {
+        
         didSet {
+            
             playableItems = items?.filter { $0.isPlayable }
         }
     }
@@ -66,7 +68,14 @@ class PlayerViewController: UIViewController {
         }).disposed(by: disposeBag)
         slider.value = 0.3
         
-        playItem(item: item)
+        player = Player()
+        
+        player?.delegate = self
+        
+        player?.item = item
+        player?.items = playableItems
+        
+        player?.playItem(item: item)
         
         //        progressSlider.rx.value.map{ value -> String in
         //            "\(Int(value * 2000)) $"
@@ -97,62 +106,16 @@ class PlayerViewController: UIViewController {
     
     @IBAction func slideUpdated(_ sender: UISlider) {
         
-        if let duration = player?.currentItem?.asset.duration.seconds {
-            
-            let seconds: Int = Int(Double(sender.value) * duration)
-            player?.seek(to: CMTimeMake(Int64(seconds), 1))
-            player?.play()
+            player?.seek(toValue: sender.value)
             slider.value = 0.4
             slider.sendActions(for: UIControlEvents.valueChanged)
-            
-        }
+
         
     }
     
     func playItem(item: Item?) {
         
-        activityIndicator.startAnimating()
-        player?.pause()
-        player = nil
-        progressSlider.setValue(Float(0), animated: true)
-        populateLabelWithTime(durationLabel, time: Double(0))
-        populateLabelWithTime(timerLabel, time: Double(0))
-        playButton.isSelected = false
-
-
-        
-        let token = item?.track.token ?? ""
-        let header = ["Authorization": "Bearer \(token)"]
-        let urlStr = item?.track.url ?? ""
-        let url = URL(string: urlStr)
-        
-        let asset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])
-        asset.loadValuesAsynchronously(forKeys: ["playable"]) {
-            
-            var error: NSError? = nil
-            let status = asset.statusOfValue(forKey: "playable", error: &error)
-            switch status {
-            case .loaded:
-                let playerItem = AVPlayerItem(asset: asset)
-                self.player = AVPlayer(playerItem: playerItem)
-                
-                self.player?.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { [weak self] time in
-                    guard let weakSelf = self else { return }
-                    if let duration = weakSelf.player?.currentItem?.duration {
-                        let duration = CMTimeGetSeconds(duration), time = CMTimeGetSeconds(time)
-                        let progress = (time/duration)
-                        weakSelf.progressSlider.setValue(Float(progress), animated: true)
-                        weakSelf.populateLabelWithTime(weakSelf.durationLabel, time: duration)
-                        weakSelf.populateLabelWithTime(weakSelf.timerLabel, time: time)
-                        weakSelf.activityIndicator.stopAnimating()
-                    }})
-                self.player?.play()
-            case .failed: break
-            case .cancelled: break
-            default: break
-                
-            }
-        }
+        player?.playItem(item: item)
     }
     
     func populateLabelWithTime(_ label : UILabel, time: Double) {
@@ -165,15 +128,8 @@ class PlayerViewController: UIViewController {
     }
     
     func playNext() {
-        let index = playableItems?.index {
-            $0.track.url == self.item?.track.url
-            } ?? 0
-        let nextIndex = index + 1
-        if nextIndex < (playableItems?.count)! {
-
-            item = playableItems?[nextIndex]
-            playItem(item: item)
-        }
+        
+        player?.playNext()
     }
     
     @IBAction func pauseTapped(_ sender: UIButton) {
@@ -188,46 +144,70 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func playNext(_ sender: Any) {
+        
         playNext()
     }
     
     
     @IBAction func playBack(_ sender: Any) {
+        
         playPrevious()
     }
     
     func playPrevious() {
-        let index = playableItems?.index {
-            $0.track.url == self.item?.track.url
-            } ?? 0
-        let previousIndex = index - 1
-        if previousIndex >= 0 {
-            item = playableItems?[previousIndex]
-            playItem(item: item)
-        }
+        
+        player?.playPrevious()
     }
     
     func pause() {
+        
         player?.pause()
     }
     
     func play() {
+        
         player?.play()
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
+        
         player?.pause()
         player = nil
         dismiss(animated: true, completion: nil)
     }
 }
 
+extension PlayerViewController: PlayerDelegate {
+    
+    func playerProgressing(progress: Double, duration: Double, time: Double) {
+        
+        progressSlider.setValue(Float(progress), animated: true)
+        populateLabelWithTime(durationLabel, time: duration)
+        populateLabelWithTime(timerLabel, time: time)
+        activityIndicator.stopAnimating()
+
+    }
+
+    func playerStartPlaying() {
+        
+        activityIndicator.startAnimating()
+        progressSlider.setValue(Float(0), animated: true)
+        populateLabelWithTime(durationLabel, time: Double(0))
+        populateLabelWithTime(timerLabel, time: Double(0))
+        playButton.isSelected = false
+
+    }
+}
+
+
 extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return playableItems?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let item = playableItems?[indexPath.row]
         let cell =  UITableViewCell()
         cell.textLabel?.text = item?.name

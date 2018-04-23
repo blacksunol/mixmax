@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+protocol Parser {
+    var json: String { get }
+    func parse() -> [Item]
+}
+
+struct Parser2<T: Item> {
+    
+    func parse() -> [T] {
+        return []
+    }
+}
