@@ -18,6 +18,6 @@ struct GoogleItem : Item {
     
     var id = ""
     
-    var cloud: CloudType = .google
+    var cloud: Cloud = .google
 
 }

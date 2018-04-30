@@ -9,7 +9,6 @@
 //https://stackoverflow.com/questions/7894979/how-to-show-avplayer-current-play-duration-in-uislider
 
 import UIKit
-import AVFoundation
 import RxSwift
 import RxCocoa
 import MediaPlayer

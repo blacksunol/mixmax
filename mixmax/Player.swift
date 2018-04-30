@@ -27,10 +27,6 @@ class Player {
     
     var delegate: PlayerDelegate?
     
-//    init() {
-//        remoteControl()
-//    }
-    
     func playItem(item: Item?) {
         delegate?.playerStartPlaying()
 
@@ -114,21 +110,4 @@ class Player {
         }
 
     }
-    
-//    func remoteControl() {
-//
-//        let commandCenter = MPRemoteCommandCenter.shared()
-//
-//        commandCenter.previousTrackCommand.isEnabled = true;
-//        commandCenter.previousTrackCommand.addTarget(self, action: #selector(Player.playPrevious as (Player) -> () -> ()))
-//
-//        commandCenter.nextTrackCommand.isEnabled = true
-//        commandCenter.nextTrackCommand.addTarget(self, action: #selector(Player.playNext as (Player) -> () -> ()))
-//
-//        commandCenter.playCommand.isEnabled = true
-//        commandCenter.playCommand.addTarget(self, action: #selector(Player.play as (Player) -> () -> ()))
-//
-//        commandCenter.pauseCommand.isEnabled = true
-//        commandCenter.pauseCommand.addTarget(self, action: #selector(Player.pause as (Player) -> () -> ()))
-//    }
 }

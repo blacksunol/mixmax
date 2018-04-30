@@ -24,7 +24,7 @@ let menuListReducer: Reducer<MenuListState> = { action, state in
     if let action = action as? InitCloudsAction {
         state.clouds = action.clouds
         let defaultCloud = UserDefaults.standard.string(forKey: "selectedCloud") ?? ""
-        state.selectedCloud = CloudType(rawValue: defaultCloud) ?? CloudType.none
+        state.selectedCloud = Cloud(rawValue: defaultCloud) ?? Cloud.none
     }
     
     if let action = action as? SelectedCloudAction {

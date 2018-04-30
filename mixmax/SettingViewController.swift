@@ -17,7 +17,7 @@ class SettingViewController: UIViewController {
     fileprivate let settingViewModel = SettingViewModel(clouds:  [.google, .dropbox])
     let disposeBag = SubscriptionReferenceBag()
     
-    func showAlert(cloud: CloudType) {
+    func showAlert(cloud: Cloud) {
         
         let alert = UIAlertController(
             title: "Sign out",
@@ -29,8 +29,8 @@ class SettingViewController: UIViewController {
             title: "OK",
             style: .default
             ) { (action:UIAlertAction!) in
-                if cloud == .dropbox { DropboxClient.signOut() }
-                if cloud == .google { GoogleClient.signOut() }
+                if cloud == .dropbox { DropboxService.signOut() }
+                if cloud == .google { GoogleService.signOut() }
                 menuStore.dispatch(MenuRemoveCloudAction(cloud: cloud))
                 clientStore.dispatch(LoginAction())
         }
@@ -85,7 +85,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            GoogleClient.authorize(controller: self)
+            GoogleService.authorize(controller: self)
         } else {
             
             let isActive = cellViewModel?.isActive ?? false
@@ -95,7 +95,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            DropboxClient.authorize(controller: self)
+            DropboxService.authorize(controller: self)
         }
     }
     

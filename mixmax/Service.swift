@@ -7,6 +7,5 @@
 //
 
 protocol Service {
-    
-    var downloader: Downloader { get set}
+      
 }

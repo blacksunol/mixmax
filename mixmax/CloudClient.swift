@@ -1,5 +1,5 @@
 //
-//  CloudService.swift
+//  CloudClient.swift
 //  mixmax
 //
 //  Created by Vinh Nguyen on 3/19/18.
@@ -8,29 +8,31 @@
 
 import Foundation
 
-enum CloudType: String, EnumCollection {
+enum Cloud: String, EnumCollection {
+    
     case google = "google"
     case dropbox = "dropbox"
     case onedrive = "onedrive"
     case none
 }
 
-class CloudService {
+class CloudClient {
     
-    func callItems(from item: Item?, cloud: CloudType , callFished: @escaping (_ items: [Item]) -> ()) {
+    func callItems(from item: Item?, cloud: Cloud , callFished: @escaping (_ items: [Item]) -> ()) {
         
-        var client: Client?
+        var itemList: ItemList?
 
         switch cloud {
         case .dropbox:
-            client = DropboxClient()
+            itemList = DropboxService()
         case .google:
-            client = GoogleClient()
+            itemList = GoogleService()
         default:
             callFished([])
         }
         
-        client?.callItems(from: item) { (items) in
+        itemList?.itemList(from: item) { (items) in
+            
             callFished(items)
         }
     }

@@ -10,12 +10,12 @@ import ReactiveReSwift
 
 struct SettingActivateAction: Action {
     
-    let cloud: CloudType
+    let cloud: Cloud
     
 }
 
 struct SettingInactivateAction: Action {
     
-    let cloud: CloudType
+    let cloud: Cloud
     
 }

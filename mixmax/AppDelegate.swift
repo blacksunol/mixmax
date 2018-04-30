@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        GoogleClient.setup()
-        DropboxClient.setup()
+        GoogleService.setup()
+        DropboxService.setup()
         
         let menuStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let menuViewController  = menuStoryboard.instantiateInitialViewController()
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
-        DropboxClient.handleRedirectURL(url: url)
+        DropboxService.handleRedirectURL(url: url)
         
         return GIDSignIn.sharedInstance().handle(url,
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,

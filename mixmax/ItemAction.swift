@@ -11,5 +11,5 @@ import ReactiveReSwift
 struct ItemAction: Action {
     
     let currentItem: Item?
-    let cloud: CloudType
+    let cloud: Cloud
 }

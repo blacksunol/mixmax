@@ -8,11 +8,10 @@
 
 import Foundation
 
-struct DropboxParser {
+struct DropboxParser: Parser {
     
-    let playableFiles = ["mp3", "mp4", "wav", "wma", "m4v", "avi", "mpeg", "3gp"]
-
-    func parser(item: Item, data: Data?) -> [Item] {
+    func parser(item: Item?, data: Data?) -> [DropboxItem] {
+        
         let json = try? JSON(data: data!)
         guard let jsonArray = json?["entries"].array else {
             return []

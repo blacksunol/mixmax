@@ -21,7 +21,7 @@ class ItemListViewController: UIViewController {
     
     var item: Item?
     
-    private let cloudService = CloudService()
+    private let cloudClient = CloudClient()
     
     private let disposeBag = SubscriptionReferenceBag()
     private let disposeBag2 = DisposeBag()
@@ -57,7 +57,7 @@ class ItemListViewController: UIViewController {
                 weakSelf.settingButton.isHidden = true
             }
             
-            weakSelf.cloudService.callItems(from: weakSelf.item, cloud: cloud) {  (items) in
+            weakSelf.cloudClient.callItems(from: weakSelf.item, cloud: cloud) {  (items) in
                 weakSelf.title = cloud.rawValue
                 weakSelf.activityIndicator.stopAnimating()
                 weakSelf.items = items.filter { $0.kind == .audio || $0.kind == .folder }

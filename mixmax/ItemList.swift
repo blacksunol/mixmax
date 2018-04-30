@@ -8,4 +8,5 @@
 
 protocol ItemList {
     
+    func itemList(from item: Item? , callFinished: @escaping (_ items: [Item]) -> ())
 }

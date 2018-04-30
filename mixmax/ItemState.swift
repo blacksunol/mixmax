@@ -9,5 +9,5 @@
 struct ItemState {
     
     let currentItem: Item?
-    let cloud: CloudType?
+    let cloud: Cloud?
 }
