@@ -16,6 +16,8 @@
 		182E3D61209710380056BC2C /* GoogleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E3D60209710380056BC2C /* GoogleParser.swift */; };
 		18937EDA208B0C2F0046C036 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18937ED9208B0C2F0046C036 /* Player.swift */; };
 		18937EDC208B13BE0046C036 /* DropboxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18937EDB208B13BE0046C036 /* DropboxParser.swift */; };
+		18F2AE122098D85100E9E88F /* DropboxItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2AE112098D85100E9E88F /* DropboxItemList.swift */; };
+		18F2AE142098DB6500E9E88F /* GoogleItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2AE132098DB6500E9E88F /* GoogleItemList.swift */; };
 		1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */; };
 		1F0D9F8D2060C2100047D076 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */; };
 		1F182D48205F68770077FCA3 /* CloudClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F182D47205F68770077FCA3 /* CloudClient.swift */; };
@@ -113,6 +115,8 @@
 		182E3D60209710380056BC2C /* GoogleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleParser.swift; sourceTree = "<group>"; };
 		18937ED9208B0C2F0046C036 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		18937EDB208B13BE0046C036 /* DropboxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxParser.swift; sourceTree = "<group>"; };
+		18F2AE112098D85100E9E88F /* DropboxItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxItemList.swift; sourceTree = "<group>"; };
+		18F2AE132098DB6500E9E88F /* GoogleItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleItemList.swift; sourceTree = "<group>"; };
 		1F0D9F8A2060C1F60047D076 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		1F0D9F8C2060C2100047D076 /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
 		1F182D47205F68770077FCA3 /* CloudClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudClient.swift; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 				182E3D60209710380056BC2C /* GoogleParser.swift */,
 				18937EDB208B13BE0046C036 /* DropboxParser.swift */,
 				1806F747208DB841008CCF74 /* Service.swift */,
+				18F2AE112098D85100E9E88F /* DropboxItemList.swift */,
+				18F2AE132098DB6500E9E88F /* GoogleItemList.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -751,8 +757,10 @@
 				1F659D4620791E4600C57DBD /* SettingAction.swift in Sources */,
 				1F0D9F8B2060C1F60047D076 /* MenuViewController.swift in Sources */,
 				1FB1E85E20732494002E428B /* MenuCellViewModel.swift in Sources */,
+				18F2AE142098DB6500E9E88F /* GoogleItemList.swift in Sources */,
 				1FD59DD52078A938005F18DC /* SettingViewModel.swift in Sources */,
 				1F76FC3720762DDD009F823E /* MenuListReducer.swift in Sources */,
+				18F2AE122098D85100E9E88F /* DropboxItemList.swift in Sources */,
 				1F659D4E2079C41A00C57DBD /* ClientAction.swift in Sources */,
 				1F9046D42080810600B7CCE7 /* ItemState.swift in Sources */,
 				1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */,

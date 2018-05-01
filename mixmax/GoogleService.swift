@@ -12,17 +12,10 @@ import Foundation
 import GoogleSignIn
 import RxCocoa
 
-final class GoogleService : NSObject, Service, Request, GIDSignInDelegate {
-    
-    var request: URLRequest?
-    
+final class GoogleService : NSObject, Service, GIDSignInDelegate {
     
     let accessToken: BehaviorRelay<String> = BehaviorRelay(value: "")
     
-    var url: String = "https://www.googleapis.com/drive/v3/files"
-    var method = Method.get
-    var path: String = ""
-
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
 
@@ -74,43 +67,17 @@ extension GoogleService : ItemList {
     
     private func callItems(from item: Item?, callFinished:  @escaping (_ items: [Item]) -> ()) {
         
-        var folderId = "root"
-        if let googleItem = item as? GoogleItem {
-            folderId = googleItem.id
-        }
-        
         configure()
         
         let subscription = self.accessToken.asObservable().subscribe(onNext: { accessToken in
             
-            print("accessToken = \(accessToken)")
-            
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            let url = URL(string: self.url + "?q='" + folderId + "'%20in%20parents")
-            var request = URLRequest(url: url!)
-            request.httpMethod = self.method.rawValue
-            request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let task = session.dataTask(with: request) { (data, response, error) in
-                
-                if let error = error  {
-                    
-                    print(error.localizedDescription)
-                } else {
-                    
-                    DispatchQueue.main.async {
-                        
-                        let googleParser = GoogleParser()
-                        let items = googleParser.parser(item: item, data: data).map { self.grantToken(item: $0, token: accessToken) }
-                        
-                        callFinished(items)
-                        
-                    }
-                }
+            var googleItemList = GoogleItemList()
+            googleItemList.token = accessToken
+            googleItemList.itemList(from: item) { items in
+                callFinished(items)
             }
             
-            task.resume()
+            print("accessToken = \(accessToken)")
             
         }, onError: { (error) in
             print("errror")
@@ -126,12 +93,5 @@ extension GoogleService : ItemList {
         
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
-    }
-    
-    private func grantToken(item: Item, token: String) -> Item {
-        
-        var item = item
-        item.track.token = token
-        return item
     }
 }

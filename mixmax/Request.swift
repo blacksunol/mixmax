@@ -8,15 +8,6 @@
 
 import Foundation
 
-protocol Request {
-    
-    var url: String { get set }
-    var method: Method { get set }
-    var path: String { get set}
-    
-    var request: URLRequest? { get set }
-    
-}
 
 enum Method : String {
     
@@ -24,15 +15,39 @@ enum Method : String {
     case post = "POST"
 }
 
-extension Request {
+struct Request {
     
-    var request: URLRequest? {
+    var request: URLRequest
+    
+    init(url: String, method: Method, token: String) {
         
-        let url = URL(string: self.url)
-        var request = URLRequest(url: url!)
-        request.httpMethod = method.rawValue
+        let requestUrl = URL(string: url)
+        request = URLRequest(url: requestUrl!)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = method.rawValue
+    }
 
-        return request
+    func requestSession(completionHandler: @escaping (Data?, URLResponse?, Error?) -> (Void)) {
+
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                
+                completionHandler(data, response, error)
+            }
+        }
+        
+        task.resume()
+    }
+
+    mutating func setParamenter(path: String) {
+        
+        let jsonDictionary = ["path": path]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: .prettyPrinted)
+        request.httpBody = jsonData
     }
 }
+

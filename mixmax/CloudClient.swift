@@ -23,6 +23,7 @@ class CloudClient {
         var itemList: ItemList?
 
         switch cloud {
+            
         case .dropbox:
             itemList = DropboxService()
         case .google:

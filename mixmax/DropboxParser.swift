@@ -20,6 +20,7 @@ struct DropboxParser: Parser {
         var items = [DropboxItem]()
         
         for jsonItem in jsonArray {
+            
             var newItem = DropboxItem()
             newItem.parent = item
             newItem.name = jsonItem["name"].string ?? ""
