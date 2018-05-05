@@ -18,6 +18,8 @@ enum Cloud: String, EnumCollection {
 
 class CloudClient {
     
+    let downloader = Downloader.shared
+    
     func callItems(from item: Item?, cloud: Cloud , callFished: @escaping (_ items: [Item]) -> ()) {
         
         var itemList: ItemList?
@@ -36,5 +38,10 @@ class CloudClient {
             
             callFished(items)
         }
+    }
+    
+    func download(item: Item?, indexPath: IndexPath) {
+        
+        downloader.start(item: item, indexPath: indexPath)
     }
 }
