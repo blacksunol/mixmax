@@ -10,7 +10,8 @@ import UIKit
 
 protocol ItemListFileCellDelegate {
     
-    func downloadTapped(_ cell: UICollectionViewCell)
+    func downloadTapped(_ cell: ItemListFileCell)
+    func cancelTapped(_ cell: ItemListFileCell)
 }
 
 class ItemListFileCell : UICollectionViewCell {

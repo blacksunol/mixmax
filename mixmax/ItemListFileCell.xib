@@ -39,9 +39,9 @@
                         </constraints>
                     </progressView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Std-kk-znQ">
-                        <rect key="frame" x="378" y="50" width="50" height="50"/>
+                        <rect key="frame" x="390" y="57.5" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="40L-6e-ead"/>
+                            <constraint firstAttribute="width" constant="35" id="40L-6e-ead"/>
                             <constraint firstAttribute="width" secondItem="Std-kk-znQ" secondAttribute="height" multiplier="1:1" id="hfG-X5-BJB"/>
                         </constraints>
                         <state key="normal" image="download"/>
@@ -57,7 +57,7 @@
                 <constraint firstItem="Std-kk-znQ" firstAttribute="centerY" secondItem="nwb-bo-kP6" secondAttribute="centerY" id="N8F-IG-Zjv"/>
                 <constraint firstItem="osp-k6-MD0" firstAttribute="top" secondItem="nwb-bo-kP6" secondAttribute="bottom" constant="-13" id="PKD-uj-ASI"/>
                 <constraint firstItem="kEE-1Y-AGS" firstAttribute="leading" secondItem="0Lr-RB-FnK" secondAttribute="trailing" constant="10" id="PQR-Ua-Lv1"/>
-                <constraint firstItem="nwb-bo-kP6" firstAttribute="trailing" secondItem="Std-kk-znQ" secondAttribute="trailing" constant="2" id="SKy-FW-bNw"/>
+                <constraint firstItem="nwb-bo-kP6" firstAttribute="trailing" secondItem="Std-kk-znQ" secondAttribute="trailing" constant="5" id="SKy-FW-bNw"/>
                 <constraint firstAttribute="trailing" secondItem="kEE-1Y-AGS" secondAttribute="trailing" constant="74" id="VKl-KJ-VpF"/>
                 <constraint firstItem="kEE-1Y-AGS" firstAttribute="centerY" secondItem="tPR-ag-Hyg" secondAttribute="centerY" id="XK6-xa-nKS"/>
                 <constraint firstItem="0Lr-RB-FnK" firstAttribute="centerY" secondItem="tPR-ag-Hyg" secondAttribute="centerY" constant="3.5" id="dyj-lS-K3G"/>

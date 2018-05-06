@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import ReactiveReSwift
 
 class ItemListViewController: UIViewController {
@@ -33,7 +34,32 @@ class ItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cloudClient.downloader.delegate = self
+        
+        cloudClient.downloader.activeDownloads.asObservable().subscribe { [weak self] activeDownloads in
+            
+            let indices = activeDownloads.map { activeDownload in
+                (self?.items.index(where: { item in
+                    item.localPath ==  activeDownload.value.item?.localPath
+                }), activeDownload.value)
+                }.filter { $0.0 != nil }
+            
+            
+            DispatchQueue.main.async {
+                
+                let indexpaths = indices.flatMap { index in
+                    (IndexPath(item: index.0! , section: 0), index.1) }
+                
+                let cells = indexpaths.map { (self?.itemListCollectionView.cellForItem(at: $0.0) as? ItemListFileCell, $0.1)  }
+                cells.forEach { cell in
+                    cell.0?.progressView.progress = cell.1.progress
+                }
+            }
+            
+            
+            print("#activedownload ")
+        }
+        
+        
         configureCollectionView()
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
@@ -159,13 +185,12 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         print("#path = \(String(describing: item.localPath))")
         switch item.kind {
         case .audio:
-            cloudClient.download(item: item, indexPath: indexPath)
-//            let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
-//            if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
-//                playerViewController.item = item
-//                playerViewController.items = items
-//                present(playerViewController, animated: true)
-//            }
+            let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
+            if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
+                playerViewController.item = item
+                playerViewController.items = items
+                present(playerViewController, animated: true)
+            }
         case .folder:
             if let itemListViewController = UIStoryboard.instantiateViewController(storyboard: "ItemListViewController") as? ItemListViewController {
                 let item = items[indexPath.row]
@@ -179,27 +204,20 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension ItemListViewController : ItemListFileCellDelegate {
     
-    func downloadTapped(_ cell: UICollectionViewCell) {
-        
-        if let indexPath = itemListCollectionView.indexPath(for: cell) {
-            let item = items[indexPath.row]
+    func downloadTapped(_ cell: ItemListFileCell) {
+        guard let indexPath = itemListCollectionView.indexPath(for: cell) else { return }
+        let item = items[indexPath.row]
+        cloudClient.download(item: item)
 
-            reload(indexPath.row)
-        }
+        
+        
     }
     
-    func reload(_ row: Int) {
+    func cancelTapped(_ cell: ItemListFileCell) {
         
-    }
-}
-
-extension ItemListViewController : DownloaderDelegate {
-    
-    func updateProgress(download: Download) {
-        
-        guard let cell = itemListCollectionView.cellForItem(at: download.indexPath) as? ItemListFileCell else { return }
-        cell.progressView.progress = download.progress
-        print("#download: \(download.progress)")
+        guard let indexPath = itemListCollectionView.indexPath(for: cell) else { return }
+        let item = items[indexPath.row]
+        cloudClient.cancelDownload(item: item)
     }
 }
 

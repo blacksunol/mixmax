@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum Cloud: String, EnumCollection {
     
@@ -40,8 +41,13 @@ class CloudClient {
         }
     }
     
-    func download(item: Item?, indexPath: IndexPath) {
+    func download(item: Item?) {
         
-        downloader.start(item: item, indexPath: indexPath)
+        downloader.start(item: item)
+    }
+    
+    func cancelDownload(item: Item?) {
+        
+        downloader.cancel(item: item)
     }
 }
