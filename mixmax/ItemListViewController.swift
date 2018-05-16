@@ -34,15 +34,29 @@ class ItemListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         cloudClient.downloader.activeDownloads.asObservable().subscribe { [weak self] activeDownloads in
+            
+            activeDownloads.forEach {
+
+                let download = $0.value
+                let index = self?.items.index { item in
+            
+                    item.localPath == download.item?.localPath
+                }
+
+                if let index = index {
+
+                    self?.items[index].track.localUrl = download.localPath
+                    print("download.localPath = \(download.localPath)")
+                }
+            }
             
             let indices = activeDownloads.map { activeDownload in
                 (self?.items.index(where: { item in
                     item.localPath ==  activeDownload.value.item?.localPath
                 }), activeDownload.value)
                 }.filter { $0.0 != nil }
-            
+         
             
             DispatchQueue.main.async {
                 
@@ -180,6 +194,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let item = items[indexPath.row]
         
         print("#path = \(String(describing: item.localPath))")

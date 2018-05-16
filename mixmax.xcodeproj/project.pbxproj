@@ -15,8 +15,10 @@
 		181C6FD9209A10E700555EEB /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C6FD8209A10E700555EEB /* CellViewModel.swift */; };
 		182E3D5F20970A0D0056BC2C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E3D5E20970A0D0056BC2C /* Request.swift */; };
 		182E3D61209710380056BC2C /* GoogleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E3D60209710380056BC2C /* GoogleParser.swift */; };
+		183668EE20A81A7B00D84167 /* LocalPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183668ED20A81A7B00D84167 /* LocalPath.swift */; };
 		18937EDA208B0C2F0046C036 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18937ED9208B0C2F0046C036 /* Player.swift */; };
 		18937EDC208B13BE0046C036 /* DropboxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18937EDB208B13BE0046C036 /* DropboxParser.swift */; };
+		18A0013220A5F3440082055D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0013120A5F3430082055D /* Storage.swift */; };
 		18ABCB9A2099C90000320259 /* ItemListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABCB992099C90000320259 /* ItemListCellViewModel.swift */; };
 		18D30408209AF40E00BA9EAC /* ItemListFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D30407209AF40E00BA9EAC /* ItemListFileCell.swift */; };
 		18D3040A209AF42D00BA9EAC /* ItemListFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D30409209AF42D00BA9EAC /* ItemListFileCell.xib */; };
@@ -119,8 +121,10 @@
 		181C6FD8209A10E700555EEB /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		182E3D5E20970A0D0056BC2C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		182E3D60209710380056BC2C /* GoogleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleParser.swift; sourceTree = "<group>"; };
+		183668ED20A81A7B00D84167 /* LocalPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPath.swift; sourceTree = "<group>"; };
 		18937ED9208B0C2F0046C036 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		18937EDB208B13BE0046C036 /* DropboxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxParser.swift; sourceTree = "<group>"; };
+		18A0013120A5F3430082055D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		18ABCB992099C90000320259 /* ItemListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCellViewModel.swift; sourceTree = "<group>"; };
 		18D30407209AF40E00BA9EAC /* ItemListFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListFileCell.swift; sourceTree = "<group>"; };
 		18D30409209AF42D00BA9EAC /* ItemListFileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListFileCell.xib; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				1806F74D208DC0EC008CCF74 /* ItemDownload.swift */,
 				1806F74B208DBD9B008CCF74 /* Downloader.swift */,
 				1806F751208DCA28008CCF74 /* ItemList.swift */,
+				183668ED20A81A7B00D84167 /* LocalPath.swift */,
 				182E3D5E20970A0D0056BC2C /* Request.swift */,
 				1F9046D72080A8CA00B7CCE7 /* Parser.swift */,
 				182E3D60209710380056BC2C /* GoogleParser.swift */,
@@ -318,6 +323,7 @@
 			children = (
 				1F6595C51EB0C603002B5DD5 /* SwiftyJSON.swift */,
 				1F659D4B20792BC700C57DBD /* EnumCollection.swift */,
+				18A0013120A5F3430082055D /* Storage.swift */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				1F659D4E2079C41A00C57DBD /* ClientAction.swift in Sources */,
 				1F9046D42080810600B7CCE7 /* ItemState.swift in Sources */,
 				1FB1E85C207318CF002E428B /* MenuTableViewCell.swift in Sources */,
+				18A0013220A5F3440082055D /* Storage.swift in Sources */,
 				1F6595C81EB0D142002B5DD5 /* Item.swift in Sources */,
 				1F65958C1EACB46F002B5DD5 /* AppDelegate.swift in Sources */,
 				1F659D4C20792BC700C57DBD /* EnumCollection.swift in Sources */,
@@ -793,6 +800,7 @@
 				1F659D4820791E5800C57DBD /* SettingStore.swift in Sources */,
 				18ABCB9A2099C90000320259 /* ItemListCellViewModel.swift in Sources */,
 				1F9046CE208080A300B7CCE7 /* ItemStore.swift in Sources */,
+				183668EE20A81A7B00D84167 /* LocalPath.swift in Sources */,
 				1F213EE220624D57007D47BF /* PlayerViewController.swift in Sources */,
 				1806F752208DCA28008CCF74 /* ItemList.swift in Sources */,
 				1F659D502079C52F00C57DBD /* ClientReducer.swift in Sources */,

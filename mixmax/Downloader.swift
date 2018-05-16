@@ -13,6 +13,7 @@ class Download {
     
     var item: Item?
     var url: URL?
+    var localPath: String?
     var task: URLSessionDownloadTask?
     var isDownloading = false
     var resumeData: Data?
@@ -39,7 +40,6 @@ class Downloader : NSObject, ItemDownload {
     
     func start(item: Item?) {
         
-//        let url = URL(string: "http://www.noiseaddicts.com/samples_1w72b820/2514.mp3")!
         let urlStr = item?.track.url ?? ""
         
         if activeDownloads.value.contains(where: { $0.key.absoluteString == urlStr }) { return }
@@ -72,6 +72,7 @@ class Downloader : NSObject, ItemDownload {
     }
     
     func resume(url: URL) {
+        
         guard let download = activeDownloads.value[url] else { return }
         if let resumeData = download.resumeData {
             download.task = downloadsSession.downloadTask(withResumeData: resumeData)
@@ -97,8 +98,18 @@ class Downloader : NSObject, ItemDownload {
     }
     
     let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    func localFilePath(for url: URL) -> URL {
-        return documentsPath.appendingPathComponent("abc.mp3")
+    func localFilePath(for url: URL, item: Item?) -> URL {
+        
+        let name = item?.name ?? ""
+        let path = documentsPath.appendingPathComponent(name)
+        
+        if let localPath = item?.localPath {
+            
+            let localPath2 = LocalPath()
+            localPath2.save(path: localPath, url: path.absoluteString)
+        }
+        
+        return path
     }
 }
 
@@ -107,11 +118,9 @@ class Downloader : NSObject, ItemDownload {
 extension Downloader : URLSessionDelegate {
     
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        print("#urlSessionDidFinishEvents")
         
+        print("#urlSessionDidFinishEvents")
     }
-    
-    
 }
 
 extension Downloader : URLSessionDownloadDelegate {
@@ -121,21 +130,23 @@ extension Downloader : URLSessionDownloadDelegate {
         
         // 1
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        let download = activeDownloads.value[sourceURL]
-        activeDownloads.value[sourceURL] = nil
+        guard let download = activeDownloads.value[sourceURL]  else { return }
         // 2
-        let destinationURL = localFilePath(for: sourceURL)
+        let destinationURL = localFilePath(for: sourceURL, item: download.item)
         print(destinationURL)
         // 3
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: destinationURL)
         do {
             try fileManager.copyItem(at: location, to: destinationURL)
-            download?.isDownloaded = true
+            download.isDownloaded = true
+            download.localPath = destinationURL.absoluteString
         } catch let error {
             print("Could not copy file to disk: \(error.localizedDescription)")
         }
-        
+        activeDownloads.value[sourceURL] = download
+        activeDownloads.value[sourceURL] = nil
+
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,

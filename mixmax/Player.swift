@@ -34,10 +34,10 @@ class Player {
         player = nil
         
         
-        
         let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
-        let urlStr = item?.track.url ?? ""
+        let urlStr = item?.track.localUrl ?? item?.track.url ?? ""
+        print("#localurl = \(item?.track.localUrl)")
         let url = URL(string: urlStr)
         
         let asset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])

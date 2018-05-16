@@ -37,7 +37,10 @@ class CloudClient {
         
         itemList?.itemList(from: item) { (items) in
             
-            callFished(items)
+            let localPath = LocalPath()
+            let fetchedItems = localPath.fetchLocalPath(items: items)
+            
+            callFished(fetchedItems)
         }
     }
     
