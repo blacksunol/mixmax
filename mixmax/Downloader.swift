@@ -11,18 +11,22 @@ import RxSwift
 
 class Download {
     
-    var item: Item?
-    var url: URL?
-    var localPath: String?
+    var fileName: String?
+    var fileId: String?
+    var urlString: String?
+    var destinationUrl: String?
     var task: URLSessionDownloadTask?
     var isDownloading = false
-    var resumeData: Data?
+    
     var isDownloaded = false
 
     var progress: Float = 0
     
-    init(item: Item?) {
-        self.item = item
+    init(urlString: String?, fileName: String?, fileId: String?) {
+        
+        self.urlString = urlString
+        self.fileName = fileName
+        self.fileId = fileId
     }
 }
 
@@ -31,82 +35,70 @@ class Downloader : NSObject, ItemDownload {
     static let shared = Downloader()
 
     lazy var downloadsSession: URLSession = {
-//            let configuration = URLSessionConfiguration.default
+
         let configuration = URLSessionConfiguration.background(withIdentifier: "bgSessionConfiguration")
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }()
     
     var activeDownloads: Variable<[URL: Download]> = Variable([:])
     
-    func start(item: Item?) {
+    func start(urlString: String?, fileName: String?, fileId: String?, token: String?) {
         
-        let urlStr = item?.track.url ?? ""
+        guard let urlString = urlString else { return }
         
-        if activeDownloads.value.contains(where: { $0.key.absoluteString == urlStr }) { return }
+        if activeDownloads.value.contains(where: { $0.key.absoluteString == urlString }) { return }
 
-        let request = Request(url: urlStr, method: .get, token: item?.track.token)
-
-        let url = URL(string: urlStr)!
+        let request = Request(url: urlString, method: .get, token: token)
         
-        let download = Download(item: item)
-        // 2
+        let download = Download(urlString: urlString, fileName: fileName, fileId: fileId)
+        
         download.task = downloadsSession.downloadTask(with: request.request)
         
-        // 3
         download.task!.resume()
-        // 4
+        
         download.isDownloading = true
-        // 5
+        
+        let url = URL(string: urlString)!
+
         activeDownloads.value[url] = download
     }
     
-    func pause(url: URL) {
-        
-        guard let download = activeDownloads.value[url] else { return }
-        if download.isDownloading {
-            download.task?.cancel(byProducingResumeData: { data in
-                download.resumeData = data
-            })
-            download.isDownloading = false
-        }
-    }
     
-    func resume(url: URL) {
-        
-        guard let download = activeDownloads.value[url] else { return }
-        if let resumeData = download.resumeData {
-            download.task = downloadsSession.downloadTask(withResumeData: resumeData)
-        } else {
-            download.task = downloadsSession.downloadTask(with: download.url!)
-        }
-        download.task!.resume()
-        download.isDownloading = true
-    }
-    
-    func cancel(item: Item?) {
+    func remove(item: Item?, completed: (String) ->() ) {
         
         guard let item = item else { return }
         let urlStr = item.track.url ?? ""
-
+        
         let url = URL(string: urlStr)!
         
         if let download = activeDownloads.value[url] {
-            
+            download.isDownloading = false
             download.task?.cancel()
-            activeDownloads.value[url] = nil
+            activeDownloads.value[url] = download
+
         }
+        
+        let localPath = LocalPath()
+        let localUrl = item.track.localUrl ?? ""
+        
+        localPath.delete(url: localUrl) { url in
+            
+            completed(url)
+        }
+        activeDownloads.value[url] = nil
+
     }
     
-    let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    func localFilePath(for url: URL, item: Item?) -> URL {
+    func localFilePath(fileId: String?, fileName: String?) -> URL {
         
-        let name = item?.name ?? ""
-        let path = documentsPath.appendingPathComponent(name)
+        let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        if let localPath = item?.localPath {
+        let path = documentsPath.appendingPathComponent(fileName ?? "")
+        
+        if let fileId = fileId {
             
             let localPath2 = LocalPath()
-            localPath2.save(path: localPath, url: path.absoluteString)
+            localPath2.save(fileId: fileId, url: path.absoluteString)
         }
         
         return path
@@ -132,18 +124,21 @@ extension Downloader : URLSessionDownloadDelegate {
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
         guard let download = activeDownloads.value[sourceURL]  else { return }
         // 2
-        let destinationURL = localFilePath(for: sourceURL, item: download.item)
+        let destinationURL = localFilePath(fileId: download.fileId, fileName: download.fileName)
         print(destinationURL)
         // 3
         let fileManager = FileManager.default
         try? fileManager.removeItem(at: destinationURL)
+
         do {
+            
             try fileManager.copyItem(at: location, to: destinationURL)
             download.isDownloaded = true
-            download.localPath = destinationURL.absoluteString
+            download.destinationUrl = destinationURL.absoluteString
         } catch let error {
             print("Could not copy file to disk: \(error.localizedDescription)")
         }
+        
         activeDownloads.value[sourceURL] = download
         activeDownloads.value[sourceURL] = nil
 
@@ -165,4 +160,3 @@ extension Downloader : URLSessionDownloadDelegate {
                                                   countStyle: .file)
     }
 }
-

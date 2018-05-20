@@ -15,7 +15,6 @@ class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     
-    
     @IBOutlet weak var settingButton: UIButton!
     
     fileprivate var items = [Item]()
@@ -41,19 +40,18 @@ class ItemListViewController: UIViewController {
                 let download = $0.value
                 let index = self?.items.index { item in
             
-                    item.localPath == download.item?.localPath
+                    item.track.url == download.urlString
                 }
 
                 if let index = index {
 
-                    self?.items[index].track.localUrl = download.localPath
-                    print("download.localPath = \(download.localPath)")
+                    self?.items[index].track.localUrl = download.destinationUrl
                 }
             }
             
             let indices = activeDownloads.map { activeDownload in
                 (self?.items.index(where: { item in
-                    item.localPath ==  activeDownload.value.item?.localPath
+                    item.track.url ==  activeDownload.value.urlString
                 }), activeDownload.value)
                 }.filter { $0.0 != nil }
          
@@ -65,12 +63,15 @@ class ItemListViewController: UIViewController {
                 
                 let cells = indexpaths.map { (self?.itemListCollectionView.cellForItem(at: $0.0) as? ItemListFileCell, $0.1)  }
                 cells.forEach { cell in
+                    
+                    var viewModel = cell.0?.viewModel
+                    viewModel?.isDownloadHidden = cell.1.isDownloading
+                    cell.0?.display(viewModel: viewModel!)
+                    
                     cell.0?.progressView.progress = cell.1.progress
+                    print("#isDownloading = \(cell.1.isDownloading)")
                 }
             }
-            
-            
-            print("#activedownload ")
         }
         
         
@@ -162,7 +163,9 @@ class ItemListViewController: UIViewController {
 }
 
 extension ItemListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return items.count
         
     }
@@ -176,7 +179,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         case .audio, .unknow :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListFileCell",
                                                           for: indexPath) as! ItemListFileCell
-            cell.configure(item: item)
+            cell.display(viewModel: ItemListFileCellViewModel(item: item))
             cell.delegate = self
             return cell
         case .folder:
@@ -202,6 +205,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         case .audio:
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
+
                 playerViewController.item = item
                 playerViewController.items = items
                 present(playerViewController, animated: true)
@@ -228,11 +232,17 @@ extension ItemListViewController : ItemListFileCellDelegate {
         
     }
     
-    func cancelTapped(_ cell: ItemListFileCell) {
+    func removeTapped(_ cell: ItemListFileCell) {
         
         guard let indexPath = itemListCollectionView.indexPath(for: cell) else { return }
-        let item = items[indexPath.row]
-        cloudClient.cancelDownload(item: item)
+        var item = items[indexPath.row]
+        cloudClient.removeDownload(item: item) { url in
+            
+            item.track.localUrl = nil
+            items[indexPath.row] = item
+            itemListCollectionView.reloadItems(at: [indexPath])
+        }
+        
     }
 }
 
@@ -242,7 +252,9 @@ extension ItemListViewController: URLSessionDelegate {
     
     // Standard background session handler
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        
         DispatchQueue.main.async {
+            
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate,
                 let completionHandler = appDelegate.backgroundSessionCompletionHandler {
                 appDelegate.backgroundSessionCompletionHandler = nil
@@ -254,7 +266,9 @@ extension ItemListViewController: URLSessionDelegate {
 }
 
 extension UIStoryboard {
+    
     class func instantiateViewController(storyboard name: String) -> UIViewController? {
+        
         let storyboard = UIStoryboard(name: name, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier :name)
     }

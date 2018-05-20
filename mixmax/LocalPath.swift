@@ -29,14 +29,14 @@ class LocalPath {
         return copyItem
     }
     
-    func save(path: String, url: String) {
+    func save(fileId: String, url: String) {
         
         let context = Storage.shared.context
         let entity = NSEntityDescription.entity(forEntityName: "LocalItem", in: context)!
         
         let localItem = NSManagedObject(entity: entity, insertInto: context)
         
-        localItem.setValue(path, forKeyPath: "path")
+        localItem.setValue(fileId, forKeyPath: "fileId")
         localItem.setValue(url, forKeyPath: "url")
         
         do {
@@ -47,28 +47,36 @@ class LocalPath {
         }
     }
     
-    func delete(path: String) {
+    func delete(url: String, completed: (String) -> ()) {
         
         let context = Storage.shared.context
-        context.perform {
-            
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "LocalItem")
-            let predicate = NSPredicate(format: "path == %@", path)
-            request.predicate = predicate
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-            deleteRequest.resultType = .resultTypeObjectIDs
-            do {
-                
-                let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
-                guard let objectIDs = result?.result as? [NSManagedObjectID] else { return }
-                objectIDs.forEach { objectID in
-                     let item = context.object(with: objectID)
-                    context.refresh(item, mergeChanges: false)
-                }
-            } catch {
-                fatalError("Failed to execute request: \(error)")
+        
+        let request: NSFetchRequest<LocalItem> = LocalItem.fetchRequest()
+        request.predicate = NSPredicate.init(format: "url == %@", url)
+
+        
+        
+        if let result = try? context.fetch(request) {
+            for object in result {
+                print("#delete object")
+                context.delete(object)
             }
         }
+        
+        do {
+            
+            try context.save()
+            if let removeUrl = URL(string: url) {
+                try FileManager.default.removeItem(at: removeUrl)
+            }
+            
+            completed(url)
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
+        
     }
 
     var localItems: [(String, String)] {
@@ -82,7 +90,7 @@ class LocalPath {
             
             let localPaths = localItem.flatMap {
                 
-                (String(describing: $0.value(forKeyPath: "path") ?? ""), String(describing: $0.value(forKeyPath: "url") ?? ""))
+                (String(describing: $0.value(forKeyPath: "fileId") ?? ""), String(describing: $0.value(forKeyPath: "url") ?? ""))
             }
             
             return localPaths

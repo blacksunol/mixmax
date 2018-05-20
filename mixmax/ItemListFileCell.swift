@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 protocol ItemListFileCellDelegate {
     
     func downloadTapped(_ cell: ItemListFileCell)
-    func cancelTapped(_ cell: ItemListFileCell)
+    func removeTapped(_ cell: ItemListFileCell)
 }
 
 class ItemListFileCell : UICollectionViewCell {
@@ -23,26 +25,77 @@ class ItemListFileCell : UICollectionViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     
     @IBOutlet weak var downloadButton: UIButton!
-
+    @IBOutlet weak var removeButton: UIButton!
+    
     var delegate: ItemListFileCellDelegate?
-
-    func configure(item: Item) {
+    
+    fileprivate(set) var viewModel: ItemListFileCellViewModel! {
         
-        nameLabel.text = item.name
-        
-        switch item.kind {
+        didSet {
             
-        case .audio:
-            kindImageView.image = UIImage(named: "audio")
-        case .folder:
-            kindImageView.image = UIImage(named: "folder")
-        case .unknow:
-            kindImageView.image = UIImage(named: "unknow")
+            nameLabel.text = viewModel.name
+            kindImageView.image = UIImage(named: viewModel.imageName)
+            downloadButton.isHidden = viewModel.isDownloadHidden
+            removeButton.isHidden = !viewModel.isDownloadHidden
         }
     }
     
     @IBAction func downloadTapped(_ sender: AnyObject) {
         
         delegate?.downloadTapped(self)
+    }
+    
+    @IBAction func removeTapped(_ sender: Any) {
+        
+        delegate?.removeTapped(self)
+    }
+}
+
+extension ItemListFileCell: Display {
+    
+    func display(viewModel: ItemListFileCellViewModel) {
+        
+        self.viewModel = viewModel
+    }
+}
+
+protocol Display {
+    
+    func display(viewModel: ItemListFileCellViewModel)
+}
+
+struct ItemListFileCellViewModel {
+    
+    var name: String?
+    var imageName: String
+    var isDownloadHidden: Bool
+    
+
+    
+    init(item: Item) {
+        
+        self.name = item.name
+        let isDownloaded = item.track.localUrl != nil && item.track.localUrl != ""
+        if isDownloaded {
+            
+            self.isDownloadHidden = true
+
+        } else {
+            
+            self.isDownloadHidden = false
+        }
+        
+        switch item.kind {
+
+        case .audio:
+            
+            self.imageName = "audio"
+        case .folder:
+            
+            self.imageName = "folder"
+        case .unknow:
+            
+            self.imageName = "unknow"
+        }
     }
 }

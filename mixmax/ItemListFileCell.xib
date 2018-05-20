@@ -46,6 +46,17 @@
                             <action selector="downloadTapped:" destination="tPR-ag-Hyg" eventType="touchUpInside" id="QDy-Y9-VnA"/>
                         </connections>
                     </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9N-VK-MOl">
+                        <rect key="frame" x="390" y="57.5" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="UuH-kW-6PQ"/>
+                            <constraint firstAttribute="width" secondItem="e9N-VK-MOl" secondAttribute="height" multiplier="1:1" id="nOC-Aq-pRV"/>
+                        </constraints>
+                        <state key="normal" image="remove"/>
+                        <connections>
+                            <action selector="removeTapped:" destination="tPR-ag-Hyg" eventType="touchUpInside" id="lJS-xK-waW"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.3669968247" green="0.80167740580000002" blue="0.98541122670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,6 +64,8 @@
                 <constraint firstItem="osp-k6-MD0" firstAttribute="leading" secondItem="nwb-bo-kP6" secondAttribute="leading" constant="10" id="6fY-8b-MCF"/>
                 <constraint firstItem="0Lr-RB-FnK" firstAttribute="leading" secondItem="tPR-ag-Hyg" secondAttribute="leading" id="Bjn-Rb-07d"/>
                 <constraint firstItem="nwb-bo-kP6" firstAttribute="bottom" secondItem="osp-k6-MD0" secondAttribute="bottom" constant="5" id="Cy3-FQ-TKQ"/>
+                <constraint firstItem="e9N-VK-MOl" firstAttribute="centerY" secondItem="nwb-bo-kP6" secondAttribute="centerY" id="EUe-Db-rVV"/>
+                <constraint firstItem="nwb-bo-kP6" firstAttribute="trailing" secondItem="e9N-VK-MOl" secondAttribute="trailing" constant="5" id="EWs-Uz-gCk"/>
                 <constraint firstItem="Std-kk-znQ" firstAttribute="centerY" secondItem="nwb-bo-kP6" secondAttribute="centerY" id="N8F-IG-Zjv"/>
                 <constraint firstItem="nwb-bo-kP6" firstAttribute="trailing" secondItem="osp-k6-MD0" secondAttribute="trailing" constant="10" id="OB4-zi-XBC"/>
                 <constraint firstItem="kEE-1Y-AGS" firstAttribute="leading" secondItem="0Lr-RB-FnK" secondAttribute="trailing" constant="10" id="PQR-Ua-Lv1"/>
@@ -60,6 +73,7 @@
                 <constraint firstAttribute="trailing" secondItem="kEE-1Y-AGS" secondAttribute="trailing" constant="74" id="VKl-KJ-VpF"/>
                 <constraint firstItem="kEE-1Y-AGS" firstAttribute="centerY" secondItem="tPR-ag-Hyg" secondAttribute="centerY" id="XK6-xa-nKS"/>
                 <constraint firstItem="0Lr-RB-FnK" firstAttribute="centerY" secondItem="tPR-ag-Hyg" secondAttribute="centerY" constant="3.5" id="dyj-lS-K3G"/>
+                <constraint firstItem="e9N-VK-MOl" firstAttribute="width" secondItem="e9N-VK-MOl" secondAttribute="height" multiplier="1:1" id="jAG-NS-9gz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="nwb-bo-kP6"/>
             <size key="customSize" width="430" height="150"/>
@@ -68,6 +82,7 @@
                 <outlet property="kindImageView" destination="0Lr-RB-FnK" id="LeB-8m-dP6"/>
                 <outlet property="nameLabel" destination="kEE-1Y-AGS" id="bSC-pb-g0G"/>
                 <outlet property="progressView" destination="osp-k6-MD0" id="2ZW-Hz-Pnf"/>
+                <outlet property="removeButton" destination="e9N-VK-MOl" id="RYE-vt-mgc"/>
             </connections>
             <point key="canvasLocation" x="-93" y="-48"/>
         </collectionViewCell>
@@ -75,5 +90,6 @@
     <resources>
         <image name="audio" width="64" height="64"/>
         <image name="download" width="64" height="64"/>
+        <image name="remove" width="64" height="64"/>
     </resources>
 </document>
