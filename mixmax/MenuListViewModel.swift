@@ -10,7 +10,7 @@ import Foundation
 
 struct MenuListViewModel {
     
-    let clouds: [CloudType] = [.dropbox, .google, .onedrive]
+    let clouds: [Cloud] = [.dropbox, .google, .onedrive]
 
     let items: [MenuCellViewModel]
     var count: Int { return clouds.count }

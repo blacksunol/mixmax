@@ -14,11 +14,14 @@ class ItemListViewController: UIViewController {
     
     @IBOutlet weak var itemListCollectionView: UICollectionView!
     
+    
+    @IBOutlet weak var settingButton: UIButton!
+    
     fileprivate var items = [Item]()
     
     var item: Item?
     
-    private let cloudService = CloudService()
+    private let cloudClient = CloudClient()
     
     private let disposeBag = SubscriptionReferenceBag()
     private let disposeBag2 = DisposeBag()
@@ -42,12 +45,19 @@ class ItemListViewController: UIViewController {
     }
     
     @objc private func loadItems() {
+        
         disposeBag += itemStore.observable.asObservable().map { $0.cloud }.distinctUntilChanged { $0 == $1 }.subscribe { [weak self] cloud in
             guard let weakSelf = self else { return }
             guard let cloud = cloud else { return }
             weakSelf.activityIndicator.startAnimating()
             print("#itemStore")
-            weakSelf.cloudService.callItems(from: weakSelf.item, cloud: cloud) {  (items) in
+            if cloud == .none {
+                weakSelf.settingButton.isHidden = false
+            } else {
+                weakSelf.settingButton.isHidden = true
+            }
+            
+            weakSelf.cloudClient.callItems(from: weakSelf.item, cloud: cloud) {  (items) in
                 weakSelf.title = cloud.rawValue
                 weakSelf.activityIndicator.stopAnimating()
                 weakSelf.items = items.filter { $0.kind == .audio || $0.kind == .folder }
@@ -96,6 +106,13 @@ class ItemListViewController: UIViewController {
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         slideMenuController()?.openRight()
+    }
+    
+    @IBAction func settingButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "SettingViewController", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier :"SettingViewController") as? SettingViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

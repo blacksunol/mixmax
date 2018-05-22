@@ -8,18 +8,18 @@
 
 struct SettingViewModel {
     
-    let clouds: [CloudType]
+    let clouds: [Cloud]
     
     var cellViewModels: [SettingCellViewModel]? {
         return clouds.map { map(cloud: $0) }
     }
     
-    private func map(cloud: CloudType) -> SettingCellViewModel {
+    private func map(cloud: Cloud) -> SettingCellViewModel {
         switch cloud {
         case .dropbox:
-            return SettingCellViewModel(title: "Dropbox", imageName: "dropbox", isActive: DropboxClient.isAuthorize)
+            return SettingCellViewModel(title: "Dropbox", imageName: "dropbox", isActive: DropboxService.isAuthorize)
         case .google:
-            return SettingCellViewModel(title: "Google drive", imageName: "google", isActive: GoogleClient.isAuthorize)
+            return SettingCellViewModel(title: "Google drive", imageName: "google", isActive: GoogleService.isAuthorize)
         default:
             return SettingCellViewModel(title: "", imageName: "", isActive: false)
         }

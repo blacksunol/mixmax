@@ -18,6 +18,6 @@ struct DropboxItem: Item {
     
     var path = ""
     
-    var cloud: CloudType = .dropbox
+    var cloud: Cloud = .dropbox
 
 }

@@ -26,12 +26,12 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let clouds = CloudType.allValues.filter {
+        let clouds = Cloud.allValues.filter {
             switch  $0 {
             case .dropbox:
-                return DropboxClient.isAuthorize
+                return DropboxService.isAuthorize
             case .google:
-                return GoogleClient.isAuthorize
+                return GoogleService.isAuthorize
             default:
                 return false
             }
@@ -86,8 +86,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let slideMenuController = self.slideMenuController() {
                 slideMenuController.closeRight()
-                let cloudType = settingViewModel.clouds[indexPath.row]
-                menuStore.dispatch(SelectedCloudAction(cloud: cloudType))
+                let cloud = settingViewModel.clouds[indexPath.row]
+                menuStore.dispatch(SelectedCloudAction(cloud: cloud))
             }
         } else {
             

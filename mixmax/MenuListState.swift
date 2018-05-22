@@ -8,7 +8,7 @@
 
 struct MenuListState {
     
-    var clouds: [CloudType]
-    var selectedCloud: CloudType
+    var clouds: [Cloud]
+    var selectedCloud: Cloud
     var feature: String = ""
 }

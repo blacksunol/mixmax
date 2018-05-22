@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHH-kh-WGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jHH-kh-WGg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,6 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JQ9-Pl-MDo">
+                                <rect key="frame" x="123" y="191" width="141" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSP-py-khC">
+                                        <rect key="frame" x="0.0" y="0.0" width="141" height="64"/>
+                                        <state key="normal" title="    Setting" image="setting">
+                                            <color key="titleColor" red="0.36699682474136353" green="0.801677405834198" blue="0.98541122674942017" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingButtonTapped:" destination="WVo-d7-cOL" eventType="touchUpInside" id="f08-cY-Vyd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7af-56-3g1">
                                 <rect key="frame" x="10" y="10" width="355" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,6 +65,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7af-56-3g1" secondAttribute="trailing" constant="10" id="OMc-To-XaI"/>
                             <constraint firstItem="ksJ-nR-Fdy" firstAttribute="top" secondItem="7af-56-3g1" secondAttribute="bottom" id="Rsc-8q-mtA"/>
+                            <constraint firstItem="rSP-py-khC" firstAttribute="centerX" secondItem="7af-56-3g1" secondAttribute="centerX" id="UT1-SG-6p9"/>
+                            <constraint firstItem="rSP-py-khC" firstAttribute="centerY" secondItem="7af-56-3g1" secondAttribute="centerY" id="ZIU-ei-N89"/>
                             <constraint firstItem="7af-56-3g1" firstAttribute="top" secondItem="aWC-pG-P9z" secondAttribute="bottom" constant="10" id="fvx-DE-PAg"/>
                             <constraint firstItem="7af-56-3g1" firstAttribute="leading" secondItem="Zz9-DS-rMh" secondAttribute="leading" constant="10" id="o8G-iP-FDd"/>
                         </constraints>
@@ -76,6 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="itemListCollectionView" destination="7af-56-3g1" id="AXZ-xc-xCT"/>
+                        <outlet property="settingButton" destination="rSP-py-khC" id="1yD-GG-wvr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFJ-YW-PyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -104,5 +122,6 @@
     </scenes>
     <resources>
         <image name="menu" width="64" height="64"/>
+        <image name="setting" width="64" height="64"/>
     </resources>
 </document>

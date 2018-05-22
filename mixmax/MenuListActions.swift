@@ -10,22 +10,22 @@ import ReactiveReSwift
 
 struct MenuAddCloudAction: Action {
 
-    let cloud: CloudType
+    let cloud: Cloud
 }
 
 struct MenuRemoveCloudAction: Action {
     
-    let cloud: CloudType
+    let cloud: Cloud
 }
 
 struct InitCloudsAction: Action {
     
-    let clouds: [CloudType]
+    let clouds: [Cloud]
 }
 
 struct SelectedCloudAction: Action {
     
-    let cloud: CloudType 
+    let cloud: Cloud
 }
 
 struct SelectedFeatureAction: Action {
