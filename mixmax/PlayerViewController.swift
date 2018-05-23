@@ -20,8 +20,6 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var playlistTableView: UITableView!
-
     
     fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
@@ -43,26 +41,6 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do
-        {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            //!! IMPORTANT !!
-            /*
-             If you're using 3rd party libraries to play sound or generate sound you should
-             set sample rate manually here.
-             Otherwise you wont be able to hear any sound when you lock screen
-             */
-            //try AVAudioSession.sharedInstance().setPreferredSampleRate(4096)
-        }
-        catch
-        {
-            print(error)
-        }
-        
-        UIApplication.shared.beginReceivingRemoteControlEvents()
         
         remoteControl()
         
@@ -90,13 +68,14 @@ class PlayerViewController: UIViewController {
         slider.value = 0.3
         
         player = Player()
+        
         player?.delegate = self
         
         player?.item = item
         player?.items = playableItems
         
-        playItem(item: item)
-            
+        player?.playItem(item: item)
+        
         //        progressSlider.rx.value.map{ value -> String in
         //            "\(Int(value * 2000)) $"
         //            }.asObservable().bindTo { _ in
@@ -105,23 +84,6 @@ class PlayerViewController: UIViewController {
         //        progressSlider.rx.value.throttle(0.3, scheduler: MainScheduler.instance).asObservable().subscribe {
         //                print("#subcrible")
         //        }
-
-        player?.playerItem?.asObservable().subscribe { [weak self] playerItem in
-            
-            print("###playerItem")
-            guard let weakSelf = self else { return }
-            let row = weakSelf.playableItems?.index { $0.track.url == playerItem.url }
-            DispatchQueue.main.async {
-                
-                weakSelf.playlistTableView.reloadData()
-                
-                if let row = row {
-                    let indexPath = IndexPath(row: row, section: 0)
-                    let cell = weakSelf.playlistTableView.cellForRow(at: indexPath)
-                    cell?.setSelected(true, animated: true)
-                }
-            }
-        }?.disposable.disposed(by: disposeBag)
         
     }
     
@@ -152,12 +114,10 @@ class PlayerViewController: UIViewController {
     
     func playItem(item: Item?) {
         
-        playlistTableView.reloadData()
         player?.playItem(item: item)
     }
     
     func populateLabelWithTime(_ label : UILabel, time: Double) {
-        
         guard !(time.isNaN || time.isInfinite) else { return }
         
         let minutes = Int(time / 60)
@@ -174,11 +134,9 @@ class PlayerViewController: UIViewController {
     @IBAction func pauseTapped(_ sender: UIButton) {
         
         if sender.isSelected {
-            
             sender.isSelected = false
             player?.play()
         } else {
-            
             sender.isSelected = true
             player?.pause()
         }
@@ -202,7 +160,6 @@ class PlayerViewController: UIViewController {
     
     func pause() {
         
-        playButton.isSelected = true
         player?.pause()
     }
     
@@ -258,6 +215,8 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        player?.pause()
+        player = nil
         item = playableItems?[indexPath.row]
         playItem(item: item)
     }

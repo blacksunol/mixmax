@@ -14,7 +14,6 @@ target 'mixmax' do
   pod 'SwiftyDropbox'
 #  pod 'ReSwift'
   pod 'ReactiveReSwift'
-  pod 'RxAVFoundation'
 
   target 'mixmaxUITests' do
     inherit! :search_paths
