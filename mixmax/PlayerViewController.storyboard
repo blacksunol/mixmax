@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="durationLabel" destination="tBG-FA-fcn" id="QhA-cX-k0p"/>
                         <outlet property="playButton" destination="szM-5L-DbG" id="3F6-Tt-3vM"/>
+                        <outlet property="playlistTableView" destination="u0D-ej-KYf" id="Eho-It-MbZ"/>
                         <outlet property="progressSlider" destination="3ai-Vw-bDH" id="aBK-7K-rqP"/>
                         <outlet property="timerLabel" destination="7Qh-gg-V4q" id="dgr-rU-FNy"/>
                     </connections>
