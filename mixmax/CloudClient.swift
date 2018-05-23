@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum Cloud: String, EnumCollection {
     
@@ -17,6 +18,8 @@ enum Cloud: String, EnumCollection {
 }
 
 class CloudClient {
+    
+    let downloader = Downloader.shared
     
     func callItems(from item: Item?, cloud: Cloud , callFished: @escaping (_ items: [Item]) -> ()) {
         
@@ -34,7 +37,28 @@ class CloudClient {
         
         itemList?.itemList(from: item) { (items) in
             
-            callFished(items)
+            let localPath = LocalPath()
+            let fetchedItems = localPath.fetchLocalPath(items: items)
+            
+            callFished(fetchedItems)
+        }
+    }
+    
+    func download(item: Item?) {
+        
+        guard let item = item, let urlString = item.track.url else { return }
+        downloader.start(urlString: urlString, fileName: item.name, fileId: item.localPath, token: item.track.token)
+    }
+    
+    func removeDownload(item: Item?, completed: (String) -> () ) {
+        
+        guard let item = item else { return }
+        
+        let localUrl = item.track.localUrl ?? ""
+        
+        downloader.remove(fileId: item.localPath, localUrl: localUrl) { url in
+            
+            completed(url)
         }
     }
 }
