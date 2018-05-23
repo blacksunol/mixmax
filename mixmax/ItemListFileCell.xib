@@ -59,7 +59,7 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.3669968247" green="0.80167740580000002" blue="0.98541122670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.2627450980392157" green="0.69411764705882351" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="osp-k6-MD0" firstAttribute="leading" secondItem="nwb-bo-kP6" secondAttribute="leading" constant="10" id="6fY-8b-MCF"/>
                 <constraint firstItem="0Lr-RB-FnK" firstAttribute="leading" secondItem="tPR-ag-Hyg" secondAttribute="leading" id="Bjn-Rb-07d"/>
