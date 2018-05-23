@@ -12,4 +12,19 @@ struct Track {
     var token: String?
     
     var url: String?
+    
+    var localUrl: String?
+    
+    var playedUrl: String? {
+        return localUrl == nil ? url : localUrl
+    }
+    
+}
+
+extension Track {
+    
+    var isOffline: Bool {
+        
+        return localUrl != nil
+    }
 }

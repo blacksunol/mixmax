@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemListCollectionViewCell: UICollectionViewCell {
+class ItemListCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak private var nameLabel: UILabel!
     
@@ -27,3 +27,15 @@ class ItemListCollectionViewCell: UICollectionViewCell {
        
     }
 }
+
+extension ItemListCollectionViewCell : DisplayCell {
+    func display2<T>(cellViewModel viewModel: T) where T : CellViewModel {
+        
+    }
+    
+    
+    func display(cellViewModel viewModel: CellViewModel) {
+        
+    }
+}
+

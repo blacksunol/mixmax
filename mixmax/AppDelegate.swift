@@ -56,5 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation])
     }
-}
+    
+    var backgroundSessionCompletionHandler: (() -> Void)?
 
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        backgroundSessionCompletionHandler = completionHandler
+    }
+}

@@ -8,14 +8,9 @@
 
 import AVFoundation
 import MediaPlayer
-import RxSwift
-import RxCocoa
 
-struct PlayerItem {
+class PlayerItem {
     
-    var url: String?
-    
-    var playerItem: AVPlayerItem?
 }
 
 protocol PlayerDelegate {
@@ -27,49 +22,41 @@ protocol PlayerDelegate {
 class Player {
     
     fileprivate var player: AVPlayer?
-    var playerItem: BehaviorRelay<PlayerItem>? = BehaviorRelay(value: PlayerItem())
     var item: Item?
     var items: [Item]?
     
     var delegate: PlayerDelegate?
     
-    
     func playItem(item: Item?) {
-        
         delegate?.playerStartPlaying()
 
         player?.pause()
         player = nil
         
+        
         let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
-        let urlStr = item?.track.url ?? ""
+        let urlStr = item?.track.playedUrl ?? ""
         let url = URL(string: urlStr)
         
         let asset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])
-        asset.loadValuesAsynchronously(forKeys: ["playable"]) { [weak self] in
+        asset.loadValuesAsynchronously(forKeys: ["playable"]) {
             
-            guard let weakSelf = self else { return }
             var error: NSError? = nil
             let status = asset.statusOfValue(forKey: "playable", error: &error)
             switch status {
-                
             case .loaded:
+                let playerItem = AVPlayerItem(asset: asset)
+                self.player = AVPlayer(playerItem: playerItem)
                 
-                let avplayerItem = AVPlayerItem(asset: asset)
-                let playerItem2 = PlayerItem(url: item?.track.url, playerItem: avplayerItem)
-                weakSelf.playerItem?.accept(playerItem2)
-                weakSelf.player = AVPlayer(playerItem: weakSelf.playerItem?.value.playerItem)
-                
-                weakSelf.player?.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { [weak self] time in
-                    
+                self.player?.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { [weak self] time in
                     guard let weakSelf = self else { return }
                     if let duration = weakSelf.player?.currentItem?.duration {
                         let duration = CMTimeGetSeconds(duration), time = CMTimeGetSeconds(time)
                         let progress = (time/duration)
                         weakSelf.delegate?.playerProgressing(progress: progress, duration: duration, time: time)
                     }})
-                weakSelf.player?.play()
+                self.player?.play()
             case .failed: break
             case .cancelled: break
             default: break
@@ -120,5 +107,6 @@ class Player {
             player?.seek(to: CMTimeMake(Int64(seconds), 1))
             player?.play()
         }
+
     }
 }
