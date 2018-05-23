@@ -37,6 +37,8 @@ class ItemListFileCell : UICollectionViewCell {
             kindImageView.image = UIImage(named: viewModel.imageName)
             downloadButton.isHidden = viewModel.isDownloadHidden
             removeButton.isHidden = !viewModel.isDownloadHidden
+            progressView.progress = viewModel.progress
+            progressView.isHidden = viewModel.isProgressHidden
         }
     }
     
@@ -68,9 +70,21 @@ struct ItemListFileCellViewModel {
     
     var name: String?
     var imageName: String
-    var isDownloadHidden: Bool
-    
-
+    var isDownloadHidden: Bool {
+        didSet {
+            
+            if !isDownloadHidden { progress = 0 }
+        }
+    }
+    var isProgressHidden: Bool = true
+    var progress: Float = 0 {
+        didSet {
+            
+            if progress == 1 {
+                self.isProgressHidden = true
+            }
+        }
+    }
     
     init(item: Item) {
         
@@ -79,7 +93,6 @@ struct ItemListFileCellViewModel {
         if isDownloaded {
             
             self.isDownloadHidden = true
-
         } else {
             
             self.isDownloadHidden = false

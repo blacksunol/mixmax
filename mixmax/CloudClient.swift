@@ -46,13 +46,18 @@ class CloudClient {
     
     func download(item: Item?) {
         
-        guard let item = item else { return }
-        downloader.start(urlString: item.track.url, fileName: item.name, fileId: item.localPath, token: item.track.token)
+        guard let item = item, let urlString = item.track.url else { return }
+        downloader.start(urlString: urlString, fileName: item.name, fileId: item.localPath, token: item.track.token)
     }
     
     func removeDownload(item: Item?, completed: (String) -> () ) {
         
-        downloader.remove(item: item) { url in
+        guard let item = item else { return }
+        
+        let localUrl = item.track.localUrl ?? ""
+        
+        downloader.remove(fileId: item.localPath, localUrl: localUrl) { url in
+            
             completed(url)
         }
     }

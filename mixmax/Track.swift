@@ -15,6 +15,10 @@ struct Track {
     
     var localUrl: String?
     
+    var playedUrl: String? {
+        return localUrl == nil ? url : localUrl
+    }
+    
 }
 
 extension Track {

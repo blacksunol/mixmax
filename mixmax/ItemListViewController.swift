@@ -40,22 +40,22 @@ class ItemListViewController: UIViewController {
                 let download = $0.value
                 let index = self?.items.index { item in
             
-                    item.track.url == download.urlString
+                    item.localPath == download.fileId
                 }
 
                 if let index = index {
 
-                    self?.items[index].track.localUrl = download.destinationUrl
+                    self?.items[index].track.localUrl = download.localFileUrl
                 }
             }
             
             let indices = activeDownloads.map { activeDownload in
                 (self?.items.index(where: { item in
-                    item.track.url ==  activeDownload.value.urlString
+                    
+                    item.localPath ==  activeDownload.value.fileId
                 }), activeDownload.value)
                 }.filter { $0.0 != nil }
          
-            
             DispatchQueue.main.async {
                 
                 let indexpaths = indices.flatMap { index in
@@ -66,14 +66,12 @@ class ItemListViewController: UIViewController {
                     
                     var viewModel = cell.0?.viewModel
                     viewModel?.isDownloadHidden = cell.1.isDownloading
+                    viewModel?.isProgressHidden = cell.1.progress == 1 || cell.1.progress == 0
+                    viewModel?.progress = cell.1.progress
                     cell.0?.display(viewModel: viewModel!)
-                    
-                    cell.0?.progressView.progress = cell.1.progress
-                    print("#isDownloading = \(cell.1.isDownloading)")
                 }
             }
-        }
-        
+        }?.disposable.disposed(by: disposeBag2)
         
         configureCollectionView()
         activityIndicator.hidesWhenStopped = true
@@ -95,8 +93,10 @@ class ItemListViewController: UIViewController {
             weakSelf.activityIndicator.startAnimating()
             print("#itemStore")
             if cloud == .none {
+                
                 weakSelf.settingButton.isHidden = false
             } else {
+                
                 weakSelf.settingButton.isHidden = true
             }
             
@@ -176,7 +176,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
 
         switch item.kind {
             
-        case .audio, .unknow :
+        case .audio, .unknow:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemListFileCell",
                                                           for: indexPath) as! ItemListFileCell
             cell.display(viewModel: ItemListFileCellViewModel(item: item))
@@ -203,6 +203,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         print("#path = \(String(describing: item.localPath))")
         switch item.kind {
         case .audio:
+            
             let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
             if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
 
@@ -211,7 +212,9 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
                 present(playerViewController, animated: true)
             }
         case .folder:
+            
             if let itemListViewController = UIStoryboard.instantiateViewController(storyboard: "ItemListViewController") as? ItemListViewController {
+                
                 let item = items[indexPath.row]
                 itemListViewController.item = item
                 navigationController?.pushViewController(itemListViewController, animated: true)
@@ -242,7 +245,6 @@ extension ItemListViewController : ItemListFileCellDelegate {
             items[indexPath.row] = item
             itemListCollectionView.reloadItems(at: [indexPath])
         }
-        
     }
 }
 
@@ -250,7 +252,6 @@ extension ItemListViewController : ItemListFileCellDelegate {
 
 extension ItemListViewController: URLSessionDelegate {
     
-    // Standard background session handler
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
         
         DispatchQueue.main.async {

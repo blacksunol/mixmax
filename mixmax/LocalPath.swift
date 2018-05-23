@@ -1,4 +1,4 @@
-//
+ //
 //  LocalPath.swift
 //  mixmax
 //
@@ -47,15 +47,13 @@ class LocalPath {
         }
     }
     
-    func delete(url: String, completed: (String) -> ()) {
+    func delete(localUrl: String, completed: (String) -> ()) {
         
         let context = Storage.shared.context
         
         let request: NSFetchRequest<LocalItem> = LocalItem.fetchRequest()
-        request.predicate = NSPredicate.init(format: "url == %@", url)
+        request.predicate = NSPredicate.init(format: "url == %@", localUrl)
 
-        
-        
         if let result = try? context.fetch(request) {
             for object in result {
                 print("#delete object")
@@ -66,17 +64,16 @@ class LocalPath {
         do {
             
             try context.save()
-            if let removeUrl = URL(string: url) {
-                try FileManager.default.removeItem(at: removeUrl)
+            if let url = URL(string: localUrl) {
+                
+                try FileManager.default.removeItem(at: url)
             }
             
-            completed(url)
+            completed(localUrl)
             
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-
-        
     }
 
     var localItems: [(String, String)] {

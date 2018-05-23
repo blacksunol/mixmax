@@ -48,6 +48,9 @@ extension Item {
             item = item?.parent
         }
         
+        path = cloud.rawValue + "/" + path
+        path.removeLast()
+        
         return path
     }
 }

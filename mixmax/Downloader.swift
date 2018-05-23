@@ -12,17 +12,30 @@ import RxSwift
 class Download {
     
     var fileName: String?
-    var fileId: String?
-    var urlString: String?
-    var destinationUrl: String?
+    var fileId: String
+    var urlString: String
+    var localFileUrl: String?
     var task: URLSessionDownloadTask?
-    var isDownloading = false
+    var isDownloading = false {
+        
+        didSet {
+            
+            if !isDownloading { progress = 0 }
+        }
+    }
     
-    var isDownloaded = false
-
+    var isDownloaded = false {
+        
+        didSet {
+            
+            if isDownloaded { progress = 0 }
+        }
+    }
+    
+    var size: String?
     var progress: Float = 0
     
-    init(urlString: String?, fileName: String?, fileId: String?) {
+    init(urlString: String, fileName: String?, fileId: String) {
         
         self.urlString = urlString
         self.fileName = fileName
@@ -40,14 +53,12 @@ class Downloader : NSObject, ItemDownload {
         return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }()
     
-    var activeDownloads: Variable<[URL: Download]> = Variable([:])
+    var activeDownloads: Variable<[String: Download]> = Variable([:])
     
-    func start(urlString: String?, fileName: String?, fileId: String?, token: String?) {
+    func start(urlString: String, fileName: String?, fileId: String, token: String?) {
         
-        guard let urlString = urlString else { return }
+        if (activeDownloads.value.contains { $0.key == fileId }) { return }
         
-        if activeDownloads.value.contains(where: { $0.key.absoluteString == urlString }) { return }
-
         let request = Request(url: urlString, method: .get, token: token)
         
         let download = Download(urlString: urlString, fileName: fileName, fileId: fileId)
@@ -58,35 +69,30 @@ class Downloader : NSObject, ItemDownload {
         
         download.isDownloading = true
         
-        let url = URL(string: urlString)!
 
-        activeDownloads.value[url] = download
+        activeDownloads.value[fileId] = download
     }
     
     
-    func remove(item: Item?, completed: (String) ->() ) {
+    func remove(fileId: String, localUrl: String, completed: (String) ->() ) {
         
-        guard let item = item else { return }
-        let urlStr = item.track.url ?? ""
+        let download = activeDownloads.value.filter { $0.value.fileId == fileId }.first?.value
         
-        let url = URL(string: urlStr)!
-        
-        if let download = activeDownloads.value[url] {
+        if let download = download {
+            
             download.isDownloading = false
             download.task?.cancel()
-            activeDownloads.value[url] = download
-
+            activeDownloads.value[fileId] = download
         }
         
         let localPath = LocalPath()
-        let localUrl = item.track.localUrl ?? ""
         
-        localPath.delete(url: localUrl) { url in
+        localPath.delete(localUrl: localUrl) { url in
             
+            activeDownloads.value[fileId] = nil
             completed(url)
         }
-        activeDownloads.value[url] = nil
-
+        
     }
     
     func localFilePath(fileId: String?, fileName: String?) -> URL {
@@ -97,8 +103,8 @@ class Downloader : NSObject, ItemDownload {
         
         if let fileId = fileId {
             
-            let localPath2 = LocalPath()
-            localPath2.save(fileId: fileId, url: path.absoluteString)
+            let localPath = LocalPath()
+            localPath.save(fileId: fileId, url: path.absoluteString)
         }
         
         return path
@@ -118,45 +124,43 @@ extension Downloader : URLSessionDelegate {
 extension Downloader : URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
         print("#didFinishDownloadingTo")
         
-        // 1
         guard let sourceURL = downloadTask.originalRequest?.url else { return }
-        guard let download = activeDownloads.value[sourceURL]  else { return }
-        // 2
-        let destinationURL = localFilePath(fileId: download.fileId, fileName: download.fileName)
-        print(destinationURL)
-        // 3
+        
+        let downloadValue = activeDownloads.value.filter { $0.value.urlString == sourceURL.absoluteString }.first?.value
+        guard let download = downloadValue else { return }
+
+        
+        let localFileUrl = localFilePath(fileId: download.fileId, fileName: download.fileName)
+        print(localFileUrl)
+
         let fileManager = FileManager.default
-        try? fileManager.removeItem(at: destinationURL)
+        try? fileManager.removeItem(at: localFileUrl)
 
         do {
             
-            try fileManager.copyItem(at: location, to: destinationURL)
+            try fileManager.copyItem(at: location, to: localFileUrl)
             download.isDownloaded = true
-            download.destinationUrl = destinationURL.absoluteString
+            download.localFileUrl = localFileUrl.absoluteString
         } catch let error {
             print("Could not copy file to disk: \(error.localizedDescription)")
         }
         
-        activeDownloads.value[sourceURL] = download
-        activeDownloads.value[sourceURL] = nil
+        activeDownloads.value[download.fileId] = download
+        activeDownloads.value[download.fileId] = nil
 
     }
     
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask,
-                    didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
-                    totalBytesExpectedToWrite: Int64) {
-      
-        // 1
-        guard let url = downloadTask.originalRequest?.url,
-            let download = activeDownloads.value[url]  else { return }
-        // 2
-        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         
-        activeDownloads.value[url] = download
-        // 3
-        let totalSize = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite,
-                                                  countStyle: .file)
+        guard let sourceURL = downloadTask.originalRequest?.url else { return }
+        
+        let downloadValue = activeDownloads.value.filter { $0.value.urlString == sourceURL.absoluteString }.first?.value
+        guard let download = downloadValue else { return }
+        download.progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        download.size = ByteCountFormatter.string(fromByteCount: totalBytesExpectedToWrite, countStyle: .file)
+        activeDownloads.value[download.fileId] = download
     }
 }
