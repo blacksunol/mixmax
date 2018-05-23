@@ -8,5 +8,4 @@
 
 protocol ItemDownload {
     
-    var downloader : Downloader { get set }
 }
