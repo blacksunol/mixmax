@@ -43,7 +43,7 @@ class Player {
         
         let token = item?.track.token ?? ""
         let header = ["Authorization": "Bearer \(token)"]
-        let urlStr = item?.track.url ?? ""
+        let urlStr = item?.track.playedUrl ?? ""
         let url = URL(string: urlStr)
         
         let asset = AVURLAsset(url: url!, options: ["AVURLAssetHTTPHeaderFieldsKey": header])

@@ -19,11 +19,14 @@ struct Request {
     
     var request: URLRequest
     
-    init(url: String, method: Method, token: String) {
+    init(url: String, method: Method, token: String?) {
         
         let requestUrl = URL(string: url)
         request = URLRequest(url: requestUrl!)
-        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if let token = token {
+            
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = method.rawValue
     }
