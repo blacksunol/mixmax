@@ -31,8 +31,8 @@ class ItemListViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         cloudClient.downloader.activeDownloads.asObservable().subscribe { [weak self] activeDownloads in
             
             activeDownloads.forEach {
@@ -204,13 +204,17 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         switch item.kind {
         case .audio:
             
-            let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
-            if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
+//            let storyboard = UIStoryboard(name: "PlayerViewController", bundle: nil)
+//            if let playerViewController = storyboard.instantiateViewController(withIdentifier :"PlayerViewController") as? PlayerViewController {
+//
+//                playerViewController.item = item
+//                playerViewController.items = items
+//                present(playerViewController, animated: true)
+//            }
+            let rootViewController = navigationController?.parent as? ViewController
+            rootViewController?.playItem(item: item, items: items)
+            
 
-                playerViewController.item = item
-                playerViewController.items = items
-                present(playerViewController, animated: true)
-            }
         case .folder:
             
             if let itemListViewController = UIStoryboard.instantiateViewController(storyboard: "ItemListViewController") as? ItemListViewController {
@@ -222,17 +226,22 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         case .unknow: break
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let footerView = itemListCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ItemListFooterView", for: indexPath)
+        return footerView
+    }
+
 }
 
 extension ItemListViewController : ItemListFileCellDelegate {
     
     func downloadTapped(_ cell: ItemListFileCell) {
+        
         guard let indexPath = itemListCollectionView.indexPath(for: cell) else { return }
         let item = items[indexPath.row]
         cloudClient.download(item: item)
-
-        
-        
     }
     
     func removeTapped(_ cell: ItemListFileCell) {

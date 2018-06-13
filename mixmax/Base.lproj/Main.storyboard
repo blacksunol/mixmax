@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="78X-RM-1bM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="78X-RM-1bM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -131,6 +131,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAL-w4-PYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1044" y="447.52623688155927"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="0va-jF-ac1">
+            <objects>
+                <viewController storyboardIdentifier="ModalViewController" id="87V-XW-GBY" customClass="ModalViewController" customModule="MusicPlayerTransition" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GKc-5z-EHD"/>
+                        <viewControllerLayoutGuide type="bottom" id="sBm-cY-Aqs"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="amB-6J-2d6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OS-p5-Tcr">
+                                <rect key="frame" x="16" y="20" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="90b-Gt-bPP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="hAa-Oh-A7O"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapCloseButton" destination="87V-XW-GBY" eventType="touchUpInside" id="nbz-os-Zzu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8OS-p5-Tcr" firstAttribute="leading" secondItem="amB-6J-2d6" secondAttribute="leading" constant="16" id="Q3d-zk-CCM"/>
+                            <constraint firstItem="8OS-p5-Tcr" firstAttribute="top" secondItem="GKc-5z-EHD" secondAttribute="bottom" id="fBp-SA-g0t"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8OS-p5-Tcr" secondAttribute="trailing" constant="20" symbolic="YES" id="rwJ-yd-W6k"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RCy-h9-qgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1173.5999999999999" y="397.60119940029989"/>
         </scene>
     </scenes>
 </document>

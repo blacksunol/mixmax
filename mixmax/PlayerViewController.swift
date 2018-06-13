@@ -15,19 +15,18 @@ import MediaPlayer
 
 class PlayerViewController: UIViewController {
     
-    @IBOutlet weak var progressSlider: UISlider!
+    @IBOutlet weak var progressSlider: UISlider?
     
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel?
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var playButton: UIButton?
     @IBOutlet weak var playlistTableView: UITableView!
 
-    
     fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
     var disposeBag = DisposeBag()
 
-    fileprivate var player: Player?
+    fileprivate var player: Player? = Player()
     
     var item: Item?
     var items: [Item]? {
@@ -39,28 +38,20 @@ class PlayerViewController: UIViewController {
     }
     
     var playableItems: [Item]?
+    var playerItem: Variable<PlayerItem?> = Variable(PlayerItem())
     let slider = UISlider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do
-        {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            //!! IMPORTANT !!
-            /*
-             If you're using 3rd party libraries to play sound or generate sound you should
-             set sample rate manually here.
-             Otherwise you wont be able to hear any sound when you lock screen
-             */
-            //try AVAudioSession.sharedInstance().setPreferredSampleRate(4096)
-        }
-        catch
-        {
-            print(error)
-        }
+        let effect = UIBlurEffect(style: .light)
+        let blurView = UIVisualEffectView(effect: effect)
+        blurView.frame = self.view.bounds
+        self.view.addSubview(blurView)
+        self.view.sendSubview(toBack: blurView)
+        
+        
+        
         
         UIApplication.shared.beginReceivingRemoteControlEvents()
         
@@ -89,14 +80,7 @@ class PlayerViewController: UIViewController {
         }).disposed(by: disposeBag)
         slider.value = 0.3
         
-        player = Player()
-        player?.delegate = self
         
-        player?.item = item
-        player?.items = playableItems
-        
-        playItem(item: item)
-            
         //        progressSlider.rx.value.map{ value -> String in
         //            "\(Int(value * 2000)) $"
         //            }.asObservable().bindTo { _ in
@@ -122,7 +106,12 @@ class PlayerViewController: UIViewController {
                 }
             }
         }?.disposable.disposed(by: disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
+        super.viewDidAppear(animated)
+        player?.delegate = self
     }
     
     func remoteControl() {
@@ -141,6 +130,11 @@ class PlayerViewController: UIViewController {
         commandCenter.pauseCommand.addTarget(self, action: #selector(PlayerViewController.pause as (PlayerViewController) -> () -> ()))
     }
     
+    func stopPlaying() {
+        player?.pause()
+        player = nil
+    }
+    
     @IBAction func slideUpdated(_ sender: UISlider) {
         
             player?.seek(toValue: sender.value)
@@ -152,18 +146,40 @@ class PlayerViewController: UIViewController {
     
     func playItem(item: Item?) {
         
-        playlistTableView.reloadData()
+        do
+        {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            //!! IMPORTANT !!
+            /*
+             If you're using 3rd party libraries to play sound or generate sound you should
+             set sample rate manually here.
+             Otherwise you wont be able to hear any sound when you lock screen
+             */
+            //try AVAudioSession.sharedInstance().setPreferredSampleRate(4096)
+        }
+        catch
+        {
+            print(error)
+        }
+        
+        player = Player()
+        player?.delegate = self
+        player?.item = item
+        player?.items = playableItems
+        playlistTableView?.reloadData()
         player?.playItem(item: item)
     }
     
-    func populateLabelWithTime(_ label : UILabel, time: Double) {
+    func populateLabelWithTime(_ label : UILabel?, time: Double) {
         
         guard !(time.isNaN || time.isInfinite) else { return }
         
         let minutes = Int(time / 60)
         let seconds = Int(time) - minutes * 60
         
-        label.text = String(format: "%02d", minutes) + ":" + String(format: "%02d", seconds)
+        label?.text = String(format: "%02d", minutes) + ":" + String(format: "%02d", seconds)
     }
     
     func playNext() {
@@ -202,7 +218,7 @@ class PlayerViewController: UIViewController {
     
     func pause() {
         
-        playButton.isSelected = true
+        playButton?.isSelected = true
         player?.pause()
     }
     
@@ -213,32 +229,38 @@ class PlayerViewController: UIViewController {
     
     @IBAction func closeButtonTapped(_ sender: Any) {
         
-        player?.pause()
-        player = nil
         dismiss(animated: true, completion: nil)
     }
 }
 
 extension PlayerViewController: PlayerDelegate {
     
-    func playerProgressing(progress: Double, duration: Double, time: Double) {
+    func playerProgressing(playerItem: PlayerItem?, progress: Double, duration: Double, time: Double) {
         
-        progressSlider.setValue(Float(progress), animated: true)
+        progressSlider?.setValue(Float(progress), animated: true)
         populateLabelWithTime(durationLabel, time: duration)
         populateLabelWithTime(timerLabel, time: time)
         activityIndicator.stopAnimating()
 
     }
 
-    func playerStartPlaying() {
+    func playerWillPlay(playerItem: PlayerItem?) {
         
         activityIndicator.startAnimating()
-        progressSlider.setValue(Float(0), animated: true)
+        progressSlider?.setValue(Float(0), animated: true)
         populateLabelWithTime(durationLabel, time: Double(0))
         populateLabelWithTime(timerLabel, time: Double(0))
-        playButton.isSelected = false
-
+        playButton?.isSelected = false
     }
+    
+    func playerDidPlay(playerItem: PlayerItem?) {
+        
+        DispatchQueue.main.async {
+            
+            self.playerItem.value = playerItem
+        }
+    }
+
 }
 
 

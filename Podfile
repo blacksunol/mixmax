@@ -15,6 +15,7 @@ target 'mixmax' do
 #  pod 'ReSwift'
   pod 'ReactiveReSwift'
   pod 'RxAVFoundation'
+  pod 'ARNTransitionAnimator'
 
   target 'mixmaxUITests' do
     inherit! :search_paths

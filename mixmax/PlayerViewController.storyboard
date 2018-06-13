@@ -19,25 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-Vw-bDH">
-                                <rect key="frame" x="35" y="463" width="301" height="31"/>
+                                <rect key="frame" x="34" y="463" width="301" height="31"/>
                                 <connections>
                                     <action selector="slideUpdated:" destination="clF-In-9SX" eventType="valueChanged" id="j9f-VZ-0j0"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBG-FA-fcn">
-                                <rect key="frame" x="288" y="500" width="46" height="21"/>
+                                <rect key="frame" x="287" y="500" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qh-gg-V4q">
-                                <rect key="frame" x="37" y="501" width="46" height="21"/>
+                                <rect key="frame" x="36" y="501" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u0D-ej-KYf">
-                                <rect key="frame" x="36" y="136" width="302" height="290"/>
+                                <rect key="frame" x="36" y="103" width="302" height="323"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="clF-In-9SX" id="azZ-ow-rbW"/>
@@ -82,8 +82,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcq-ul-lEa">
-                                <rect key="frame" x="274" y="53" width="64" height="64"/>
-                                <state key="normal" image="close"/>
+                                <rect key="frame" x="274" y="20" width="64" height="64"/>
+                                <state key="normal" image="arrow_drop"/>
                                 <connections>
                                     <action selector="closeButtonTapped:" destination="clF-In-9SX" eventType="touchUpInside" id="plE-j6-Zyd"/>
                                 </connections>
@@ -97,7 +97,7 @@
                             <constraint firstItem="u0D-ej-KYf" firstAttribute="top" secondItem="Hcq-ul-lEa" secondAttribute="bottom" constant="19" id="GK2-ZH-2Wt"/>
                             <constraint firstItem="LK2-at-yyx" firstAttribute="top" secondItem="3ai-Vw-bDH" secondAttribute="bottom" constant="37" id="H78-ld-DoA"/>
                             <constraint firstItem="FeJ-wa-Aif" firstAttribute="trailing" secondItem="Hcq-ul-lEa" secondAttribute="trailing" constant="37" id="IPx-RA-ahs"/>
-                            <constraint firstItem="Hcq-ul-lEa" firstAttribute="top" secondItem="FeJ-wa-Aif" secondAttribute="top" constant="33" id="Kxo-qS-13o"/>
+                            <constraint firstItem="Hcq-ul-lEa" firstAttribute="top" secondItem="FeJ-wa-Aif" secondAttribute="top" id="Kxo-qS-13o"/>
                             <constraint firstItem="tBG-FA-fcn" firstAttribute="top" secondItem="3ai-Vw-bDH" secondAttribute="bottom" constant="7" id="Phb-pr-FIg"/>
                             <constraint firstItem="7Qh-gg-V4q" firstAttribute="leading" secondItem="3ai-Vw-bDH" secondAttribute="leading" id="Ruw-2Y-dZc"/>
                             <constraint firstItem="FeJ-wa-Aif" firstAttribute="bottom" secondItem="LK2-at-yyx" secondAttribute="bottom" constant="27" id="eNc-ef-Aer"/>
@@ -124,8 +124,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_drop" width="64" height="64"/>
         <image name="back" width="64" height="64"/>
-        <image name="close" width="64" height="64"/>
         <image name="forward" width="64" height="64"/>
         <image name="pause" width="64" height="64"/>
         <image name="play" width="64" height="64"/>
